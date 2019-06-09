@@ -1,0 +1,169 @@
+@charset "UTF-8";
+
+body {
+	width: 200vw;
+	height: 100vh;
+}
+
+header{
+	font-family: 'arial black','arial','Impact';
+    font-weight:lighter;
+
+    transform: none;
+    position: fixed;
+    margin-top: 1vh;
+    width: 100vw;
+	z-index: 0;
+
+	background: ##FF0000;
+
+	text-align: center;
+}
+
+main {
+	font-family: 'arial','sans-serif';
+	font-weight: normal;
+}
+
+h3{
+  text-align: center;
+  font-size: 30px;
+  margin: 10vh;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+ul {
+  list-style: none;
+}
+
+.page1 {
+	float:left;
+	width: 100vw;
+	height: 100%;
+}
+
+.page2 {
+	float:left;
+	width: 100vw;
+	height: 100%;
+}
+
+.title {
+	color:black;
+	font-size: 60px;
+}
+
+.subtitle {
+}
+
+.blank {
+	margin-top: 100vh;
+}
+
+@media screen and (max-width:480px){
+  .p-box{
+    margin: 0 auto;
+  }
+}
+
+
+.p-margin{
+  padding-top: 20px;
+}
+
+
+.p-box p {
+	width: 50%;
+	margin-left: 25%;
+}
+
+.p-box li {
+  width: 50%;
+  margin-left: 40%;
+}
+
+/*.p-box h3 {
+    margin: 20px 0;
+}*/
+
+
+.sns-box {
+	text-align: center;
+	/*width: 75%;
+	margin-left: 25%;*/
+}
+
+.sns-box h3 {
+    margin: 20px 0;
+}
+
+.contact-form{
+	margin-left: 0;
+}
+
+
+.sns-box {
+	text-align: center;
+	/*width: 75%;
+	margin-left: 25%;*/
+}
+
+.works-box {
+	text-align: center;
+}
+
+.margin-0 {
+	margin: 0;
+}
+
+.skill-box {
+  text-align: center;
+}
+
+
+
+#page-top {
+	font-family: 'arial','sans-serif';
+    position: fixed;
+    bottom: 15px;
+    right: 20px;
+    font-size: 80%;
+}
+ 
+#page-top a {
+    display: block;
+    background: #666;
+    color: #fff;
+    width: 100px;
+    padding: 25px 0;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+}
+ 
+#page-top a:hover {
+    background: #999;
+    text-decoration: none;
+}
+/*.btn-submit{
+  width: 300px;
+  height: 50px;
+  padding: 5px 8px;
+  border-radius: 10px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 4px solid #aaa;
+  background-image: none;
+  background-color: #666;
+  font-size: 20px;
+  color: #fff;
+}
+.btn-submit:active{
+  border-bottom: none;
+  background-color: #888;
+}*/

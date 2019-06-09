@@ -1,0 +1,157 @@
+@charset "UTF-8";
+
+body {
+	/*height: ;*/
+  box-sizing: border-box;
+}
+
+main {
+	font-family: 'arial','sans-serif';
+	font-weight: normal;
+  z-index: 1;
+}
+
+header {
+
+}
+
+footer {
+}
+h3{
+  text-align: center;
+  font-size: 30px;
+  margin: 10vh;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+ul {
+  list-style: none;
+}
+
+
+.work-about {
+  position: fixed;
+  max-width: 25%;
+  height: 100%;
+  /*background: #FFFFFF;*/
+  /*background: red;*/
+  margin-top: 7vh;
+  margin-left: 2%;
+
+  font-family: 'arial black','Impact','arial';
+  font-weight:lighter;
+}
+.work-about p{
+  margin-top: 5px;
+  margin-bottom: 0;
+  /*font-family: 'arial','Impact';*/
+  font-family: 'New Gulim';
+  font-weight:lighter;
+  border-bottom: solid 2px #555;
+}
+
+
+
+.thumbnail-box{
+  position: relative;
+  width: 100%;
+  height: 85vh;
+  /* filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6)); */
+}
+
+.thumbnail-img{
+  transition: .5s;
+  /* position: fixed; */
+  width: 60%;
+  /*height: 10vh;*/
+  
+  object-fit: cover; /* この一行を追加するだけ！ */
+  z-index: -999;
+  transform-origin: top left;
+  display: block;
+  /*margin: 50px auto;*/
+  margin-left: 30%;
+  margin-top: 10%;
+}
+
+@media screen and (max-width:480px){
+  .thumbnail-img{
+    /* transform: rotate(90deg); */
+    width: 100vw;
+    height: auto;
+    margin: 0;
+  }
+
+
+  .title-box{
+    position: relative;
+    padding: 5%;
+    box-sizing: border-box;
+  }
+}
+
+.thumbnail-text {
+  /*font-family: 'arial','Impact';*/
+  font-family: 'New Gulim';
+  font-weight:lighter;
+  font-size: 20px;
+  margin-left: 30%;
+  margin-top: 5vh;
+  padding-bottom: 5vh;
+  max-width: 65%;
+}
+
+.text-title {
+  font-family: 'arial black','arial','Impact';
+  font-weight:lighter;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 20vh;
+  /*margin-left: 30%;*/
+}
+
+.text-container {
+  font-family: 'New Gulim';
+  /*font-family: 'arial','Impact';*/
+  font-weight:lighter;
+  font-size: 16px;
+  margin-left: 30%;
+}
+
+.tail_blank {
+  margin: 10vh;
+}
+
+.img-box {
+  /*object-fit: cover;*/
+  /*display: table-cell;*/
+  margin-left: 25vw;
+  /*margin-top: 5vw;*/
+  /*margin-bottom: 5vw;*/
+  padding-bottom: 5vh;
+  float:left;
+  /*display:table-cell;*/
+}
+.img-container {
+  /*object-fit: cover;*/
+  /*display: table-cell;*/
+  width: 45%;
+  /*height: 30%;*/
+  padding:10px;
+
+  /*display:table-cell;*/
+}
+
+.mov-container {
+  /*object-fit: cover;*/
+  /*display: table-cell;*/
+  width: 80%;
+  /*height: 30%;*/
+  margin-left: 5vw;
+
+  /*display:table-cell;*/
+}
