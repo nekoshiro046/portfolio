@@ -16,9 +16,10 @@ var userMove = 0;
 let linkName = ["about me","contact","works"];
 let linkURL = ['about-me','contact','works'];
 
-var worksName = ["border","syundo", "world apart", "mimie","back to menu"];
-var worksLinkURL = ['work/border.html', 'work/syundo.html' ,'work/world_apart.html','work/mimie.html'];
+var worksName = ["back to menu" ,"border","syundo", "world apart", "mimie"];//1-3 : installation 4 : ux 0 : back
+var worksLinkURL = ['','work/border.html', 'work/syundo.html' ,'work/world_apart.html','work/mimie.html'];
 
+var allBtn = true,instaBtn = false, uxBtn = false;
 
 function preload(){
 	font = loadFont('assets/font/FreeSans.otf');
@@ -48,6 +49,96 @@ function setup() {
   rectMode(CENTER);
 }
 
+function pressedAllBtn(){
+	if(allBtn == false){
+		$(function() {
+		    $(".allBtn").css({
+		        "color": "#ffffff",
+		        "background": "#000000"
+		    });
+		});
+		$(function() {
+		    $(".instaBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
+		});
+		$(function() {
+		    $(".uxBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
+		});
+
+		instaBtn =  false;
+		uxBtn = false;
+		allBtn = true;
+	}else{
+		$(function() {
+		    $(".allBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
+		});
+		allBtn = false;
+	}
+}
+
+function pressedInstaBtn(){
+	if(instaBtn == false){
+		$(function() {
+		    $(".instaBtn").css({
+		        "color": "#ffffff",
+		        "background": "#000000"
+		    });
+		});
+		$(function() {
+		    $(".allBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
+		});
+		instaBtn = true;
+		allBtn = false;
+	}else{
+		$(function() {
+		    $(".instaBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
+		});
+		instaBtn = false;
+	}
+}
+
+function pressedUxBtn(){
+	if(uxBtn == false){
+		$(function() {
+		    $(".uxBtn").css({
+		        "color": "#ffffff",
+		        "background": "#000000"
+		    });
+		});
+		$(function() {
+		    $(".allBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
+		});
+		uxBtn = true;
+		allBtn = false;
+	}else{
+		$(function() {
+		    $(".uxBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
+		});
+		uxBtn = false;
+	}
+}
+
+
 function initBox() {
 	for(var i = 0; i < objNum; i++){
 	    var posX = 0;var posY = 0;var posZ = -20;
@@ -61,7 +152,7 @@ function initWorksBox(workPos) {
 	    // var posX = workPos.x;var posY = workPos.y;var posZ = workPos.z;
 	    var posX = 0;var posY = 0;var posZ = 0;
 	    var inch = (windowWidth + windowHeight)/40;
-	    if( i == worksNum -1){
+	    if( i == 0){
 			inch = (windowWidth + windowHeight)/20;
 		}
 	    worksBox[i] = new box(posX,posY,posZ,inch,i);
@@ -102,7 +193,7 @@ function mousePressed() {
 	else if(scene == 3){
 		for(var i = 0; i < worksNum; i++){
 			if(worksBox[i].inTerritory(mouseX,mouseY) && mouseCharge == 0 && (worksBox[i].core.mag() > 50) && inCanvas()){
-				if(i == worksNum -1){
+				if(i == 0){
 					initBox();
 					scene = 2;
 				}
@@ -325,21 +416,84 @@ function drawScene2(){
   }
 }
 
+// function drawScene3() {
+//   background(255);
+//   for(var j = 0; j < worksNum; j++){
+//     if(worksBox[j].inTerritory(mouseX,mouseY)){
+//       // stroke(worksBox[j].baseColor);
+//       stroke(worksBox[j].baseColor,50);
+//       worksBox[j].drawInnerBox();
+// 	  drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[worksBox[j].linkID],worksBox[j].inch,0);
+//     }else{
+//       // stroke(0);
+//       stroke(0,50);
+//     }
+//     worksBox[j].drawBox(); 
+//   }
+// }
+
 function drawScene3() {
-  background(255);
-  for(var j = 0; j < worksNum; j++){
-    if(worksBox[j].inTerritory(mouseX,mouseY)){
-      // stroke(worksBox[j].baseColor);
-      stroke(worksBox[j].baseColor,50);
-      worksBox[j].drawInnerBox();
-	  drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[worksBox[j].linkID],worksBox[j].inch,0);
-    }else{
-      // stroke(0);
-      stroke(0,50);
-    }
-    worksBox[j].drawBox(); 
-  }
+	background(255);
+  	if(allBtn == true){
+  		for(var j = 0; j < worksNum; j++){
+	    	if(worksBox[j].inTerritory(mouseX,mouseY)){
+	      	// stroke(worksBox[j].baseColor);
+	      	stroke(worksBox[j].baseColor,50);
+	      	worksBox[j].drawInnerBox();
+		  	drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[j],worksBox[j].inch,0);
+	    	}else{
+	      	// stroke(0);
+	      	stroke(0,50);
+	    	}
+	    	worksBox[j].drawBox(); 
+	  	}
+  	}else{
+  		if(instaBtn == true){
+  			for(var j = 1; j < 4; j++){
+	    		if(worksBox[j].inTerritory(mouseX,mouseY)){
+		      		// stroke(worksBox[j].baseColor);
+		      		stroke(worksBox[j].baseColor,50);
+		      		worksBox[j].drawInnerBox();
+			  		drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[j],worksBox[j].inch,0);
+	    		}
+	    		else{
+	      			// stroke(0);
+	      			stroke(0,50);
+	    		}
+	    		worksBox[j].drawBox(); 
+	  		}
+  		}
+  		if(uxBtn == true){
+  			for(var j = 4; j < worksNum; j++){
+	    		if(worksBox[j].inTerritory(mouseX,mouseY)){
+		      		// stroke(worksBox[j].baseColor);
+		      		stroke(worksBox[j].baseColor,50);
+		      		worksBox[j].drawInnerBox();
+			  		drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[j],worksBox[j].inch,0);
+	    		}
+	    		else{
+	      			// stroke(0);
+	      			stroke(0,50);
+	    		}
+	    		worksBox[j].drawBox(); 
+	  		}
+  		}
+  		if(worksBox[0].inTerritory(mouseX,mouseY)){
+		    stroke(worksBox[0].baseColor,50);
+		    worksBox[0].drawInnerBox();
+			drawText(worksBox[0].core.x,worksBox[0].core.y,worksName[0],worksBox[0].inch,0);
+	    }
+	    else{
+	      	stroke(0,50);
+	    }
+	    worksBox[0].drawBox(); 
+
+  	}
+  
+  
 }
+
+
 
 function drawText(x,y,str,strSiz,col){
 	push();  

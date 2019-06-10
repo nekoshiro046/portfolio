@@ -149,6 +149,57 @@ ul {
     background: #999;
     text-decoration: none;
 }
+
+.worksCategory li{
+  display: list-item;
+  text-align: left;
+  padding-left: 2vw;
+}
+
+.allBtn {
+  /*display: inline-block;*/
+  display: list-item;
+  padding: 1vh 1vw;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #000000;
+  border: solid 2px #101010;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.instaBtn {
+  /*display: inline-block;*/
+  display: list-item;
+  padding: 1vh 1vw;
+  text-decoration: none;
+  color: #000000;
+  background-color: #ffffff;
+  color: #000000;
+  background-color: #ffffff;
+  border: solid 2px #101010;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.uxBtn {
+  /*display: inline-block;*/
+  display: list-item;
+  padding: 1vh 1vw;
+  text-decoration: none;
+  color: #000000;
+  background-color: #ffffff;
+  border: solid 2px #101010;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+/*.btn-flat-border:hover {
+  background: #aaaaaa;
+  color: white;
+}
+*/
+
 /*.btn-submit{
   width: 300px;
   height: 50px;
