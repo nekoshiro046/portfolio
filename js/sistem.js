@@ -435,7 +435,7 @@ function drawScene2(){
 function drawScene3() {
 	background(255);
   	if(allBtn == true){
-  		for(var j = 0; j < worksNum; j++){
+  		for(var j = 1; j < worksNum; j++){
 	    	if(worksBox[j].inTerritory(mouseX,mouseY)){
 	      	// stroke(worksBox[j].baseColor);
 	      	stroke(worksBox[j].baseColor,50);
@@ -447,6 +447,15 @@ function drawScene3() {
 	    	}
 	    	worksBox[j].drawBox(); 
 	  	}
+	  	if(worksBox[0].inTerritory(mouseX,mouseY)){
+		    stroke(worksBox[0].baseColor,50);
+		    worksBox[0].drawTetrahedron();
+			drawText(worksBox[0].core.x,worksBox[0].core.y,worksName[0],worksBox[0].inch,0);
+	    }
+	    else{
+	      	stroke(0,50);
+	    }
+	    worksBox[0].drawBox(); 
   	}else{
   		if(instaBtn == true){
   			for(var j = 1; j < 4; j++){
@@ -480,7 +489,7 @@ function drawScene3() {
   		}
   		if(worksBox[0].inTerritory(mouseX,mouseY)){
 		    stroke(worksBox[0].baseColor,50);
-		    worksBox[0].drawInnerBox();
+		    worksBox[0].drawTetrahedron();
 			drawText(worksBox[0].core.x,worksBox[0].core.y,worksName[0],worksBox[0].inch,0);
 	    }
 	    else{

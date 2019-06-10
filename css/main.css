@@ -159,7 +159,7 @@ ul {
 .allBtn {
   /*display: inline-block;*/
   display: list-item;
-  padding: 1vh 1vw;
+  padding: 2vh 2vw;
   text-decoration: none;
   color: #ffffff;
   background-color: #000000;
@@ -171,7 +171,7 @@ ul {
 .instaBtn {
   /*display: inline-block;*/
   display: list-item;
-  padding: 1vh 1vw;
+  padding: 2vh 2vw;
   text-decoration: none;
   color: #000000;
   background-color: #ffffff;
@@ -185,7 +185,7 @@ ul {
 .uxBtn {
   /*display: inline-block;*/
   display: list-item;
-  padding: 1vh 1vw;
+  padding: 2vh 2vw;
   text-decoration: none;
   color: #000000;
   background-color: #ffffff;
