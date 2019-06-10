@@ -198,13 +198,15 @@ function mousePressed() {
 					scene = 2;
 				}
 				else{
-					mouseCharge = 0;oneFrame = 0;
-					mouseIsPressed = false;
-					window.open(worksLinkURL[i], '_blank');
+					if((i > 0 && i <4 && instaBtn == true) || (i > 3 && uxBtn == true)){
+						mouseCharge = 0;oneFrame = 0;
+						mouseIsPressed = false;
+						window.open(worksLinkURL[i], '_blank');
+					}
+					// mouseCharge = 0;oneFrame = 0;
+					// mouseIsPressed = false;
+					// window.open(worksLinkURL[i], '_blank');
 				}
-
-				// return false;
-
 		    }
 		}
 	}

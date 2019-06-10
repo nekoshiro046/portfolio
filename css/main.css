@@ -7,16 +7,15 @@ body {
 
 header{
 	font-family: 'arial black','arial','Impact';
-    font-weight:lighter;
+  font-weight:lighter;
 
-    transform: none;
-    position: fixed;
-    margin-top: 1vh;
-    width: 100vw;
+  transform: none;
+  position: fixed;
+  margin-top: 1vh;
+  width: 100vw;
 	z-index: 0;
 
-	background: ##FF0000;
-
+	background: #ffffff;
 	text-align: center;
 }
 
@@ -194,11 +193,6 @@ ul {
   transition: .4s;
 }
 
-/*.btn-flat-border:hover {
-  background: #aaaaaa;
-  color: white;
-}
-*/
 
 /*.btn-submit{
   width: 300px;
