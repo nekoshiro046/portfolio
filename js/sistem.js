@@ -198,7 +198,7 @@ function mousePressed() {
 					scene = 2;
 				}
 				else{
-					if((i > 0 && i <4 && instaBtn == true) || (i > 3 && uxBtn == true)){
+					if((i > 0 && i <4 && instaBtn == true) || (i > 3 && uxBtn == true) || (allBtn == true) ){
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;
 						window.open(worksLinkURL[i], '_blank');
