@@ -113,6 +113,14 @@ ul {
   /*margin-left: 30%;*/
 }
 
+.link {
+  font-family: 'arial black','arial','Impact';
+  font-weight:lighter;
+  text-align: center;
+  font-size: 20px;
+
+}
+
 .text-container {
   font-family: 'New Gulim';
   /*font-family: 'arial','Impact';*/
