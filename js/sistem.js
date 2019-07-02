@@ -1,5 +1,5 @@
 var fr = 60;
-let objNum = 3;let worksNum = 5;
+let objNum = 3;let worksNum = 6;
 let boxes =  [];let firstBox;let worksBox = [];
 var canvas;
 
@@ -16,8 +16,8 @@ var userMove = 0;
 let linkName = ["about me","contact","works"];
 let linkURL = ['about-me','contact','works'];
 
-var worksName = ["back to menu" ,"border","syundo", "world apart", "mimie"];//1-3 : installation 4 : ux 0 : back
-var worksLinkURL = ['','work/border.html', 'work/syundo.html' ,'work/world_apart.html','work/mimie.html'];
+var worksName = ["back to menu" ,"border","syundo", "world apart", "mimie","nomnom  the Game"];//1-3 : installation 4 : ux 0 : back
+var worksLinkURL = ['','work/border.html', 'work/syundo.html' ,'work/world_apart.html','work/mimie.html','work/nomnomGame.html'];
 
 var allBtn = true,instaBtn = false, uxBtn = false;
 
