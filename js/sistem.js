@@ -1,5 +1,5 @@
 var fr = 60;
-let objNum = 3;let worksNum = 6;
+let objNum = 3;let worksNum = 7;
 let boxes =  [];let firstBox;let worksBox = [];
 var canvas;
 
@@ -16,8 +16,8 @@ var userMove = 0;
 let linkName = ["about me","contact","works"];
 let linkURL = ['about-me','contact','works'];
 
-var worksName = ["back to menu" ,"border","syundo", "world apart", "mimie","nomnom  the Game"];//1-3 : installation 4 : ux 0 : back
-var worksLinkURL = ['','work/border.html', 'work/syundo.html' ,'work/world_apart.html','work/mimie.html','work/nomnomGame.html'];
+var worksName = ["back to menu" ,"border","syundo", "world apart", "01", "mimie","nomnom  the Game"];//1-4 : installation 5 : ux 0 : back
+var worksLinkURL = ['','work/border.html', 'work/syundo.html' ,'work/world_apart.html','work/01.html','work/mimie.html','work/nomnomGame.html'];
 
 var allBtn = true,instaBtn = false, uxBtn = false;
 
@@ -198,7 +198,7 @@ function mousePressed() {
 					scene = 2;
 				}
 				else{
-					if((i > 0 && i <4 && instaBtn == true) || (i > 3 && uxBtn == true) || (allBtn == true) ){
+					if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true) || (allBtn == true) ){
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;
 						window.open(worksLinkURL[i], '_blank');
@@ -460,7 +460,7 @@ function drawScene3() {
 	    worksBox[0].drawBox(); 
   	}else{
   		if(instaBtn == true){
-  			for(var j = 1; j < 4; j++){
+  			for(var j = 1; j <= 4; j++){
 	    		if(worksBox[j].inTerritory(mouseX,mouseY)){
 		      		// stroke(worksBox[j].baseColor);
 		      		stroke(worksBox[j].baseColor,50);
@@ -475,7 +475,7 @@ function drawScene3() {
 	  		}
   		}
   		if(uxBtn == true){
-  			for(var j = 4; j < worksNum; j++){
+  			for(var j = 5; j < worksNum; j++){
 	    		if(worksBox[j].inTerritory(mouseX,mouseY)){
 		      		// stroke(worksBox[j].baseColor);
 		      		stroke(worksBox[j].baseColor,50);
