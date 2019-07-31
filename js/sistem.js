@@ -16,6 +16,7 @@ var userMove = 0;
 let linkName = ["about me","contact","works"];
 let linkURL = ['about-me','contact','works'];
 
+var worksIndex = ["back" ,"b","s", "w", "01", "m","n"];//1-4 : installation 5 : ux 0 : back
 var worksName = ["back to menu" ,"border","syundo", "world apart", "01", "mimie","nomnom  the Game"];//1-4 : installation 5 : ux 0 : back
 var worksLinkURL = ['','work/border.html', 'work/syundo.html' ,'work/world_apart.html','work/01.html','work/mimie.html','work/nomnomGame.html'];
 
@@ -369,9 +370,11 @@ function drawScene1(str){
     stroke(255);
     firstBox.drawBox();
     drawText(firstBox.core.x,firstBox.core.y - windowHeight/3,str,windowHeight/20,255);
+    // firstBox.drawText(firstBox.core.x,firstBox.core.y - windowHeight/3,str,255);
   }
   else if(a == 2 || a == 5){
   	drawText(firstBox.core.x,firstBox.core.y - windowHeight/3,str,windowHeight/20,255);
+  	// firstBox.drawText(firstBox.core.x,firstBox.core.y - windowHeight/3,str,255);
   	push();
     translate(-0.5,1,-1.5);
     stroke(255,0,0);
@@ -390,6 +393,7 @@ function drawScene1(str){
   }
   else if(a == 3){
   	drawText(firstBox.core.x,firstBox.core.y - windowHeight/3,str,windowHeight/20,255);
+  	// firstBox.drawText(firstBox.core.x,firstBox.core.y - windowHeight/3,str,255);
     stroke(255);
     var r = random(1,4);
     for(var i = 0; i < r; i++){
@@ -412,6 +416,8 @@ function drawScene2(){
 	  drawText(boxes[j].core.x,boxes[j].core.y,linkName[boxes[j].linkID],boxes[j].inch,0);
     }else{
       // stroke(0);
+      // boxes[j].drawTextWithB(boxes[j].core.x,boxes[j].core.y,linkName[boxes[j].linkID],0);
+      drawText(boxes[j].core.x,boxes[j].core.y,linkName[boxes[j].linkID],boxes[j].inch,0);
       stroke(0,50);
     }
     boxes[j].drawBox(); 
@@ -443,9 +449,12 @@ function drawScene3() {
 	      	stroke(worksBox[j].baseColor,50);
 	      	worksBox[j].drawInnerBox();
 		  	drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[j],worksBox[j].inch,0);
+		  	// worksBox[j].drawTextWithB(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],0);
 	    	}else{
 	      	// stroke(0);
 	      	stroke(0,50);
+	      	// drawText(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],worksBox[j].inch,0);
+	      	worksBox[j].drawTextWithB(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],0);
 	    	}
 	    	worksBox[j].drawBox(); 
 	  	}
@@ -453,9 +462,12 @@ function drawScene3() {
 		    stroke(worksBox[0].baseColor,50);
 		    worksBox[0].drawTetrahedron();
 			drawText(worksBox[0].core.x,worksBox[0].core.y,worksName[0],worksBox[0].inch,0);
+			// worksBox[0].drawTextWithB(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],0);
 	    }
 	    else{
 	      	stroke(0,50);
+			drawText(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],worksBox[0].inch,0);
+			// worksBox[0].drawTextWithB(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],0);
 	    }
 	    worksBox[0].drawBox(); 
   	}else{
@@ -466,9 +478,12 @@ function drawScene3() {
 		      		stroke(worksBox[j].baseColor,50);
 		      		worksBox[j].drawInnerBox();
 			  		drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[j],worksBox[j].inch,0);
+			  		// worksBox[j].drawTextWithB(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],0);
 	    		}
 	    		else{
 	      			// stroke(0);
+	      			// drawText(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],worksBox[j].inch,0);
+	      			worksBox[j].drawTextWithB(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],0);
 	      			stroke(0,50);
 	    		}
 	    		worksBox[j].drawBox(); 
@@ -481,9 +496,12 @@ function drawScene3() {
 		      		stroke(worksBox[j].baseColor,50);
 		      		worksBox[j].drawInnerBox();
 			  		drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[j],worksBox[j].inch,0);
+			  		// worksBox[j].drawTextWithB(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],0);
 	    		}
 	    		else{
 	      			// stroke(0);
+	      			// drawText(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],worksBox[j].inch,0);
+	      			worksBox[j].drawTextWithB(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],0);
 	      			stroke(0,50);
 	    		}
 	    		worksBox[j].drawBox(); 
@@ -493,8 +511,11 @@ function drawScene3() {
 		    stroke(worksBox[0].baseColor,50);
 		    worksBox[0].drawTetrahedron();
 			drawText(worksBox[0].core.x,worksBox[0].core.y,worksName[0],worksBox[0].inch,0);
+			// worksBox[0].drawTextWithB(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],0);
 	    }
 	    else{
+	    	// worksBox[0].drawTextWithB(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],0);
+	    	drawText(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],worksBox[j].inch,0);
 	      	stroke(0,50);
 	    }
 	    worksBox[0].drawBox(); 
@@ -755,6 +776,18 @@ class box{
 	    endShape();
 	    pop();
   	}
+
+  	drawTextWithB(x,y,str,col){
+		push();  
+		translate(x,y);
+		rotateX(radians(this.angleX));
+		rotateY(radians(this.angleY));
+		rotateZ(radians(this.angleZ));
+		fill(col);
+		textSize(this.inch);
+		text(str, 0,0);
+		pop();
+	}
 
 	inTerritory(mx,my){
 	    var back;
