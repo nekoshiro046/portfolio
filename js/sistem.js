@@ -13,6 +13,7 @@ let font;
 
 var userMove = 0;
 
+let linkIndex = ['a','c','w'];
 let linkName = ["about me","contact","works"];
 let linkURL = ['about-me','contact','works'];
 
@@ -413,11 +414,11 @@ function drawScene2(){
       // stroke(boxes[j].baseColor);
       stroke(boxes[j].baseColor,50);
       boxes[j].drawTetrahedron();
-	  drawText(boxes[j].core.x,boxes[j].core.y,linkName[boxes[j].linkID],boxes[j].inch,0);
+	  drawText(boxes[j].core.x,boxes[j].core.y,linkName[boxes[j].linkID],boxes[j].inch,150);
     }else{
       // stroke(0);
       // boxes[j].drawTextWithB(boxes[j].core.x,boxes[j].core.y,linkName[boxes[j].linkID],0);
-      drawText(boxes[j].core.x,boxes[j].core.y,linkName[boxes[j].linkID],boxes[j].inch,0);
+      drawText(boxes[j].core.x,boxes[j].core.y,linkIndex[boxes[j].linkID],boxes[j].inch,150);
       stroke(0,50);
     }
     boxes[j].drawBox(); 
@@ -461,12 +462,12 @@ function drawScene3() {
 	  	if(worksBox[0].inTerritory(mouseX,mouseY)){
 		    stroke(worksBox[0].baseColor,50);
 		    worksBox[0].drawTetrahedron();
-			drawText(worksBox[0].core.x,worksBox[0].core.y,worksName[0],worksBox[0].inch,0);
+			drawText(worksBox[0].core.x,worksBox[0].core.y,worksName[0],worksBox[0].inch,150);
 			// worksBox[0].drawTextWithB(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],0);
 	    }
 	    else{
 	      	stroke(0,50);
-			drawText(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],worksBox[0].inch,0);
+			drawText(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],worksBox[0].inch,150);
 			// worksBox[0].drawTextWithB(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],0);
 	    }
 	    worksBox[0].drawBox(); 
@@ -510,12 +511,12 @@ function drawScene3() {
   		if(worksBox[0].inTerritory(mouseX,mouseY)){
 		    stroke(worksBox[0].baseColor,50);
 		    worksBox[0].drawTetrahedron();
-			drawText(worksBox[0].core.x,worksBox[0].core.y,worksName[0],worksBox[0].inch,0);
+			drawText(worksBox[0].core.x,worksBox[0].core.y,worksName[0],worksBox[0].inch,150);
 			// worksBox[0].drawTextWithB(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],0);
 	    }
 	    else{
 	    	// worksBox[0].drawTextWithB(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],0);
-	    	drawText(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],worksBox[j].inch,0);
+	    	drawText(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],worksBox[j].inch,150);
 	      	stroke(0,50);
 	    }
 	    worksBox[0].drawBox(); 
