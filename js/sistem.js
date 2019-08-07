@@ -222,6 +222,7 @@ function mousePressed() {
 				if(i == 0){
 					initBox();
 					scene = 2;
+					soundSource[0].play();
 				}
 				else{
 					if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true) || (allBtn == true) ){
