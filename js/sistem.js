@@ -31,8 +31,8 @@ function preload(){
 	font = loadFont('assets/font/FreeSans.otf');
 	soundFormats('mp3', 'ogg');
 
-	soundSource[0] = loadSound('assets/sound/se0.mp3');
-	soundSource[1] = loadSound('assets/sound/se1.mp3');
+	soundSource[0] = loadSound('assets/sound/se01.mp3');
+	soundSource[1] = loadSound('assets/sound/se02.mp3');
 
 
 }
