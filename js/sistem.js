@@ -23,8 +23,18 @@ var worksLinkURL = ['','work/border.html', 'work/syundo.html' ,'work/world_apart
 
 var allBtn = true,instaBtn = false, uxBtn = false;
 
+var soundSource = [];//サウンドファイル格納
+
+var firstTouch = 0;
+
 function preload(){
 	font = loadFont('assets/font/FreeSans.otf');
+	soundFormats('mp3', 'ogg');
+
+	soundSource[0] = loadSound('assets/sound/se0.wav');
+	soundSource[1] = loadSound('assets/sound/se0.wav');
+
+
 }
 
 
@@ -50,6 +60,19 @@ function setup() {
 	
   rectMode(CENTER);
 }
+
+function touchStarted() {
+  if(firstTouch == 0 && inCanvas()){
+      // firstSound.start();
+    soundSource[0].play();
+    firstTouch = 1;
+  }
+  else{
+
+  } 
+}
+
+
 
 function pressedAllBtn(){
 	if(allBtn == false){
@@ -175,6 +198,7 @@ function mousePressed() {
 	if(scene == 2){
 		for(var i = 0; i < objNum; i++){
 			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0 && (boxes[i].core.mag() > 50) && inCanvas()){
+				soundSource[0].play();
 				var target = linkURL[i];
 				var position;
 				position = $(target).offset().left;
@@ -201,6 +225,7 @@ function mousePressed() {
 				}
 				else{
 					if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true) || (allBtn == true) ){
+						soundSource[1].play();
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;
 						window.open(worksLinkURL[i], '_blank');
