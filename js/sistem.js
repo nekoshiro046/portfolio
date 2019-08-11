@@ -542,7 +542,7 @@ function drawScene3() {
 	    }
 	    else{
 	    	// worksBox[0].drawTextWithB(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],0);
-	    	drawText(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],worksBox[j].inch,150);
+	    	drawText(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],worksBox[0].inch,150);
 	      	stroke(0,50);
 	    }
 	    worksBox[0].drawBox(); 
