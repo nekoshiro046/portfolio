@@ -80,7 +80,8 @@ ul {
 @media screen and (max-width:480px){
   .thumbnail-img{
     /* transform: rotate(90deg); */
-    width: 100vw;
+    margin-left: 30%;
+    width: 75vw;
     height: auto;
     margin: 0;
   }
