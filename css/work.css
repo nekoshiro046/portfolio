@@ -73,25 +73,18 @@ ul {
   transform-origin: top left;
   display: block;
   /*margin: 50px auto;*/
-  margin-left: 30%;
+  margin-left: 25vw;
   margin-top: 10%;
 }
 
-@media screen and (max-width:480px){
+@media screen and (max-width: 480px) { 
   .thumbnail-img{
     /* transform: rotate(90deg); */
-    margin-left: 30%;
+    margin-left: 25vw;
     width: 75vw;
     height: auto;
-    margin: 0;
   }
 
-
-  .title-box{
-    position: relative;
-    padding: 5%;
-    box-sizing: border-box;
-  }
 }
 
 .thumbnail-text {
