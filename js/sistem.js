@@ -67,9 +67,49 @@ function touchStarted() {
     soundSource[0].play();
     firstTouch = 1;
   }
-  else{
+  if(scene == 2){
+		for(var i = 0; i < objNum; i++){
+			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0  && inCanvas()){
+				soundSource[0].play();
+				var target = linkURL[i];
+				var position;
+				position = $(target).offset().left;
+				$("html, body").animate({scrollLeft:position}, 400, "swing");
+				position = $(target).offset().top;
+				$("html, body").animate({scrollTop:position}, 400, "swing");
 
-  } 
+				if(i == 2){
+					initWorksBox(boxes[i].core);
+					scene = 3;
+				}
+
+				return false;
+
+		    }
+		}
+	}
+	else if(scene == 3){
+		for(var i = 0; i < worksNum; i++){
+			if(worksBox[i].inTerritory(mouseX,mouseY) && mouseCharge == 0 && inCanvas()){
+				if(i == 0){
+					initBox();
+					scene = 2;
+					soundSource[0].play();
+				}
+				else{
+					if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true) || (allBtn == true) ){
+						soundSource[1].play();
+						mouseCharge = 0;oneFrame = 0;
+						mouseIsPressed = false;
+						window.open(worksLinkURL[i], '_blank');
+					}
+					// mouseCharge = 0;oneFrame = 0;
+					// mouseIsPressed = false;
+					// window.open(worksLinkURL[i], '_blank');
+				}
+		    }
+		}
+	}
 }
 
 
