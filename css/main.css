@@ -71,16 +71,16 @@ ul {
   font-size: 30px;
   }
 }
-@media screen and (min-width:1024px) { 
+/*@media screen and (min-width:1024px) { 
   .title {
     color:black;
     font-size: 60px;
   }
-}
-/*.title {
-	color:black;
-	font-size: 60px;
 }*/
+.title {
+  color:black;
+  font-size: 60px;
+}
 
 .subtitle {
 }
