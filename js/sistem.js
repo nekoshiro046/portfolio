@@ -197,7 +197,7 @@ function windowResized() {
 function mousePressed() {
 	if(scene == 2){
 		for(var i = 0; i < objNum; i++){
-			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0 && (boxes[i].core.mag() > 50) && inCanvas()){
+			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0  && inCanvas()){
 				soundSource[0].play();
 				var target = linkURL[i];
 				var position;
@@ -218,7 +218,7 @@ function mousePressed() {
 	}
 	else if(scene == 3){
 		for(var i = 0; i < worksNum; i++){
-			if(worksBox[i].inTerritory(mouseX,mouseY) && mouseCharge == 0 && (worksBox[i].core.mag() > 50) && inCanvas()){
+			if(worksBox[i].inTerritory(mouseX,mouseY) && mouseCharge == 0 && inCanvas()){
 				if(i == 0){
 					initBox();
 					scene = 2;
