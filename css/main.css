@@ -6,7 +6,7 @@ body {
 }
 
 header{
-	font-family: 'arial black','arial','Impact';
+	font-family: 'arial black','arial','sans-serif','Impact';
   font-weight:lighter;
 
   transform: none;
