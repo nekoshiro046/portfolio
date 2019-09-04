@@ -585,6 +585,15 @@ function objInCanvas(x,y){
 	return back;
 }
 
+function toMenu(){
+	if(scene != 2){
+		scene = 2;
+		$("html, body").animate({scrollTop: 0}, 500);//topへ移動
+		$("html, body").animate({scrollLeft: 0}, 500);//topへ移動
+	}
+
+}
+
 //-----------------------------------box_class-----------------------------
 class box{
 
