@@ -3,7 +3,7 @@ let objNum = 3;let worksNum = 7;
 let boxes =  [];let firstBox;let worksBox = [];
 var canvas;
 
-var scene = 1;
+var scene = 1;// 1:top 2:menu 3:work 
 var mouseCharge = 0;var oneFrame = 0;
 
 var sampleSound = [];//サウンドファイル格納
@@ -14,14 +14,14 @@ let font;
 var userMove = 0;
 
 let linkIndex = ['a','c','w'];
-let linkName = ["about me","contact","works"];
+let linkName = ["about","contact","works"];
 let linkURL = ['about-me','contact','works'];
 
 var worksIndex = ["back" ,"b","s", "w", "01", "m","n"];//1-4 : installation 5 : ux 0 : back
-var worksName = ["back to menu" ,"border","syundo", "world apart", "01", "mimie","nomnom  the Game"];//1-4 : installation 5 : ux 0 : back
+var worksName = ["menu" ,"border","syundo", "world apart", "01", "mimie","nomnom  the Game"];//1-4 : installation 5 : ux 0 : back
 var worksLinkURL = ['','work/border.html', 'work/syundo.html' ,'work/world_apart.html','work/01.html','work/mimie.html','work/nomnomGame.html'];
 
-var allBtn = true,instaBtn = false, uxBtn = false;
+var instaBtn = true, uxBtn = true;
 
 var soundSource = [];//サウンドファイル格納
 
@@ -61,93 +61,40 @@ function setup() {
   rectMode(CENTER);
 }
 
-function touchStarted() {
-  if(firstTouch == 0 && inCanvas()){
-      // firstSound.start();
-    soundSource[0].play();
-    firstTouch = 1;
-  }
-  if(scene == 2){
-		for(var i = 0; i < objNum; i++){
-			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0  && inCanvas()){
-				soundSource[0].play();
-				var target = linkURL[i];
-				var position;
-				position = $(target).offset().left;
-				$("html, body").animate({scrollLeft:position}, 400, "swing");
-				position = $(target).offset().top;
-				$("html, body").animate({scrollTop:position}, 400, "swing");
+// function pressedAllBtn(){
+// 	if(allBtn == false){
+// 		$(function() {
+// 		    $(".allBtn").css({
+// 		        "color": "#ffffff",
+// 		        "background": "#000000"
+// 		    });
+// 		});
+// 		$(function() {
+// 		    $(".instaBtn").css({
+// 		        "color": "#000000",
+// 		        "background": "#ffffff"
+// 		    });
+// 		});
+// 		$(function() {
+// 		    $(".uxBtn").css({
+// 		        "color": "#000000",
+// 		        "background": "#ffffff"
+// 		    });
+// 		});
 
-				if(i == 2){
-					initWorksBox(boxes[i].core);
-					scene = 3;
-				}
-
-				return false;
-
-		    }
-		}
-	}
-	else if(scene == 3){
-		for(var i = 0; i < worksNum; i++){
-			if(worksBox[i].inTerritory(mouseX,mouseY) && mouseCharge == 0 && inCanvas()){
-				if(i == 0){
-					initBox();
-					scene = 2;
-					soundSource[0].play();
-				}
-				else{
-					if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true) || (allBtn == true) ){
-						soundSource[1].play();
-						mouseCharge = 0;oneFrame = 0;
-						mouseIsPressed = false;
-						window.open(worksLinkURL[i], '_blank');
-					}
-					// mouseCharge = 0;oneFrame = 0;
-					// mouseIsPressed = false;
-					// window.open(worksLinkURL[i], '_blank');
-				}
-		    }
-		}
-	}
-}
-
-
-
-function pressedAllBtn(){
-	if(allBtn == false){
-		$(function() {
-		    $(".allBtn").css({
-		        "color": "#ffffff",
-		        "background": "#000000"
-		    });
-		});
-		$(function() {
-		    $(".instaBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
-		});
-		$(function() {
-		    $(".uxBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
-		});
-
-		instaBtn =  false;
-		uxBtn = false;
-		allBtn = true;
-	}else{
-		$(function() {
-		    $(".allBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
-		});
-		allBtn = false;
-	}
-}
+// 		instaBtn =  false;
+// 		uxBtn = false;
+// 		allBtn = true;
+// 	}else{
+// 		$(function() {
+// 		    $(".allBtn").css({
+// 		        "color": "#000000",
+// 		        "background": "#ffffff"
+// 		    });
+// 		});
+// 		allBtn = false;
+// 	}
+// }
 
 function pressedInstaBtn(){
 	if(instaBtn == false){
@@ -157,14 +104,7 @@ function pressedInstaBtn(){
 		        "background": "#000000"
 		    });
 		});
-		$(function() {
-		    $(".allBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
-		});
 		instaBtn = true;
-		allBtn = false;
 	}else{
 		$(function() {
 		    $(".instaBtn").css({
@@ -184,14 +124,7 @@ function pressedUxBtn(){
 		        "background": "#000000"
 		    });
 		});
-		$(function() {
-		    $(".allBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
-		});
 		uxBtn = true;
-		allBtn = false;
 	}else{
 		$(function() {
 		    $(".uxBtn").css({
@@ -234,22 +167,32 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
-function mousePressed() {
-	if(scene == 2){
+function touchStarted() {
+  if(firstTouch == 0 && inCanvas()){
+      // firstSound.start();
+    soundSource[0].play();
+    firstTouch = 1;
+  }
+  if(scene == 2){
 		for(var i = 0; i < objNum; i++){
 			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0  && inCanvas()){
 				soundSource[0].play();
+
+				if(i == 2){
+					canvas.style('position','fixed');
+					initWorksBox(boxes[i].core);
+					scene = 3;
+				}else{
+					canvas.style('position','absolute');
+				}
+
+
 				var target = linkURL[i];
 				var position;
 				position = $(target).offset().left;
 				$("html, body").animate({scrollLeft:position}, 400, "swing");
 				position = $(target).offset().top;
 				$("html, body").animate({scrollTop:position}, 400, "swing");
-
-				if(i == 2){
-					initWorksBox(boxes[i].core);
-					scene = 3;
-				}
 
 				return false;
 
@@ -260,6 +203,8 @@ function mousePressed() {
 		for(var i = 0; i < worksNum; i++){
 			if(worksBox[i].inTerritory(mouseX,mouseY) && mouseCharge == 0 && inCanvas()){
 				if(i == 0){
+					$("html, body").animate({scrollTop: 0}, 500);//topへ移動
+					$("html, body").animate({scrollLeft: 0}, 500);//topへ移動
 					initBox();
 					scene = 2;
 					soundSource[0].play();
@@ -280,12 +225,69 @@ function mousePressed() {
 	}
 }
 
+function mousePressed() {
+	if(scene == 2){
+		for(var i = 0; i < objNum; i++){
+			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0  && inCanvas()){
+				soundSource[0].play();
+
+				if(i == 2){
+					canvas.style('position','fixed');
+					initWorksBox(boxes[i].core);
+					scene = 3;
+				}else{
+					canvas.style('position','absolute');
+				}
+
+
+				var target = linkURL[i];
+				var position;
+				position = $(target).offset().left;
+				$("html, body").animate({scrollLeft:position}, 400, "swing");
+				position = $(target).offset().top;
+				$("html, body").animate({scrollTop:position}, 400, "swing");
+
+
+				return false;
+
+		    }
+		}
+	}
+	else if(scene == 3){
+		for(var i = 0; i < worksNum; i++){
+			if(worksBox[i].inTerritory(mouseX,mouseY) && mouseCharge == 0 && inCanvas()){
+				if(i == 0){
+
+					$("html, body").animate({scrollTop: 0}, 500);//topへ移動
+					$("html, body").animate({scrollLeft: 0}, 500);
+
+					initBox();
+					scene = 2;
+
+					soundSource[0].play();
+				}
+				else{
+					if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true)  ){
+						soundSource[1].play();
+						mouseCharge = 0;oneFrame = 0;
+						mouseIsPressed = false;
+						window.open(worksLinkURL[i], '_blank');
+					}
+					// mouseCharge = 0;oneFrame = 0;
+					// mouseIsPressed = false;
+					// window.open(worksLinkURL[i], '_blank');
+				}
+		    }
+		}
+	}
+}
+
 
 function selectScene(){
 	if(scene == 1){
 		canvas.style('z-index','0');
 	    if(mouseIsPressed && inCanvas() && firstBox.inTerritory(mouseX,mouseY)){
-	    	drawScene1('Yuki\’ portfolio');
+	    	drawScene1('Yuki\’s portfolio');
 
 	    	// canvas.style('z-index','-1');
 	      	scene = 2;
@@ -294,7 +296,7 @@ function selectScene(){
 	    	drawScene1('click box or keep clciking');
 	    }
 	    else{
-	      drawScene1('Yuki\’ portfolio');
+	      drawScene1('Yuki\’s portfolio');
 	    }
 	}
 	else if(scene == 2){
@@ -327,6 +329,8 @@ function selectScene(){
 		    if(mouseCharge > fr*2){
 		      scene = 1;
 		      drawScene1();
+		      $("html, body").animate({scrollTop: 0}, 500);//topへ移動
+		      $("html, body").animate({scrollLeft: 0}, 500);//topへ移動
 		      initBox();
 		    }
 		    else if(mouseCharge != 0 && oneFrame > fr){
@@ -393,6 +397,8 @@ function selectScene(){
 		      scene = 2;
 		      mouseCharge = 0;oneFrame = 0;
 		      drawScene2();
+		      $("html, body").animate({scrollTop: 0}, 500);//topへ移動
+		      $("html, body").animate({scrollLeft: 0}, 500);//topへ移動
 		      initBox();
 		    }
 		    else if(mouseCharge != 0 && oneFrame > fr){
@@ -480,64 +486,21 @@ function drawScene2(){
       // stroke(boxes[j].baseColor);
       stroke(boxes[j].baseColor,50);
       boxes[j].drawTetrahedron();
-	  drawText(boxes[j].core.x,boxes[j].core.y,linkName[boxes[j].linkID],boxes[j].inch,150);
+	  drawText(boxes[j].core.x,boxes[j].core.y,linkName[boxes[j].linkID],boxes[j].inch,0);
     }else{
       // stroke(0);
       // boxes[j].drawTextWithB(boxes[j].core.x,boxes[j].core.y,linkName[boxes[j].linkID],0);
-      drawText(boxes[j].core.x,boxes[j].core.y,linkIndex[boxes[j].linkID],boxes[j].inch,150);
+      drawText(boxes[j].core.x,boxes[j].core.y,linkName[boxes[j].linkID],boxes[j].inch,150);
       stroke(0,50);
     }
     boxes[j].drawBox(); 
   }
 }
 
-// function drawScene3() {
-//   background(255);
-//   for(var j = 0; j < worksNum; j++){
-//     if(worksBox[j].inTerritory(mouseX,mouseY)){
-//       // stroke(worksBox[j].baseColor);
-//       stroke(worksBox[j].baseColor,50);
-//       worksBox[j].drawInnerBox();
-// 	  drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[worksBox[j].linkID],worksBox[j].inch,0);
-//     }else{
-//       // stroke(0);
-//       stroke(0,50);
-//     }
-//     worksBox[j].drawBox(); 
-//   }
-// }
 
 function drawScene3() {
 	background(255);
-  	if(allBtn == true){
-  		for(var j = 1; j < worksNum; j++){
-	    	if(worksBox[j].inTerritory(mouseX,mouseY)){
-	      	// stroke(worksBox[j].baseColor);
-	      	stroke(worksBox[j].baseColor,50);
-	      	worksBox[j].drawInnerBox();
-		  	drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[j],worksBox[j].inch,0);
-		  	// worksBox[j].drawTextWithB(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],0);
-	    	}else{
-	      	// stroke(0);
-	      	stroke(0,50);
-	      	// drawText(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],worksBox[j].inch,0);
-	      	worksBox[j].drawTextWithB(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],0);
-	    	}
-	    	worksBox[j].drawBox(); 
-	  	}
-	  	if(worksBox[0].inTerritory(mouseX,mouseY)){
-		    stroke(worksBox[0].baseColor,50);
-		    worksBox[0].drawTetrahedron();
-			drawText(worksBox[0].core.x,worksBox[0].core.y,worksName[0],worksBox[0].inch,150);
-			// worksBox[0].drawTextWithB(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],0);
-	    }
-	    else{
-	      	stroke(0,50);
-			drawText(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],worksBox[0].inch,150);
-			// worksBox[0].drawTextWithB(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],0);
-	    }
-	    worksBox[0].drawBox(); 
-  	}else{
+  	
   		if(instaBtn == true){
   			for(var j = 1; j <= 4; j++){
 	    		if(worksBox[j].inTerritory(mouseX,mouseY)){
@@ -587,11 +550,10 @@ function drawScene3() {
 	    }
 	    worksBox[0].drawBox(); 
 
-  	}
+  	
   
   
 }
-
 
 
 function drawText(x,y,str,strSiz,col){

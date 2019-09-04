@@ -5,16 +5,29 @@
         <meta charset="utf-8">
         <title>Yuki's portfolio</title>
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <meta name="keywords" content="">
-        <meta name="description" content="">
+        <meta name="Keywords" content="Yuki's portfolio,メディアアート,大城佑樹,犬城,openframeworks,max,max msp,processing" />
+        <meta name="description" content="犬城のポートフォリオサイトです。メディアアートとかやってます。" />
         <meta http-equiv="content-language" content="ja" />
 
-        <link rel="stylesheet" type="text/css" href="css/main.css">
         <link type="image/png" rel="shortcut icon" href="assets/image/icon.png">
-        
+
+        <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+        <meta property="og:title" content="Yuki's portfolio" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://nekoshiro046.github.io/portfolio/" />
+        <meta property="og:image" content="assets/image/icon.png" />
+        <meta property="og:description" content="犬城のポートフォリオサイトです。メディアアートとかやってます。" />
+        <meta property="og:site_name" content="Yuki's portfolio" />
+
+        <!-- <link rel="stylesheet" href="css/reset.css"> -->
+
         <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.sound.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.js"></script> -->
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+        <script src="https://kit.fontawesome.com/e4aa4a0299.js"></script>
+
         <script src="libraries/p5.js" type="text/javascript"></script>
         <script src="libraries/p5.sound.js" type="text/javascript"></script>
         <script src="libraries/p5.dom.js" type="text/javascript"></script>
@@ -26,26 +39,38 @@
         <script type="text/javascript" src="js/template.js"></script>
         <script src="js/sistem.js"></script>
         <script src="js/functions.js"></script>
-    
+
+        <link rel="stylesheet" type="text/css" href="css/main.css" charset="utf-8" />
     </head>
     <body>
 
         <header>
             <a class = "title" href="index.html">Yuki&prime;s portfolio</a>
         </header>
+        <nav class="header-ul">
+            <ul class="head-list">
+                <li id="page-top"><a href="#">menu</a></li>
+                <!-- <li id="page-top"><a href="#">menu</a></li>
+                <li id="page-top"><a href="#">menu</a></li> -->
+
+            </ul>
+        </nav>
 
         <div id="sketch-holder" onclick=""></div>
 
         <main>
             <div class="page1">
+                
                 <div class="blank"> </div>
+                <!-- <div class="page1Back"> -->
                 <div class="p-box">
                     <about-me>
+                    <span id="about-me">
                         <h3>-About me-</h3>
-                        <p>犬城 のポートフォリオ</p>
+                        <!-- <p>犬城 のポートフォリオサイト</p> -->
                         <p class="p-margin">名古屋市立大学 芸術工学部 情報環境デザイン学科 3年</p>
                         <p>学校ではアート&メディア・エクスペリエンスを専攻。主にインスタレーションを制作。</p>
-                        <p>webサイトや、webコンテツ,UXデザインなどを制作する事もあれば作曲する事もあり。雑食。</p>
+                        <p>webサイトやwebコンテツ,UXデザインなどを制作する事もあれば作曲する事もあり。雑食。</p>
 
                         <h3>-Like-</h3>
                         <p>音楽(聴くのも弾くのも) :
@@ -66,18 +91,20 @@
                         <p>腕時計</p>
 
                     </about-me>
+                    </span>
                 </div>
-                <div class="blank"> </div>
+                <!-- <div class="blank"> </div> -->
                 <div class="sns-box">    
                     <contact>
+                    <span id="contact">
                         <h3>-Contact-</h3>
                         <p class="p-margin">ご連絡は、下記gmailまでお願いします。</p>
                         <p>Gmail : <a href="mailto:nekoshiro046@gmail.com">nekoshiro046@gmail.com</a></p>
-                        <!-- <ul>
-                            <li><a href="https://twitter.com/hina325jasmine"><i class="fab fa-twitter-square"></i></a></li>
-                            <li><a href="https://www.facebook.com/Hinata.Ichikawa325?ref=bookmarks"><i class="fab fa-facebook-square"></i></a></li>
-                            <li><a href="https://github.com/Hinata-Ichikawa"><i class="fab fa-github"></i></a></li>
-                        </ul> -->
+
+                        <ul>
+                            <li><a href="https://mobile.twitter.com/nekoshiro046"><i class="fab fa-twitter-square"></i></a></li>
+                            <li><a href="https://github.com/nekoshiro046"><i class="fab fa-github"></i></a></li>
+                        </ul>
                         <!-- <form action="nekoshiro046@gmail.com" method="post" name="form1" ENCTYPE="multipart/form-data">
                         <p>Name *</p>
                         <p><input name="name_field type="text" size="50%" value="" placeholder="Your Name..."></p>
@@ -87,25 +114,43 @@
                         <p><textarea name="message_field" cols="50%" rows="10" placeholder="Your Message..."></textarea></p>
                         <p><input name="submit" type="submit" value="submit" class="btn-submit" formaction = "nekoshiro046@gmail.com"></p>
                         </form> -->
+                    </span>    
                     </contact>
-                </div>
-                
+                    
+                <!-- </div> -->
+
+                <!-- <div class="blank"> </div> -->
+                </div>   
             </div>
 
             <div class="page2">
                 <div class="blank"> </div>
                 <div class="works-box">
                     <works>
+                    <span id="works">
                         <h3>-Works-</h3>
                         <div class="worksCategory">
                             <ul>
                                 <li>
-                                    <input class = "allBtn" type="button" value=" All  works " onclick="pressedAllBtn()"/>
+                                    <!-- <input class = "allBtn" type="button" value="All works" onclick="pressedAllBtn()"/> -->
                                     <input class = "instaBtn" type="button" value="Installation" onclick="pressedInstaBtn()"/>
-                                    <input class = "uxBtn" type="button" value=" UX Design" onclick="pressedUxBtn()"/>
+                                    <input class = "uxBtn" type="button" value="UX" onclick="pressedUxBtn()"/>
+
+                                    <input class = "moreBtn" type="button" value="More" target="_self" onClick="location.href='works.html'"/>
                                 </li>
                             </ul>
+                            
+                            <!-- <div class="moreBtn">
+                                 More
+                                <svg width="130" height="65" viewBox="0 0 130 65" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x='0' y='0' fill='none' width='130' height='65'/>
+                                </svg>
+                            </div> -->
                         </div>
+                        <!-- <div class="moreWorks">
+                            <input class = "moreBtn" type="button" value="    More    " target="_self" onClick="location.href='works.html'"/>
+                        </div> -->
+                    </span>
                     </works>
                 </div>
 
@@ -121,7 +166,8 @@
         </main>
 
         <footer>
-            <p id="page-top"><a href="#">PAGE TOP</a></p>
+            <!-- <div class="footer-blank"> </div> -->
+            <!-- <p id="page-top"><a href="#">PAGE TOP</a></p> -->
         </footer>
 
 

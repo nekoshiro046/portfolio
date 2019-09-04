@@ -64,7 +64,7 @@ function drawScene(){
 	drawText(firstBox.core.x,firstBox.core.y,'back',firstBox.inch,0);
    }else{
     stroke(0,50);
-    // drawText(firstBox.core.x,firstBox.core.y,'mimie',firstBox.inch,0);
+    drawText(firstBox.core.x,firstBox.core.y,'back',firstBox.inch,150);
    }
    firstBox.drawBox(); 
   
