@@ -21,7 +21,7 @@ var worksIndex = ["back" ,"b","s", "w", "01", "m","n"];//1-4 : installation 5 : 
 var worksName = ["menu" ,"border","syundo", "world apart", "01", "mimie","nomnom  the Game"];//1-4 : installation 5 : ux 0 : back
 var worksLinkURL = ['','work/border.html', 'work/syundo.html' ,'work/world_apart.html','work/01.html','work/mimie.html','work/nomnomGame.html'];
 
-var instaBtn = true, uxBtn = true;
+var allBtn = false,instaBtn = true, uxBtn = true;
 
 var soundSource = [];//サウンドファイル格納
 
@@ -31,8 +31,8 @@ function preload(){
 	font = loadFont('assets/font/FreeSans.otf');
 	soundFormats('mp3', 'ogg');
 
-	// soundSource[0] = loadSound('assets/sound/se01.mp3');
-	// soundSource[1] = loadSound('assets/sound/se02.mp3');
+	soundSource[0] = loadSound('assets/sound/se01.mp3');
+	soundSource[1] = loadSound('assets/sound/se02.mp3');
 
 
 }
@@ -44,7 +44,7 @@ function setup() {
 
   canvas.position(0,0);
   canvas.style('position','fixed');
-  canvas.style('z-index','0');
+  canvas.style('z-index','5');
 
   canvas.parent('sketch-holder');
  
@@ -61,40 +61,40 @@ function setup() {
   rectMode(CENTER);
 }
 
-// function pressedAllBtn(){
-// 	if(allBtn == false){
-// 		$(function() {
-// 		    $(".allBtn").css({
-// 		        "color": "#ffffff",
-// 		        "background": "#000000"
-// 		    });
-// 		});
-// 		$(function() {
-// 		    $(".instaBtn").css({
-// 		        "color": "#000000",
-// 		        "background": "#ffffff"
-// 		    });
-// 		});
-// 		$(function() {
-// 		    $(".uxBtn").css({
-// 		        "color": "#000000",
-// 		        "background": "#ffffff"
-// 		    });
-// 		});
+function pressedAllBtn(){
+	if(allBtn == false){
+		$(function() {
+		    $(".allBtn").css({
+		        "color": "#ffffff",
+		        "background": "#000000"
+		    });
+		});
+		$(function() {
+		    $(".instaBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
+		});
+		$(function() {
+		    $(".uxBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
+		});
 
-// 		instaBtn =  false;
-// 		uxBtn = false;
-// 		allBtn = true;
-// 	}else{
-// 		$(function() {
-// 		    $(".allBtn").css({
-// 		        "color": "#000000",
-// 		        "background": "#ffffff"
-// 		    });
-// 		});
-// 		allBtn = false;
-// 	}
-// }
+		instaBtn =  false;
+		uxBtn = false;
+		allBtn = true;
+	}else{
+		$(function() {
+		    $(".allBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
+		});
+		allBtn = false;
+	}
+}
 
 function pressedInstaBtn(){
 	if(instaBtn == false){
@@ -104,7 +104,14 @@ function pressedInstaBtn(){
 		        "background": "#000000"
 		    });
 		});
+		$(function() {
+		    $(".allBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
+		});
 		instaBtn = true;
+		allBtn = false;
 	}else{
 		$(function() {
 		    $(".instaBtn").css({
@@ -124,7 +131,14 @@ function pressedUxBtn(){
 		        "background": "#000000"
 		    });
 		});
+		$(function() {
+		    $(".allBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
+		});
 		uxBtn = true;
+		allBtn = false;
 	}else{
 		$(function() {
 		    $(".uxBtn").css({
@@ -229,7 +243,7 @@ function mousePressed() {
 	if(scene == 2){
 		for(var i = 0; i < objNum; i++){
 			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0  && inCanvas()){
-				// soundSource[0].play();
+				soundSource[0].play();
 
 				if(i == 2){
 					canvas.style('position','fixed');
@@ -268,7 +282,7 @@ function mousePressed() {
 				}
 				else{
 					if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true)  ){
-						// soundSource[1].play();
+						soundSource[1].play();
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;
 						window.open(worksLinkURL[i], '_blank');
@@ -285,7 +299,7 @@ function mousePressed() {
 
 function selectScene(){
 	if(scene == 1){
-		canvas.style('z-index','0');
+		canvas.style('z-index','5');
 	    if(mouseIsPressed && inCanvas() && firstBox.inTerritory(mouseX,mouseY)){
 	    	drawScene1('Yuki\’s portfolio');
 
@@ -593,6 +607,38 @@ function toMenu(){
 		$("html, body").animate({scrollLeft: 0}, 500);//topへ移動
 	}
 
+}
+
+function changeWorksPage(){
+	$(function () {
+	    var firworContents = $('.firstWorks');
+	    firworContents.hide();
+	    var secworContents = $('.secondWorks');
+	    secworContents.show();
+	    
+    });
+    pressedAllBtn();
+	canvas.style('position','absolute');
+}
+
+function returnWorksPage(){
+	$(function () {
+	    var firworContents = $('.firstWorks');
+	    firworContents.show();
+	    var secworContents = $('.secondWorks');
+	    secworContents.hide();
+	    
+    });
+	canvas.style('position','fixed');
+	if(allBtn){
+		pressedUxBtn();
+		pressedInstaBtn();
+	}
+	if(scene == 2){
+		initBox();
+	}else if(scene == 3){
+		initWorksBox();
+	}
 }
 
 //-----------------------------------box_class-----------------------------

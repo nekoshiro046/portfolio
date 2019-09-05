@@ -73,14 +73,14 @@ ul {
   transform-origin: top left;
   display: block;
   /*margin: 50px auto;*/
-  margin-left: 25vw;
+  margin-left: 30vw;
   margin-top: 10%;
 }
 
 @media screen and (max-width: 480px) { 
   .thumbnail-img{
     /* transform: rotate(90deg); */
-    margin-left: 25vw;
+    margin-left: 30vw;
     width: 75vw;
     height: auto;
   }
@@ -145,6 +145,15 @@ ul {
   padding:10px;
 
   /*display:table-cell;*/
+}
+@media screen and (max-width: 480px) { 
+  .img-container {
+    width: 35%;
+    padding:10px;
+
+    /*display:table-cell;*/
+  }
+
 }
 
 .mov-container {
