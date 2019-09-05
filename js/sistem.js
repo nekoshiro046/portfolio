@@ -20,6 +20,7 @@ let linkURL = ['about-me','contact','works'];
 var worksIndex = ["back" ,"b","s", "w", "01", "m","n"];//1-4 : installation 5 : ux 0 : back
 var worksName = ["menu" ,"border","syundo", "world apart", "01", "mimie","nomnom  the Game"];//1-4 : installation 5 : ux 0 : back
 var worksLinkURL = ['','work/border.html', 'work/syundo.html' ,'work/world_apart.html','work/01.html','work/mimie.html','work/nomnomGame.html'];
+let worksYear = ['','18.08	Installation','18.10	Installation','19.02	Installation','19.07	Installation','19.06	UX','19.06	UX'];
 
 var allBtn = false,instaBtn = true, uxBtn = true;
 
@@ -522,12 +523,16 @@ function drawScene3() {
 		      		stroke(worksBox[j].baseColor,50);
 		      		worksBox[j].drawInnerBox();
 			  		drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[j],worksBox[j].inch,0);
+				    // stroke(0);
+				    // line(-width/3,height/3,width/3,height/3);
+				    // line(width/3,-height/3,width/3,height/3);
+				    drawCaption(worksYear[j],worksBox[j].inch/2,0);
 			  		// worksBox[j].drawTextWithB(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],0);
 	    		}
 	    		else{
 	      			// stroke(0);
-	      			// drawText(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],worksBox[j].inch,0);
-	      			worksBox[j].drawTextWithB(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],0);
+	      			drawText(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],worksBox[j].inch,0);
+	      			// worksBox[j].drawTextWithB(worksIndex[j],0);
 	      			stroke(0,50);
 	    		}
 	    		worksBox[j].drawBox(); 
@@ -540,12 +545,16 @@ function drawScene3() {
 		      		stroke(worksBox[j].baseColor,50);
 		      		worksBox[j].drawInnerBox();
 			  		drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[j],worksBox[j].inch,0);
+				    // stroke(0);
+				    // line(-width/3,height/3,width/3,height/3);
+				    // line(width/3,-height/3,width/3,height/3);
+				    drawCaption(worksYear[j],worksBox[j].inch/2,0);
 			  		// worksBox[j].drawTextWithB(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],0);
 	    		}
 	    		else{
 	      			// stroke(0);
-	      			// drawText(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],worksBox[j].inch,0);
-	      			worksBox[j].drawTextWithB(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],0);
+	      			drawText(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],worksBox[j].inch,0);
+	      			// worksBox[j].drawTextWithB(worksIndex[j],0);
 	      			stroke(0,50);
 	    		}
 	    		worksBox[j].drawBox(); 
@@ -576,6 +585,15 @@ function drawText(x,y,str,strSiz,col){
 	fill(col);
 	textSize(strSiz);
 	text(str, 0,0);
+	pop();
+}
+
+function drawCaption(str,strSize,col){
+	push();  
+	stroke(0);
+	line(-width/3,height/3,width/3,height/3);
+	line(width/3,-height/3,width/3,height/3);
+	drawText(width/4,height/3+strSize,str,strSize,col);
 	pop();
 }
 
@@ -862,9 +880,9 @@ class box{
 	    pop();
   	}
 
-  	drawTextWithB(x,y,str,col){
+  	drawTextWithB(str,col){
 		push();  
-		translate(x,y);
+		translate(this.core.x,this.core.y);
 		rotateX(radians(this.angleX));
 		rotateY(radians(this.angleY));
 		rotateZ(radians(this.angleZ));
