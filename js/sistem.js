@@ -9,7 +9,7 @@ var mouseCharge = 0;var oneFrame = 0;
 var sampleSound = [];//サウンドファイル格納
 
 let fontSize = 40;
-let font;
+let fontEn,fontJp;
 
 var userMove = 0;
 
@@ -22,6 +22,8 @@ var worksName = ["menu" ,"border","syundo", "world apart", "01", "mimie","nomnom
 var worksLinkURL = ['','work/border.html', 'work/syundo.html' ,'work/world_apart.html','work/01.html','work/mimie.html','work/nomnomGame.html'];
 let worksYear = ['','18.08	Installation','18.10	Installation','19.02	Installation','19.07	Installation','19.06	UX','19.06	UX'];
 
+var worksImg = [];
+
 var allBtn = false,instaBtn = true, uxBtn = true;
 
 var soundSource = [];//サウンドファイル格納
@@ -29,12 +31,20 @@ var soundSource = [];//サウンドファイル格納
 var firstTouch = 0;
 
 function preload(){
-	font = loadFont('assets/font/FreeSans.otf');
+	fontEn = loadFont('assets/font/FreeSans.otf');
+	// fontJp = loadFont('assets/font/SawarabiMincho-Regular.otf');
 	soundFormats('mp3', 'ogg');
 
 	soundSource[0] = loadSound('assets/sound/se01.mp3');
 	soundSource[1] = loadSound('assets/sound/se02.mp3');
 
+	worksImg[0] = loadImage('assets/image/icon.png');
+	worksImg[1] = loadImage('assets/works/border/border_icon.jpg');
+	worksImg[2] = loadImage('assets/works/syundo/syundo_nail.jpg');
+	worksImg[3] = loadImage('assets/works/world_apart/world_apart_logo.png');
+	worksImg[4] = loadImage('assets/works/01/pic01.png');
+	worksImg[5] = loadImage('assets/works/mimie/mimie_icon.png');
+	worksImg[6] = loadImage('assets/works/nomnomGame/logo.png');
 
 }
 
@@ -54,12 +64,14 @@ function setup() {
   initBox();
   firstBox = new box(0,0,-20,(windowWidth + windowHeight)/20);
 	//---------------font------------
-  textFont(font);
+  textFont(fontEn);
   textSize(fontSize);
   textAlign(CENTER, CENTER);
   textStyle(NORMAL);
 	
   rectMode(CENTER);
+
+  imageMode(CENTER);
 }
 
 function pressedAllBtn(){
@@ -515,67 +527,36 @@ function drawScene2(){
 
 function drawScene3() {
 	background(255);
-  	
-  		if(instaBtn == true){
-  			for(var j = 1; j <= 4; j++){
-	    		if(worksBox[j].inTerritory(mouseX,mouseY)){
-		      		// stroke(worksBox[j].baseColor);
-		      		stroke(worksBox[j].baseColor,50);
-		      		worksBox[j].drawInnerBox();
-			  		drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[j],worksBox[j].inch,0);
-				    // stroke(0);
-				    // line(-width/3,height/3,width/3,height/3);
-				    // line(width/3,-height/3,width/3,height/3);
-				    drawCaption(worksYear[j],worksBox[j].inch/2,0);
-			  		// worksBox[j].drawTextWithB(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],0);
-	    		}
-	    		else{
-	      			// stroke(0);
-	      			drawText(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],worksBox[j].inch,0);
-	      			// worksBox[j].drawTextWithB(worksIndex[j],0);
-	      			stroke(0,50);
-	    		}
-	    		worksBox[j].drawBox(); 
-	  		}
-  		}
-  		if(uxBtn == true){
-  			for(var j = 5; j < worksNum; j++){
-	    		if(worksBox[j].inTerritory(mouseX,mouseY)){
-		      		// stroke(worksBox[j].baseColor);
-		      		stroke(worksBox[j].baseColor,50);
-		      		worksBox[j].drawInnerBox();
-			  		drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[j],worksBox[j].inch,0);
-				    // stroke(0);
-				    // line(-width/3,height/3,width/3,height/3);
-				    // line(width/3,-height/3,width/3,height/3);
-				    drawCaption(worksYear[j],worksBox[j].inch/2,0);
-			  		// worksBox[j].drawTextWithB(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],0);
-	    		}
-	    		else{
-	      			// stroke(0);
-	      			drawText(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],worksBox[j].inch,0);
-	      			// worksBox[j].drawTextWithB(worksIndex[j],0);
-	      			stroke(0,50);
-	    		}
-	    		worksBox[j].drawBox(); 
-	  		}
-  		}
-  		if(worksBox[0].inTerritory(mouseX,mouseY)){
-		    stroke(worksBox[0].baseColor,50);
-		    worksBox[0].drawTetrahedron();
-			drawText(worksBox[0].core.x,worksBox[0].core.y,worksName[0],worksBox[0].inch,150);
-			// worksBox[0].drawTextWithB(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],0);
+	for(var j = 0; j < worksNum; j++){
+		if(j >= 1 && j <= 4){
+			if(!instaBtn)continue;
+		}else if(j <= 5){
+			if(!uxBtn)continue;
+		}
+		if(worksBox[j].inTerritory(mouseX,mouseY)){
+	    	// push();
+	    	// translate(0,0,-worksBox[j].inch*2);
+	    	// tint(255, 200);
+	    	// image(worksImg[j],0,0,width/2,height/2);
+	    	// pop();
+		     // stroke(worksBox[j].baseColor);
+		    stroke(worksBox[j].baseColor,50);
+		    worksBox[j].drawInnerBox();
+		    drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[j],worksBox[j].inch,0);
+			// stroke(0);
+			// line(-width/3,height/3,width/3,height/3);
+			// line(width/3,-height/3,width/3,height/3);
+			drawCaption(worksYear[j],worksBox[j].inch/2,0);
+		  	// worksBox[j].drawTextWithB(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],0);
+		}
+		else{
+	      		// stroke(0);
+	      		drawText(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],worksBox[j].inch,150);
+	      		// worksBox[j].drawTextWithB(worksIndex[j],0);
+	      		stroke(0,50);
 	    }
-	    else{
-	    	// worksBox[0].drawTextWithB(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],0);
-	    	drawText(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],worksBox[0].inch,150);
-	      	stroke(0,50);
-	    }
-	    worksBox[0].drawBox(); 
-
-  	
-  
-  
+	      	worksBox[j].drawBox(); 
+	}
 }
 
 
@@ -586,6 +567,7 @@ function drawText(x,y,str,strSiz,col){
 	textSize(strSiz);
 	text(str, 0,0);
 	pop();
+	// textFont(fontEn);
 }
 
 function drawCaption(str,strSize,col){
