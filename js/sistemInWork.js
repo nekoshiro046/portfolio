@@ -58,7 +58,7 @@ function drawScene(){
   	}else if(rn == 1){
   		firstBox.shapeInnerBox();
   	}
-    stroke(firstBox.baseColor,50);
+    stroke(firstBox.baseColor);
     firstBox.drawInnerBox();
     // firstBox.drawTetrahedron();
 	drawText(firstBox.core.x,firstBox.core.y,'back',firstBox.inch,0);

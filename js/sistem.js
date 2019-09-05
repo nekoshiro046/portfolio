@@ -511,7 +511,7 @@ function drawScene2(){
   for(var j = 0; j < objNum; j++){
     if(boxes[j].inTerritory(mouseX,mouseY)){
       // stroke(boxes[j].baseColor);
-      stroke(boxes[j].baseColor,50);
+      stroke(boxes[j].baseColor);
       boxes[j].drawTetrahedron();
 	  drawText(boxes[j].core.x,boxes[j].core.y,linkName[boxes[j].linkID],boxes[j].inch,0);
     }else{
@@ -539,8 +539,8 @@ function drawScene3() {
 	    	// tint(255, 200);
 	    	// image(worksImg[j],0,0,width/2,height/2);
 	    	// pop();
-		     // stroke(worksBox[j].baseColor);
-		    stroke(worksBox[j].baseColor,50);
+	    	
+		    stroke(worksBox[j].baseColor);
 		    worksBox[j].drawInnerBox();
 		    drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[j],worksBox[j].inch,0);
 			// stroke(0);
