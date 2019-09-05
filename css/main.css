@@ -113,7 +113,7 @@ ul {
 @media screen and (max-width: 480px) { 
   .title {
   color:black;
-  font-size: 30px;
+  font-size: 20px;
   padding: 0vh 10vw 0vh 10vw;
   border-bottom: groove #000000;
   }
@@ -148,9 +148,9 @@ ul {
 
 @media screen and (max-width:480px){
   .p-box{
-    margin: 0 auto;
-    background-color: rgba(50,50,50,0.8);
-    color: #ffffff;
+    padding-top: 10px;
+    /*margin: 0 auto;*/
+ 
   }
 }
 
