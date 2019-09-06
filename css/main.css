@@ -15,7 +15,7 @@ header{
   margin: 0;
   padding-top: 2vh;
   width: 100vw;
-	z-index: 0;
+	z-index: 1;
 
 	/*background: #ffffff;*/
   background-color: rgba(255,255,255,0.8);
@@ -34,7 +34,7 @@ nav{
   /*width: 550px;*/
   height: 50px;
   margin: auto 0;
-  z-index: 0;
+  z-index: 1;
   transform: rotate(-90deg);
   border-bottom: 1px solid #000;
 }
@@ -332,7 +332,7 @@ ul {
   margin: 12vh 5vw 0vh 10vw;
   text-decoration: none;
   text-align: center;
-  margin-top: 12vh;
+  margin-top: 0;
   color: #000000;
   background-color: #ffffff;
   border: solid 2px #101010;
@@ -341,6 +341,30 @@ ul {
 }
 
 .moreBtn:hover{
+  color: #ffffff;
+  background-color: #000000;
+  border: solid 2px #ff0000;
+  border-radius: 3px;
+  transition: .4s;
+}
+.returnBtn{
+  -webkit-appearance: none;
+  /*display: inline-block;*/
+  display: list-item;
+  width: 10vw;
+  height: 8%;
+  padding: 2vh 2vw;
+  margin: 12vh 5vw 0vh 10vw;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 12vh;
+  color: #000000;
+  background-color: #ffffff;
+  border: solid 2px #101010;
+  border-radius: 3px;
+  transition: .4s;
+}
+.returnBtn:hover{
   color: #ffffff;
   background-color: #000000;
   border: solid 2px #ff0000;
@@ -365,7 +389,33 @@ ul {
   text-align: center;
   display: none;
 }
+#containerWrapper{
+  position: relative;
+  max-width: 60vw;
+  margin: 0 auto;   /*全体の中央寄せ*/
+}
+#container{
+  margin: 0 auto;   /*全体の中央寄せ*/
+  width: 100%;
+  /*margin-left: 25vh;*/
+  position: relative;
+  z-index: 0;
+}
 
+.item img{ 
+  width: 300px; 
+}
+
+.item {
+  margin: 5px;
+  padding: 6px;
+  border: 1px solid #eee;
+  background-color: #111;
+}
+
+.item p{
+  color: #ffffff;
+}
 /*.btn-submit{
   width: 300px;
   height: 50px;

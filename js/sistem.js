@@ -527,7 +527,7 @@ function drawScene2(){
 
 function drawScene3() {
 	background(255);
-	for(var j = 0; j < worksNum; j++){
+	for(var j = 1; j < worksNum; j++){
 		if(j >= 1 && j <= 4){
 			if(!instaBtn)continue;
 		}else if(j <= 5){
@@ -536,8 +536,8 @@ function drawScene3() {
 		if(worksBox[j].inTerritory(mouseX,mouseY)){
 	    	// push();
 	    	// translate(0,0,-worksBox[j].inch*2);
-	    	// tint(255, 200);
-	    	// image(worksImg[j],0,0,width/2,height/2);
+	    	// tint(255,10);
+	    	// image(worksImg[j],0,0,width/3,height/3);
 	    	// pop();
 	    	
 		    stroke(worksBox[j].baseColor);
@@ -557,8 +557,86 @@ function drawScene3() {
 	    }
 	      	worksBox[j].drawBox(); 
 	}
+	if(worksBox[0].inTerritory(mouseX,mouseY)){
+		stroke(worksBox[0].baseColor);
+		worksBox[0].drawTetrahedron();
+		drawText(worksBox[0].core.x,worksBox[0].core.y,worksName[0],worksBox[0].inch,0);
+		
+	}else{
+		drawText(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],worksBox[0].inch,150);
+	    // worksBox[j].drawTextWithB(worksIndex[j],0);
+	    stroke(0,50);
+	}
+	worksBox[0].drawBox(); 
 }
 
+// function drawScene3() {
+// 	background(255);
+// 	for(var j = 1; j < worksNum; j++){
+// 		if(worksBox[j].inTerritory(mouseX,mouseY)){
+// 			for(var i = 1; i < worksNum; i++){
+// 				if(i == j)continue;
+// 				worksBox[i].visible = false;
+// 			}
+// 			if(mouseCharge == 0){
+// 				push();
+// 		    	translate(0,0,-worksBox[j].inch*2);
+// 		    	tint(255, 250);
+// 		    	// worksImg[j].width/width/2;
+// 		    	image(worksImg[j],0,0,width/2,windowWidth * worksImg[j].height / worksImg[j].width /2);
+// 		    	noFill();
+// 		    	rect(0,0,width/2,windowWidth * worksImg[j].height / worksImg[j].width /2);
+// 		    	pop();
+// 				drawCaption(worksYear[j],worksBox[j].inch/2,0);
+// 			}
+// 			// push();
+// 	  //   	translate(0,0,-worksBox[j].inch*2);
+// 	  //   	tint(255, 250);
+// 	  //   	// worksImg[j].width/width/2;
+// 	  //   	image(worksImg[j],0,0,width/2,windowWidth * worksImg[j].height / worksImg[j].width /2);
+// 	  //   	noFill();
+// 	  //   	rect(0,0,width/2,windowWidth * worksImg[j].height / worksImg[j].width /2);
+// 	  //   	pop();
+// 			// drawCaption(worksYear[j],worksBox[j].inch/2,0);
+// 		}
+// 	}
+
+// 	for(var j = 1; j < worksNum; j++){
+// 		if(worksBox[j].visible && worksBox[j].inTerritory(mouseX,mouseY)){
+// 			// push();
+// 	  //   	translate(0,0,-worksBox[j].inch*20);
+// 	  //   	tint(255, 250);
+// 	  //   	image(worksImg[j],0,0,width/2,height/2);
+// 	  //   	pop();
+// 			// drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[j],worksBox[j].inch,0);
+// 			stroke(worksBox[j].baseColor);
+// 			worksBox[j].drawInnerBox();
+// 			worksBox[j].drawBox();
+// 		}
+// 		else if(worksBox[j].visible){
+// 			drawText(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],worksBox[j].inch,150);
+// 			stroke(0,50);
+// 			worksBox[j].drawBox();
+// 		}
+// 		else{
+// 			stroke(0,50);
+// 			worksBox[j].drawBox();
+// 	      	worksBox[j].visible = true;
+// 	    }
+// 	      	// worksBox[j].drawBox(); 
+// 	}
+// 	if(worksBox[0].inTerritory(mouseX,mouseY)){
+// 		stroke(worksBox[0].baseColor);
+// 		worksBox[0].drawTetrahedron();
+// 		drawText(worksBox[0].core.x,worksBox[0].core.y,worksName[0],worksBox[0].inch,0);
+		
+// 	}else{
+// 		drawText(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],worksBox[0].inch,150);
+// 	    // worksBox[j].drawTextWithB(worksIndex[j],0);
+// 	    stroke(0,50);
+// 	}
+// 	worksBox[0].drawBox(); 
+// }
 
 function drawText(x,y,str,strSiz,col){
 	push();  
@@ -663,6 +741,8 @@ class box{
 
 	    this.innerBVertex  = [];
 	    this.shapeInnerBox();
+
+	    this.visible = true;
 	}
 
 	shapeBox(){
