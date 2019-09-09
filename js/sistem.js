@@ -1,3 +1,8 @@
+Pace.on('done', function(){
+    $('.wrapper').fadeIn();
+});
+
+//-------------------------------------
 var fr = 60;
 let objNum = 3;let worksNum = 7;
 let boxes =  [];let firstBox;let worksBox = [];
@@ -35,8 +40,8 @@ function preload(){
 	// fontJp = loadFont('assets/font/SawarabiMincho-Regular.otf');
 	soundFormats('mp3', 'ogg');
 
-	// soundSource[0] = loadSound('assets/sound/se01.mp3');
-	// soundSource[1] = loadSound('assets/sound/se02.mp3');
+	soundSource[0] = loadSound('assets/sound/se01.mp3');
+	soundSource[1] = loadSound('assets/sound/se02.mp3');
 
 	worksImg[0] = loadImage('assets/image/icon.png');
 	worksImg[1] = loadImage('assets/works/border/border_icon.jpg');
@@ -251,7 +256,7 @@ function mousePressed() {
 	if(scene == 2){
 		for(var i = 0; i < objNum; i++){
 			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0  && inCanvas()){
-				// soundSource[0].play();
+				soundSource[0].play();
 
 				if(i == 2){
 					canvas.style('position','fixed');
@@ -286,12 +291,12 @@ function mousePressed() {
 					initBox();
 					scene = 2;
 
-					// soundSource[0].play();
+					soundSource[0].play();
 				}
 				else{
 					if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true)  ){
 
-						// soundSource[1].play();
+						soundSource[1].play();
 
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;

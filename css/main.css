@@ -57,6 +57,10 @@ footer{
     
 }
 
+.pace-running .wrapper {
+    display: none;
+}
+
 
 h3{
   text-align: center;
