@@ -81,14 +81,10 @@ function pressedAllBtn(){
 		        "color": "#ffffff",
 		        "background": "#000000"
 		    });
-		});
-		$(function() {
 		    $(".instaBtn").css({
 		        "color": "#000000",
 		        "background": "#ffffff"
 		    });
-		});
-		$(function() {
 		    $(".uxBtn").css({
 		        "color": "#000000",
 		        "background": "#ffffff"
@@ -116,13 +112,13 @@ function pressedInstaBtn(){
 		        "color": "#ffffff",
 		        "background": "#000000"
 		    });
-		});
-		$(function() {
 		    $(".allBtn").css({
 		        "color": "#000000",
 		        "background": "#ffffff"
 		    });
+
 		});
+
 		instaBtn = true;
 		allBtn = false;
 	}else{
@@ -143,13 +139,12 @@ function pressedUxBtn(){
 		        "color": "#ffffff",
 		        "background": "#000000"
 		    });
-		});
-		$(function() {
 		    $(".allBtn").css({
 		        "color": "#000000",
 		        "background": "#ffffff"
 		    });
 		});
+
 		uxBtn = true;
 		allBtn = false;
 	}else{

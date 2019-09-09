@@ -375,7 +375,7 @@ ul {
 }
 #containerWrapper{
   position: relative;
-  max-width: 60vw;
+  max-width: 66vw;
   margin: 0 auto;   /*全体の中央寄せ*/
 }
 #container{
@@ -393,7 +393,7 @@ ul {
 
 .item {
   width: 300px; 
-  margin: 5px;
+  margin: 2px;
   padding: 6px;
   border: 1px solid #eee;
   background-color: #111;
@@ -401,6 +401,19 @@ ul {
 
 .item p{
   color: #ffffff;
+}
+
+.Allworks .Installation .UX .other .filters{
+
+}
+
+.iInstallation .iUX .iother{
+
+}
+
+
+input[type=checkbox] {
+display: none; /* チェックボックスを非表示にする */
 }
 /*.btn-submit{
   width: 300px;
