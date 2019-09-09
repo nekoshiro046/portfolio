@@ -403,18 +403,6 @@ ul {
   color: #ffffff;
 }
 
-.Allworks .Installation .UX .other .filters{
-
-}
-
-.iInstallation .iUX .iother{
-
-}
-
-
-input[type=checkbox] {
-display: none; /* チェックボックスを非表示にする */
-}
 /*.btn-submit{
   width: 300px;
   height: 50px;
