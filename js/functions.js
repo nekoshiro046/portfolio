@@ -26,24 +26,26 @@ $(function () {
     //     columnWidth: 180
     //   });
     // });
-    var container = document.querySelector('#container');
-    imagesLoaded(container, function () {
-        var msnry = new Masonry(container, {
-          itemSelector: '.item', //コンテンツのclass名
-          isFitWidth: true, //コンテナの親要素のサイズに基づいて、コンテンツのカラムを自動調節します。
-          columnWidth: 120, //カラムの幅を設定
-        });
-    });
-    // $(window).load(function(){
+
+    // var container = document.querySelector('#container');
+    // imagesLoaded(container, function () {
+    //     var msnry = new Masonry(container, {
+    //       itemSelector: '.item', //コンテンツのclass名
+    //       isFitWidth: true, //コンテナの親要素のサイズに基づいて、コンテンツのカラムを自動調節します。
+    //       // columnWidth: 120, //カラムの幅を設定
+    //     });
+    // });
+
+    // $('#container').on('load', function(){
     //     var $container = $('#container');　
     //     $container.imagesLoaded(function(){
     //       $container.masonry({
-    //         itemSelector: '.work_item',　
+    //         itemSelector: '.item',　
     //         isFitWidth: true,　
-    //         columnWidth: 50
+    //         columnWidth: 180
     //       });
     //     });
-    //   });
+    // });
 });
 
 // $(function() {

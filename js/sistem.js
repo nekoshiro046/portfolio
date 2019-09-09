@@ -295,7 +295,9 @@ function mousePressed() {
 				}
 				else{
 					if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true)  ){
+
 						soundSource[1].play();
+
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;
 						window.open(worksLinkURL[i], '_blank');
@@ -693,10 +695,20 @@ function changeWorksPage(){
 	    firworContents.hide();
 	    var secworContents = $('.secondWorks');
 	    secworContents.show();
+
+	    var container = document.querySelector('#container');
+	    imagesLoaded(container, function () {
+	        var msnry = new Masonry(container, {
+	          itemSelector: '.item', //コンテンツのclass名
+	          isFitWidth: true, //コンテナの親要素のサイズに基づいて、コンテンツのカラムを自動調節します。
+	          // columnWidth: 120, //カラムの幅を設定
+	        });
+	    });
 	    
     });
     pressedAllBtn();
 	canvas.style('position','absolute');
+
 }
 
 function returnWorksPage(){
