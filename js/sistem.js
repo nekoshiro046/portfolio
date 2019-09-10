@@ -347,8 +347,8 @@ function selectScene(){
 			      			boxes[i].setVelocity(boxes[j].core);
 			      		}
 			      	}
-			      	if(!objInCanvas(boxes[i].core.x + boxes[i].inch,boxes[i].core.y + boxes[i].inch) ||
-	      	 !objInCanvas(boxes[i].core.x - boxes[i].inch,boxes[i].core.y - boxes[i].inch)){
+			      	if(!objInCanvas(boxes[i].core.x + boxes[i].inch *1.5,boxes[i].core.y + boxes[i].inch *1.5) ||
+	      	 !objInCanvas(boxes[i].core.x - boxes[i].inch *1.5,boxes[i].core.y - boxes[i].inch *1.5)){
 			      		boxes[i].Head4Core(false,0.05);
 			      	}
 					boxes[i].updata();
@@ -381,8 +381,8 @@ function selectScene(){
 	      			boxes[i].setVelocity(boxes[j].core);
 	      		}
 	      	}
-	      	if(!objInCanvas(boxes[i].core.x + boxes[i].inch,boxes[i].core.y + boxes[i].inch) ||
-	      	 !objInCanvas(boxes[i].core.x - boxes[i].inch,boxes[i].core.y - boxes[i].inch)){
+	      	if(!objInCanvas(boxes[i].core.x + boxes[i].inch *1.5,boxes[i].core.y + boxes[i].inch *1.5) ||
+	      	 !objInCanvas(boxes[i].core.x - boxes[i].inch *1.5,boxes[i].core.y - boxes[i].inch *1.5)){
 	      		boxes[i].Head4Core(false,0.05);
 			}
 	        boxes[i].updata();
@@ -414,8 +414,8 @@ function selectScene(){
 			      			worksBox[i].setVelocity(worksBox[j].core);
 			      		}
 			      	}
-			      	if(!objInCanvas(worksBox[i].core.x + worksBox[i].inch,worksBox[i].core.y + worksBox[i].inch) ||
-	      	 !objInCanvas(worksBox[i].core.x - worksBox[i].inch,worksBox[i].core.y - worksBox[i].inch)){
+			      	if(!objInCanvas(worksBox[i].core.x + worksBox[i].inch *1.5,worksBox[i].core.y + worksBox[i].inch *1.5) ||
+	      	 !objInCanvas(worksBox[i].core.x - worksBox[i].inch *1.5,worksBox[i].core.y - worksBox[i].inch *1.5)){
 			      		worksBox[i].Head4Core(false,0.05);
 			      	}
 					worksBox[i].updata();
@@ -449,8 +449,8 @@ function selectScene(){
 	      			worksBox[i].setVelocity(worksBox[j].core);
 	      		}
 	      	}
-	      	if(!objInCanvas(worksBox[i].core.x + worksBox[i].inch,worksBox[i].core.y + worksBox[i].inch) ||
-	      	 !objInCanvas(worksBox[i].core.x - worksBox[i].inch,worksBox[i].core.y - worksBox[i].inch)){
+	      	if(!objInCanvas(worksBox[i].core.x + worksBox[i].inch *1.5,worksBox[i].core.y + worksBox[i].inch *1.5) ||
+	      	 !objInCanvas(worksBox[i].core.x - worksBox[i].inch *1.5,worksBox[i].core.y - worksBox[i].inch *1.5)){
 	      		worksBox[i].Head4Core(false,0.05);
 			}
 	        worksBox[i].updata();
@@ -985,7 +985,7 @@ class box{
 	    var f = jpos;
 	    var dbox = p5.Vector.sub(f, this.core);
 	    var dist_box = dbox.mag();
-	    if(dist_box < this.territory * 1.5){
+	    if(dist_box < this.territory * 2.5){
 	      back = true;
 	    }else{
 	      back = false;
