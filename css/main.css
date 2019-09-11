@@ -116,7 +116,10 @@ ul {
 
 .title {
   color:black;
-  font-size: 60px;
+  width: 60vw;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 2vw;
   padding: 0vh 10vw 0vh 10vw;
   border-bottom: groove #000000;
 }
