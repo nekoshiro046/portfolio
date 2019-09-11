@@ -22,22 +22,6 @@ header{
 	text-align: center;
 
 }
-nav{
-  font-family: 'arial black','arial','sans-serif','Impact';
-  position: fixed;
-  top: 0;
-  left: 4vw;
-  bottom: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /*width: 550px;*/
-  height: 50px;
-  margin: auto 0;
-  z-index: 1;
-  transform: rotate(-90deg);
-  border-bottom: 1px solid #000;
-}
 @media screen and (max-width: 896px) { 
   nav{
     font-family: 'arial black','arial','sans-serif','Impact';
@@ -56,6 +40,23 @@ nav{
     border-bottom: 1px solid #000;
   }
 }
+nav{
+  font-family: 'arial black','arial','sans-serif','Impact';
+  position: fixed;
+  top: 0;
+  left: 4vw;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /*width: 550px;*/
+  height: 50px;
+  margin: auto 0;
+  z-index: 1;
+  transform: rotate(-90deg);
+  border-bottom: 1px solid #000;
+}
+
 .head-list{
   display: flex;
   justify-content: center;
