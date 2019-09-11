@@ -46,6 +46,7 @@ ul {
   font-weight:lighter;
 }
 .work-about p{
+  max-width: 100%;
   margin-top: 5px;
   margin-bottom: 0;
   /*font-family: 'arial','Impact';*/
@@ -77,7 +78,7 @@ ul {
   margin-top: 10%;
 }
 
-@media screen and (max-width: 480px) { 
+@media screen and (max-width: 896px) { 
   .thumbnail-img{
     /* transform: rotate(90deg); */
     margin-left: 30vw;
@@ -141,15 +142,16 @@ ul {
   /*object-fit: cover;*/
   /*display: table-cell;*/
   width: 45%;
-  /*height: 30%;*/
-  padding:10px;
+  height: auto;
+  padding:2px;
+  margin:0;
 
   /*display:table-cell;*/
 }
-@media screen and (max-width: 480px) { 
+@media screen and (max-width: 896px) { 
   .img-container {
-    width: 35%;
-    padding:10px;
+    width: 45%;
+    padding:2px;
 
     /*display:table-cell;*/
   }
@@ -160,6 +162,8 @@ ul {
   /*object-fit: cover;*/
   /*display: table-cell;*/
   width: 80%;
+  /*height: auto;*/
+  margin-top: 0;
   /*height: 30%;*/
   margin-left: 5vw;
 
