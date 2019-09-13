@@ -27,7 +27,7 @@ header{
     font-family: 'arial black','arial','sans-serif','Impact';
     position: fixed;
     top: 0;
-    left: 1vw;
+    left: 0;
     bottom: 0;
     display: flex;
     justify-content: space-between;
