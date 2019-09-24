@@ -63,6 +63,10 @@ function setup() {
   canvas.style('z-index','5');
 
   canvas.parent('sketch-holder');
+  canvas.style('padding','0');
+  canvas.style('margin','0');
+  canvas.style('width','100%');
+  canvas.style('height','auto');
  
   // Move the canvas so it’s inside our <div id="sketch-holder">.
   frameRate(fr);
