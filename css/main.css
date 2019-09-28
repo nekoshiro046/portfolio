@@ -434,6 +434,31 @@ ul {
   color: #ffffff;
 }
 
+.mov1Btn .mov2Btn{
+    font-size: 1.4em;
+    font-weight: bold;
+    background-color: #000000;
+    color: #fff;
+    border-style: none;
+}
+.btn-sf-like1 .btn-sf-like2 {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.73);
+  padding: 0.3em 0.5em;
+  background: #00bcd4;
+  border-top: solid 3px #00a3d4;
+  border-bottom: solid 3px #00a3d4;
+  transition: .4s;
+}
+
+.btn-sf-like1 .btn-sf-like2:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83),
+               6px 0px 15px rgba(255, 255, 240, 0.83);
+}
 /*.btn-submit{
   width: 300px;
   height: 50px;

@@ -997,3 +997,8 @@ class box{
 	    return back;
 	}
 }
+//---------------------------------------------------
+
+$(function() {
+    $('html,body').animate({ scrollTop: 0 }, '1');
+});
