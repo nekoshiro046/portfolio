@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+* {
+  margin: 0px;
+  padding: 0px;
+
+}
+
 body {
 	/*height: ;*/
   box-sizing: border-box;
@@ -9,10 +15,14 @@ main {
 	font-family: 'arial','sans-serif';
 	font-weight: normal;
   z-index: 1;
+  margin-left: 30%;
+  width: 65%;
+  height: 100%;
+  margin-right: 2%;
 }
 
 header {
-
+  /*width: 100%;*/
 }
 
 footer {
@@ -39,7 +49,7 @@ ul {
   height: 100%;
   /*background: #FFFFFF;*/
   /*background: red;*/
-  margin-top: 7vh;
+  margin-top: 18%;
   margin-left: 2%;
 
   font-family: 'arial black','Impact','arial';
@@ -59,44 +69,47 @@ ul {
 .thumbnail-box{
   position: relative;
   width: 100%;
-  height: 85vh;
+  /*max-width: 600px;*/
+  height: 50%;
+  margin: 0;
+  /*margin-left: -30%;*/
   /* filter: drop-shadow(5px 5px 5px rgba(0,0,0,0.6)); */
 }
 
 .thumbnail-img{
-  transition: .5s;
   /* position: fixed; */
-  width: 60%;
-  /*height: 10vh;*/
-  
-  object-fit: cover; /* この一行を追加するだけ！ */
-  z-index: -999;
-  transform-origin: top left;
-  display: block;
-  /*margin: 50px auto;*/
-  margin-left: 30vw;
+  width: 90%;
+  max-width: 100%;
+  height: auto;
+  /*margin:0;*/
   margin-top: 10%;
+  
+  /*margin: 50px auto;*/
+  /*margin-left: -30%;*/
 }
-
-@media screen and (max-width: 896px) { 
+@media screen and (max-width: 480px) { 
   .thumbnail-img{
-    /* transform: rotate(90deg); */
+  }
+}
+/*@media screen and (max-width: 896px) { 
+  .thumbnail-img{
+     transform: rotate(90deg); 
     margin-left: 30vw;
     width: 75vw;
     height: auto;
   }
 
-}
+}*/
 
 .thumbnail-text {
   /*font-family: 'arial','Impact';*/
   font-family: 'New Gulim';
   font-weight:lighter;
   font-size: 20px;
-  margin-left: 30%;
+  /*margin-left: 30%;*/
   margin-top: 5vh;
-  padding-bottom: 5vh;
-  max-width: 65%;
+  padding-bottom: 2vh;
+  width: 100%;
 }
 
 .text-title {
@@ -104,7 +117,7 @@ ul {
   font-weight:lighter;
   text-align: center;
   font-size: 20px;
-  margin-top: 20vh;
+  margin-top: 10vh;
   /*margin-left: 30%;*/
 }
 
@@ -121,7 +134,7 @@ ul {
   /*font-family: 'arial','Impact';*/
   font-weight:lighter;
   font-size: 16px;
-  margin-left: 30%;
+  /*margin-left: 30%;*/
 }
 
 .tail_blank {
@@ -129,9 +142,10 @@ ul {
 }
 
 .img-box {
+  max-width: 100%;
   /*object-fit: cover;*/
   /*display: table-cell;*/
-  margin-left: 25vw;
+  /*margin-left: 25vw;*/
   /*margin-top: 5vw;*/
   /*margin-bottom: 5vw;*/
   padding-bottom: 5vh;
@@ -152,8 +166,6 @@ ul {
   .img-container {
     width: 45%;
     padding:2px;
-
-    /*display:table-cell;*/
   }
 
 }
@@ -161,11 +173,11 @@ ul {
 .mov-container {
   /*object-fit: cover;*/
   /*display: table-cell;*/
-  width: 80%;
-  /*height: auto;*/
+  width: 100%;
+  height: auto;
   margin-top: 0;
   /*height: 30%;*/
-  margin-left: 5vw;
+  /*margin-left: 5vw;*/
 
   /*display:table-cell;*/
 }
