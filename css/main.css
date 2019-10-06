@@ -431,8 +431,8 @@ ul {
 
 .item {
   width: 30vw; 
-  margin: 2px;
-  padding: 6px;
+  /*margin: 2px;*/
+  /*padding: 6px;*/
   border: 1px solid #eee;
   background-color: #111;
 }
