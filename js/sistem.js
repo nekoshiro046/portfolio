@@ -19,7 +19,6 @@ let worksYear = ['','18.08	Installation','18.10	Installation','19.02	Installatio
 var soundSource = [];
 var allBtn = false,instaBtn = true, uxBtn = true;
 var firstTouch = 0;
-
 function preload(){
 	fontEn = loadFont('assets/font/FreeSans.otf');
 	soundFormats('mp3', 'ogg');
