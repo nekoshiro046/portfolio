@@ -9,6 +9,7 @@ var sampleSound = [];//サウンドファイル格納
 let fontSize = 40;
 let fontEn,fontJp;
 var userMove = 0;
+let linkIndex = ['a','c','w'];
 let linkName = ["about","contact","works"];
 let linkURL = ['about-me','contact','works'];
 var worksIndex = ["back" ,"b","s", "w", "01", "m","n"];//1-4 : installation 5 : ux 0 : back
@@ -22,8 +23,11 @@ var firstTouch = 0;
 function preload(){
 	fontEn = loadFont('assets/font/FreeSans.otf');
 	soundFormats('mp3', 'ogg');
-	soundSource[0] = loadSound('assets/sound/se01.mp3');soundSource[1] = loadSound('assets/sound/se02.mp3');
+	soundSource[0] = loadSound('assets/sound/se01.mp3');
+	soundSource[1] = loadSound('assets/sound/se02.mp3');
 }
+
+
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight,WEBGL);
   canvas.position(0,0);
@@ -40,21 +44,37 @@ function setup() {
   textFont(fontEn);
   textSize(fontSize);
   textAlign(CENTER, CENTER);
-  textStyle(NORMAL);
+  textStyle(NORMAL);	
   rectMode(CENTER);
   imageMode(CENTER);
 }
+
 function pressedAllBtn(){
 	if(allBtn == false){
 		$(function() {
-		    $(".allBtn").css({"color": "#ffffff","background": "#000000"});
-		    $(".instaBtn").css({"color": "#000000","background": "#ffffff"});
-		    $(".uxBtn").css({"color": "#000000","background": "#ffffff"});
+		    $(".allBtn").css({
+		        "color": "#ffffff",
+		        "background": "#000000"
+		    });
+		    $(".instaBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
+		    $(".uxBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
 		});
-		instaBtn =  false;uxBtn = false;allBtn = true;
+
+		instaBtn =  false;
+		uxBtn = false;
+		allBtn = true;
 	}else{
 		$(function() {
-		    $(".allBtn").css({"color": "#000000","background": "#ffffff"});
+		    $(".allBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
 		});
 		allBtn = false;
 	}
@@ -62,13 +82,25 @@ function pressedAllBtn(){
 function pressedInstaBtn(){
 	if(instaBtn == false){
 		$(function() {
-		    $(".instaBtn").css({"color": "#ffffff","background": "#000000"});
-		    $(".allBtn").css({"color": "#000000","background": "#ffffff"});
+		    $(".instaBtn").css({
+		        "color": "#ffffff",
+		        "background": "#000000"
+		    });
+		    $(".allBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
+
 		});
-		instaBtn = true;allBtn = false;
+
+		instaBtn = true;
+		allBtn = false;
 	}else{
 		$(function() {
-		    $(".instaBtn").css({"color": "#000000","background": "#ffffff"});
+		    $(".instaBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
 		});
 		instaBtn = false;
 	}
@@ -76,13 +108,24 @@ function pressedInstaBtn(){
 function pressedUxBtn(){
 	if(uxBtn == false){
 		$(function() {
-		    $(".uxBtn").css({"color": "#ffffff","background": "#000000"});
-		    $(".allBtn").css({"color": "#000000","background": "#ffffff"});
+		    $(".uxBtn").css({
+		        "color": "#ffffff",
+		        "background": "#000000"
+		    });
+		    $(".allBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
 		});
-		uxBtn = true;allBtn = false;
+
+		uxBtn = true;
+		allBtn = false;
 	}else{
 		$(function() {
-		    $(".uxBtn").css({"color": "#000000","background": "#ffffff"});
+		    $(".uxBtn").css({
+		        "color": "#000000",
+		        "background": "#ffffff"
+		    });
 		});
 		uxBtn = false;
 	}
@@ -96,6 +139,7 @@ function initBox() {
 }
 function initWorksBox(workPos) {
 	for(var i = 0; i < worksNum; i++){
+	    // var posX = workPos.x;var posY = workPos.y;var posZ = workPos.z;
 	    var posX = 0;var posY = 0;var posZ = 0;
 	    var inch = (windowWidth + windowHeight)/40;
 	    if( i == 0){
@@ -185,7 +229,7 @@ function mousePressed() {
 		for(var i = 0; i < worksNum; i++){
 			if(worksBox[i].inTerritory(mouseX,mouseY) && mouseCharge == 0 && inCanvas()){
 				if(i == 0){
-					$("html, body").animate({scrollTop: 0}, 500);//topへ移動
+					$("html, body").animate({scrollTop: 0}, 500);
 					$("html, body").animate({scrollLeft: 0}, 500);
 					initBox();
 					scene = 2;
@@ -193,7 +237,9 @@ function mousePressed() {
 				}
 				else{
 					if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true)  ){
+
 						soundSource[1].play();
+
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;
 						window.open(worksLinkURL[i], '_blank');
@@ -470,7 +516,6 @@ function toMenu(){
 		$("html, body").animate({scrollTop: 0}, 500);
 		$("html, body").animate({scrollLeft: 0}, 500);
 	}
-
 }
 function changeWorksPage(){
 	$(function () {
@@ -491,14 +536,12 @@ function changeWorksPage(){
     pressedAllBtn();
 	canvas.style('position','absolute');
 }
-
 function returnWorksPage(){
 	$(function () {
 	    var firworContents = $('.firstWorks');
 	    firworContents.show();
 	    var secworContents = $('.secondWorks');
 	    secworContents.hide();
-	    
     });
 	canvas.style('position','fixed');
 	if(allBtn){
@@ -519,6 +562,7 @@ class box{
 		this.bVertex  = [];
 	    this.velocity = createVector(random(-5,5), random(-5,5));
 	    this.acceleration = createVector(random(-0.05,0.05), random(-0.05,0.05));
+	    // this.firstAc = createVector(random(-5,5),random(-5,5),0);
 		this.head4Speed = random(0.1,0.8);
 	    this.linkID = ln;
 	    this.angleX = random(360);this.angleY = random(360);this.angleZ = random(360);
@@ -529,38 +573,40 @@ class box{
 	    this.shapeInnerBox();
 	    this.visible = true;
 	}
+
 	shapeBox(){
-	    var px1 = this.core.x - this.inch;
-	    var px2 = this.core.x + this.inch;
-	    var py1 = this.core.y - this.inch;
-	    var py2 = this.core.y + this.inch;
-	    var pz1 = this.core.z - this.inch;
-	    var pz2 = this.core.z + this.inch;
+	    var pointx1 = this.core.x - this.inch;
+	    var pointx2 = this.core.x + this.inch;
+	    var pointy1 = this.core.y - this.inch;
+	    var pointy2 = this.core.y + this.inch;
+	    var pointz1 = this.core.z - this.inch;
+	    var pointz2 = this.core.z + this.inch;
+
 	    for(let i = 0; i <= 7; i++){
 	      switch(i){
 	        case 0:
-	           this.bVertex[i]  = createVector(px1,py1,pz1);
+	           this.bVertex[i]  = createVector(pointx1,pointy1,pointz1);
 	           break;
 	        case 1:
-	           this.bVertex[i]  = createVector(px1,py1,pz2);
+	           this.bVertex[i]  = createVector(pointx1,pointy1,pointz2);
 	           break;   
 	        case 2:
-	           this.bVertex[i]  = createVector(px1,py2,pz2);
+	           this.bVertex[i]  = createVector(pointx1,pointy2,pointz2);
 	           break;
 	        case 3:
-	           this.bVertex[i]  = createVector(px1,py2,pz1);
+	           this.bVertex[i]  = createVector(pointx1,pointy2,pointz1);
 	           break; 
 	        case 4:
-	           this.bVertex[i]  = createVector(px2,py2,pz1);
+	           this.bVertex[i]  = createVector(pointx2,pointy2,pointz1);
 	           break;
 	        case 5:
-	           this.bVertex[i]  = createVector(px2,py2,pz2);
+	           this.bVertex[i]  = createVector(pointx2,pointy2,pointz2);
 	           break; 
 	        case 6:
-	           this.bVertex[i]  = createVector(px2,py1,pz2);
+	           this.bVertex[i]  = createVector(pointx2,pointy1,pointz2);
 	           break; 
 	        case 7:
-	           this.bVertex[i]  = createVector(px2,py1,pz1);
+	           this.bVertex[i]  = createVector(pointx2,pointy1,pointz1);
 	           break;   
 	      }
 	    }
@@ -568,43 +614,47 @@ class box{
   	}
 
   	shapeInnerBox(){
-	    var px1 = this.core.x - this.inch/2;
-	    var px2 = this.core.x + this.inch/2;
-	    var py1 = this.core.y - this.inch/2;
-	    var py2 = this.core.y + this.inch/2;
-	    var pz1 = this.core.z - this.inch/2;
-	    var pz2 = this.core.z + this.inch/2;
+	    var pointx1 = this.core.x - this.inch/2;
+	    var pointx2 = this.core.x + this.inch/2;
+	    var pointy1 = this.core.y - this.inch/2;
+	    var pointy2 = this.core.y + this.inch/2;
+	    var pointz1 = this.core.z - this.inch/2;
+	    var pointz2 = this.core.z + this.inch/2;
+
 	    for(let i = 0; i <= 7; i++){
 	      switch(i){
 	        case 0:
-	           this.bVertex[i]  = createVector(px1,py1,pz1);
+	           this.innerBVertex[i]  = createVector(pointx1,pointy1,pointz1);
 	           break;
 	        case 1:
-	           this.bVertex[i]  = createVector(px1,py1,pz2);
+	           this.innerBVertex[i]  = createVector(pointx1,pointy1,pointz2);
 	           break;   
 	        case 2:
-	           this.bVertex[i]  = createVector(px1,py2,pz2);
+	           this.innerBVertex[i]  = createVector(pointx1,pointy2,pointz2);
 	           break;
 	        case 3:
-	           this.bVertex[i]  = createVector(px1,py2,pz1);
+	           this.innerBVertex[i]  = createVector(pointx1,pointy2,pointz1);
 	           break; 
 	        case 4:
-	           this.bVertex[i]  = createVector(px2,py2,pz1);
+	           this.innerBVertex[i]  = createVector(pointx2,pointy2,pointz1);
 	           break;
 	        case 5:
-	           this.bVertex[i]  = createVector(px2,py2,pz2);
+	           this.innerBVertex[i]  = createVector(pointx2,pointy2,pointz2);
 	           break; 
 	        case 6:
-	           this.bVertex[i]  = createVector(px2,py1,pz2);
+	           this.innerBVertex[i]  = createVector(pointx2,pointy1,pointz2);
 	           break; 
 	        case 7:
-	           this.bVertex[i]  = createVector(px2,py1,pz1);
+	           this.innerBVertex[i]  = createVector(pointx2,pointy1,pointz1);
 	           break;   
 	      }
 	    }
+    
   	}
+
   	updata(){
 	    this.acceleration.add(this.firstAc);
+	    // this.firstAc.div(4);
 	    this.velocity.add(this.acceleration);
 	    this.core.add(this.velocity);
 	    this.acceleration.mult(0);
@@ -612,6 +662,7 @@ class box{
   	}
 
   	Head4Core(up01,c){
+	    // var moCh = map(this.head4Speed,0,this.head4Speed,0.1,1.0);
 	    var f = createVector(0,0,0);
 	    var force = p5.Vector.sub(f, this.core);
 	    force.normalize().mult(c);
@@ -619,13 +670,18 @@ class box{
 	    if(up01){//up01 : boolen型でupdataを行うかの有無
 	    	this.updata();
 	    }
+	    else{
+	    }
 	}
+
 	setVelocity(jpos){
 		var f = jpos;
 	    var force = p5.Vector.sub(this.core, f);
 	    force.normalize().mult(0.005);
+	    // force.normalize().mult(0.5);
 	    this.acceleration.add(force);
 	}
+
 	drawBox(){
 		push();
 		translate(this.core.x,this.core.y);
@@ -633,6 +689,9 @@ class box{
 	    rotateY(radians(this.angleY));this.angleY+= this.angleStep;if(this.angleY > 360)this.angleY=0;
 	    rotateZ(radians(this.angleZ));this.angleZ+= this.angleStep;if(this.angleZ > 360)this.angleZ=0;
 	    noFill();
+
+	    // point(0,0);
+
 	    beginShape(); 
 	    for(let i = 0; i< 7; i++){
 	      vertex(this.bVertex[i].x,this.bVertex[i].y,this.bVertex[i].z);
@@ -662,6 +721,9 @@ class box{
 	    rotateY(radians(this.angleY));
 	    rotateZ(radians(this.angleZ));
 	    noFill();
+
+	    // point(0,0);
+
 	    beginShape(); 
 	    for(let i = 0; i< 7; i++){
 	      vertex(this.innerBVertex[i].x,this.innerBVertex[i].y,this.innerBVertex[i].z);
@@ -683,6 +745,7 @@ class box{
 	    }  
 	    pop();
 	}
+
 	drawTetrahedron(){
 	    push();  
 	    translate(this.core.x,this.core.y);
@@ -690,6 +753,7 @@ class box{
 	    rotateY(radians(this.angleY));
 	    rotateZ(radians(this.angleZ));
 	    noFill();
+	    
 	    beginShape(); 
 	    for(var i = 0; i < 5; i+=2){
 	      vertex(this.bVertex[i].x,this.bVertex[i].y,this.bVertex[i].z);
@@ -742,4 +806,6 @@ class box{
 	    return back;
 	}
 }
-$(function() {$('html,body').animate({ scrollTop: 0 }, '1');});
+$(function() {
+    $('html,body').animate({ scrollTop: 0 }, '1');
+});

@@ -13,20 +13,17 @@ function setup() {
   canvas.style('position','fixed');
   canvas.style('z-index','0');
   canvas.parent('sketch-holder');
+  // Move the canvas so it’s inside our <div id="sketch-holder">.
   frameRate(fr);
   firstBox = new box(0,0,0,(windowWidth)/ww/5);
   textFont(font);
   textSize(fontSize);
   textAlign(CENTER, CENTER);
-  textStyle(NORMAL);
+  textStyle(NORMAL);	
   rectMode(CENTER);
 }
-function draw() {
-	drawScene();
-}
-function windowResized() {
-  resizeCanvas(windowWidth/ww, windowWidth/ww);
-}
+function draw() {drawScene();}
+function windowResized() {resizeCanvas(windowWidth/ww, windowWidth/ww);}
 function mousePressed() {
 	if(firstBox.inTerritory(mouseX,mouseY) && inCanvas()){
 		window.close();
@@ -48,8 +45,7 @@ function drawScene(){
     stroke(0,50);
     drawText(firstBox.core.x,firstBox.core.y,'back',firstBox.inch,150);
    }
-   firstBox.drawBox(); 
-  
+   firstBox.drawBox();   
 }
 function drawText(x,y,str,strSiz,col){
 	push();  
@@ -95,75 +91,73 @@ class box{
 	    this.shapeInnerBox();
 	}
 	shapeBox(){
-	    var px1 = this.core.x - this.inch;
-	    var px2 = this.core.x + this.inch;
-	    var py1 = this.core.y - this.inch;
-	    var py2 = this.core.y + this.inch;
-	    var pz1 = this.core.z - this.inch;
-	    var pz2 = this.core.z + this.inch;
+	    var pointx1 = this.core.x - this.inch;
+	    var pointx2 = this.core.x + this.inch;
+	    var pointy1 = this.core.y - this.inch;
+	    var pointy2 = this.core.y + this.inch;
+	    var pointz1 = this.core.z - this.inch;
+	    var pointz2 = this.core.z + this.inch;
 	    for(let i = 0; i <= 7; i++){
 	      switch(i){
 	        case 0:
-	           this.bVertex[i]  = createVector(px1,py1,pz1);
+	           this.bVertex[i]  = createVector(pointx1,pointy1,pointz1);
 	           break;
 	        case 1:
-	           this.bVertex[i]  = createVector(px1,py1,pz2);
+	           this.bVertex[i]  = createVector(pointx1,pointy1,pointz2);
 	           break;   
 	        case 2:
-	           this.bVertex[i]  = createVector(px1,py2,pz2);
+	           this.bVertex[i]  = createVector(pointx1,pointy2,pointz2);
 	           break;
 	        case 3:
-	           this.bVertex[i]  = createVector(px1,py2,pz1);
+	           this.bVertex[i]  = createVector(pointx1,pointy2,pointz1);
 	           break; 
 	        case 4:
-	           this.bVertex[i]  = createVector(px2,py2,pz1);
+	           this.bVertex[i]  = createVector(pointx2,pointy2,pointz1);
 	           break;
 	        case 5:
-	           this.bVertex[i]  = createVector(px2,py2,pz2);
+	           this.bVertex[i]  = createVector(pointx2,pointy2,pointz2);
 	           break; 
 	        case 6:
-	           this.bVertex[i]  = createVector(px2,py1,pz2);
+	           this.bVertex[i]  = createVector(pointx2,pointy1,pointz2);
 	           break; 
 	        case 7:
-	           this.bVertex[i]  = createVector(px2,py1,pz1);
+	           this.bVertex[i]  = createVector(pointx2,pointy1,pointz1);
 	           break;   
 	      }
 	    }
-    
   	}
-
   	shapeInnerBox(){
-	    var px1 = this.core.x - this.inch/2;
-	    var px2 = this.core.x + this.inch/2;
-	    var py1 = this.core.y - this.inch/2;
-	    var py2 = this.core.y + this.inch/2;
-	    var pz1 = this.core.z - this.inch/2;
-	    var pz2 = this.core.z + this.inch/2;
+	    var pointx1 = this.core.x - this.inch/2;
+	    var pointx2 = this.core.x + this.inch/2;
+	    var pointy1 = this.core.y - this.inch/2;
+	    var pointy2 = this.core.y + this.inch/2;
+	    var pointz1 = this.core.z - this.inch/2;
+	    var pointz2 = this.core.z + this.inch/2;
 	    for(let i = 0; i <= 7; i++){
 	      switch(i){
 	        case 0:
-	           this.bVertex[i]  = createVector(px1,py1,pz1);
+	           this.innerBVertex[i]  = createVector(pointx1,pointy1,pointz1);
 	           break;
 	        case 1:
-	           this.bVertex[i]  = createVector(px1,py1,pz2);
+	           this.innerBVertex[i]  = createVector(pointx1,pointy1,pointz2);
 	           break;   
 	        case 2:
-	           this.bVertex[i]  = createVector(px1,py2,pz2);
+	           this.innerBVertex[i]  = createVector(pointx1,pointy2,pointz2);
 	           break;
 	        case 3:
-	           this.bVertex[i]  = createVector(px1,py2,pz1);
+	           this.innerBVertex[i]  = createVector(pointx1,pointy2,pointz1);
 	           break; 
 	        case 4:
-	           this.bVertex[i]  = createVector(px2,py2,pz1);
+	           this.innerBVertex[i]  = createVector(pointx2,pointy2,pointz1);
 	           break;
 	        case 5:
-	           this.bVertex[i]  = createVector(px2,py2,pz2);
+	           this.innerBVertex[i]  = createVector(pointx2,pointy2,pointz2);
 	           break; 
 	        case 6:
-	           this.bVertex[i]  = createVector(px2,py1,pz2);
+	           this.innerBVertex[i]  = createVector(pointx2,pointy1,pointz2);
 	           break; 
 	        case 7:
-	           this.bVertex[i]  = createVector(px2,py1,pz1);
+	           this.innerBVertex[i]  = createVector(pointx2,pointy1,pointz1);
 	           break;   
 	      }
 	    }
@@ -196,7 +190,6 @@ class box{
 	    }  
 	    pop();
 	}
-
 	drawInnerBox(){
 		push();
 		translate(this.core.x,this.core.y);
@@ -225,7 +218,6 @@ class box{
 	    }  
 	    pop();
 	}
-
 	moveInnerBox(){
 		var pointx1,pointx2,pointy1,pointy2,pointz1,pointz2;
 		var rnX = random(2),rnY = random(2),rnZ = random(2);
@@ -236,6 +228,7 @@ class box{
 			pointx1 = this.core.x - this.inch/2 - this.inch/2;
 			pointx2 = this.core.x + this.inch/2 - this.inch/2;
 		}
+
 		if(rnY < 1){
 			pointy1 = this.core.y - this.inch/2 + this.inch/2;
 			pointy2 = this.core.y + this.inch/2 + this.inch/2;
@@ -244,6 +237,7 @@ class box{
 			pointy1 = this.core.y - this.inch/2 - this.inch/2;
 			pointy2 = this.core.y + this.inch/2 - this.inch/2;
 		}
+
 		if(rnZ < 1){
 			pointz1 = this.core.z - this.inch/2 + this.inch/2;
 			pointz2 = this.core.z + this.inch/2 + this.inch/2;
@@ -303,7 +297,6 @@ class box{
 	    endShape();
 	    pop();
   	}
-
 	inTerritory(mx,my){
 	    var back;
 	    var f = createVector(mx-windowWidth/2/ww,my-windowWidth/2/ww);
@@ -317,7 +310,8 @@ class box{
 	    return back;
 	}
 }
-// var height = window.parent.screen.height;
+var height = window.parent.screen.height;
+
 $(function () {
     var w = $(window).width();
     var topBtn = $('#page-top');
