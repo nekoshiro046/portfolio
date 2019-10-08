@@ -1,5 +1,5 @@
 Pace.on('done', function(){$('.wrapper').fadeIn();});
-var height = window.parent.screen.height;
+// var height = window.parent.screen.height;
 var fr = 60;
 let objNum = 3;let worksNum = 7;
 let boxes =  [];let firstBox;let worksBox = [];
@@ -687,5 +687,5 @@ class box{
 }
 $(function() {
     $('html,body').animate({ scrollTop: 0 }, '1');
-    // var w = $(window).width();var topBtn = $('#page-top');topBtn.click(function () {$('body,html').animate({scrollTop: 0}, 500);return false;});
+    var w = $(window).width();var topBtn = $('#page-top');topBtn.click(function () {$('body,html').animate({scrollTop: 0}, 500);return false;});
 });
