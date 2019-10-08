@@ -1,173 +1,92 @@
-Pace.on('done', function(){
-    $('.wrapper').fadeIn();
-});
-
-//-------------------------------------
+Pace.on('done', function(){$('.wrapper').fadeIn();});
 var fr = 60;
 let objNum = 3;let worksNum = 7;
 let boxes =  [];let firstBox;let worksBox = [];
 var canvas;
-
 var scene = 1;// 1:top 2:menu 3:work 
 var mouseCharge = 0;var oneFrame = 0;
-
 var sampleSound = [];//サウンドファイル格納
-
 let fontSize = 40;
 let fontEn,fontJp;
-
 var userMove = 0;
-
-let linkIndex = ['a','c','w'];
 let linkName = ["about","contact","works"];
 let linkURL = ['about-me','contact','works'];
-
 var worksIndex = ["back" ,"b","s", "w", "01", "m","n"];//1-4 : installation 5 : ux 0 : back
 var worksName = ["menu" ,"border","syundo", "world apart", "01", "mimie","nomnom  the Game"];//1-4 : installation 5 : ux 0 : back
 var worksLinkURL = ['','work/border.html', 'work/syundo.html' ,'work/world_apart.html','work/01.html','work/mimie.html','work/nomnomGame.html'];
 let worksYear = ['','18.08	Installation','18.10	Installation','19.02	Installation','19.07	Installation','19.06	UX','19.06	UX'];
-
-var worksImg = [];
-
 var allBtn = false,instaBtn = true, uxBtn = true;
-
 var soundSource = [];//サウンドファイル格納
-
 var firstTouch = 0;
 
 function preload(){
 	fontEn = loadFont('assets/font/FreeSans.otf');
-	// fontJp = loadFont('assets/font/SawarabiMincho-Regular.otf');
 	soundFormats('mp3', 'ogg');
-
-	soundSource[0] = loadSound('assets/sound/se01.mp3');
-	soundSource[1] = loadSound('assets/sound/se02.mp3');
-
-	worksImg[0] = loadImage('assets/image/icon.png');
-	worksImg[1] = loadImage('assets/works/border/border_icon.jpg');
-	worksImg[2] = loadImage('assets/works/syundo/syundo_nail.jpg');
-	worksImg[3] = loadImage('assets/works/world_apart/world_apart_logo.png');
-	worksImg[4] = loadImage('assets/works/01/pic01.png');
-	worksImg[5] = loadImage('assets/works/mimie/mimie_icon.png');
-	worksImg[6] = loadImage('assets/works/nomnomGame/logo.png');
-
+	soundSource[0] = loadSound('assets/sound/se01.mp3');soundSource[1] = loadSound('assets/sound/se02.mp3');
 }
-
-
 function setup() {
-  // createCanvas(windowWidth, windowHeight,WEBGL);
   canvas = createCanvas(windowWidth, windowHeight,WEBGL);
-
   canvas.position(0,0);
   canvas.style('position','fixed');
   canvas.style('z-index','5');
-
   canvas.parent('sketch-holder');
   canvas.style('padding','0');
   canvas.style('margin','0');
   canvas.style('width','100%');
   canvas.style('height','auto');
- 
-  // Move the canvas so it’s inside our <div id="sketch-holder">.
   frameRate(fr);
   initBox();
   firstBox = new box(0,0,-20,(windowWidth + windowHeight)/20);
-	//---------------font------------
   textFont(fontEn);
   textSize(fontSize);
   textAlign(CENTER, CENTER);
   textStyle(NORMAL);
-	
   rectMode(CENTER);
-
   imageMode(CENTER);
 }
-
 function pressedAllBtn(){
 	if(allBtn == false){
 		$(function() {
-		    $(".allBtn").css({
-		        "color": "#ffffff",
-		        "background": "#000000"
-		    });
-		    $(".instaBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
-		    $(".uxBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
+		    $(".allBtn").css({"color": "#ffffff","background": "#000000"});
+		    $(".instaBtn").css({"color": "#000000","background": "#ffffff"});
+		    $(".uxBtn").css({"color": "#000000","background": "#ffffff"});
 		});
-
-		instaBtn =  false;
-		uxBtn = false;
-		allBtn = true;
+		instaBtn =  false;uxBtn = false;allBtn = true;
 	}else{
 		$(function() {
-		    $(".allBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
+		    $(".allBtn").css({"color": "#000000","background": "#ffffff"});
 		});
 		allBtn = false;
 	}
 }
-
 function pressedInstaBtn(){
 	if(instaBtn == false){
 		$(function() {
-		    $(".instaBtn").css({
-		        "color": "#ffffff",
-		        "background": "#000000"
-		    });
-		    $(".allBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
-
+		    $(".instaBtn").css({"color": "#ffffff","background": "#000000"});
+		    $(".allBtn").css({"color": "#000000","background": "#ffffff"});
 		});
-
-		instaBtn = true;
-		allBtn = false;
+		instaBtn = true;allBtn = false;
 	}else{
 		$(function() {
-		    $(".instaBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
+		    $(".instaBtn").css({"color": "#000000","background": "#ffffff"});
 		});
 		instaBtn = false;
 	}
 }
-
 function pressedUxBtn(){
 	if(uxBtn == false){
 		$(function() {
-		    $(".uxBtn").css({
-		        "color": "#ffffff",
-		        "background": "#000000"
-		    });
-		    $(".allBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
+		    $(".uxBtn").css({"color": "#ffffff","background": "#000000"});
+		    $(".allBtn").css({"color": "#000000","background": "#ffffff"});
 		});
-
-		uxBtn = true;
-		allBtn = false;
+		uxBtn = true;allBtn = false;
 	}else{
 		$(function() {
-		    $(".uxBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
+		    $(".uxBtn").css({"color": "#000000","background": "#ffffff"});
 		});
 		uxBtn = false;
 	}
 }
-
-
 function initBox() {
 	for(var i = 0; i < objNum; i++){
 	    var posX = 0;var posY = 0;var posZ = -20;
@@ -175,10 +94,8 @@ function initBox() {
 	    boxes[i] = new box(posX,posY,posZ,inch,i);
   	}
 }
-
 function initWorksBox(workPos) {
 	for(var i = 0; i < worksNum; i++){
-	    // var posX = workPos.x;var posY = workPos.y;var posZ = workPos.z;
 	    var posX = 0;var posY = 0;var posZ = 0;
 	    var inch = (windowWidth + windowHeight)/40;
 	    if( i == 0){
@@ -187,20 +104,14 @@ function initWorksBox(workPos) {
 	    worksBox[i] = new box(posX,posY,posZ,inch,i);
   	}
 }
-
-
 function draw() {
 	selectScene();
 }
-
-
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
-
 function touchStarted() {
   if(firstTouch == 0 && inCanvas()){
-      // firstSound.start();
     soundSource[0].play();
     firstTouch = 1;
   }
@@ -208,7 +119,6 @@ function touchStarted() {
 		for(var i = 0; i < objNum; i++){
 			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0  && inCanvas()){
 				soundSource[0].play();
-
 				if(i == 2){
 					canvas.style('position','fixed');
 					initWorksBox(boxes[i].core);
@@ -216,17 +126,13 @@ function touchStarted() {
 				}else{
 					canvas.style('position','absolute');
 				}
-
-
 				var target = linkURL[i];
 				var position;
 				position = $(target).offset().left;
 				$("html, body").animate({scrollLeft:position}, 400, "swing");
 				position = $(target).offset().top;
 				$("html, body").animate({scrollTop:position}, 400, "swing");
-
 				return false;
-
 		    }
 		}
 	}
@@ -234,8 +140,8 @@ function touchStarted() {
 		for(var i = 0; i < worksNum; i++){
 			if(worksBox[i].inTerritory(mouseX,mouseY) && mouseCharge == 0 && inCanvas()){
 				if(i == 0){
-					$("html, body").animate({scrollTop: 0}, 500);//topへ移動
-					$("html, body").animate({scrollLeft: 0}, 500);//topへ移動
+					$("html, body").animate({scrollTop: 0}, 500);
+					$("html, body").animate({scrollLeft: 0}, 500);
 					initBox();
 					scene = 2;
 					soundSource[0].play();
@@ -247,9 +153,6 @@ function touchStarted() {
 						mouseIsPressed = false;
 						window.open(worksLinkURL[i], '_blank');
 					}
-					// mouseCharge = 0;oneFrame = 0;
-					// mouseIsPressed = false;
-					// window.open(worksLinkURL[i], '_blank');
 				}
 		    }
 		}
@@ -261,7 +164,6 @@ function mousePressed() {
 		for(var i = 0; i < objNum; i++){
 			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0  && inCanvas()){
 				soundSource[0].play();
-
 				if(i == 2){
 					canvas.style('position','fixed');
 					initWorksBox(boxes[i].core);
@@ -269,18 +171,13 @@ function mousePressed() {
 				}else{
 					canvas.style('position','absolute');
 				}
-
-
 				var target = linkURL[i];
 				var position;
 				position = $(target).offset().left;
 				$("html, body").animate({scrollLeft:position}, 400, "swing");
 				position = $(target).offset().top;
 				$("html, body").animate({scrollTop:position}, 400, "swing");
-
-
 				return false;
-
 		    }
 		}
 	}
@@ -288,27 +185,19 @@ function mousePressed() {
 		for(var i = 0; i < worksNum; i++){
 			if(worksBox[i].inTerritory(mouseX,mouseY) && mouseCharge == 0 && inCanvas()){
 				if(i == 0){
-
 					$("html, body").animate({scrollTop: 0}, 500);//topへ移動
 					$("html, body").animate({scrollLeft: 0}, 500);
-
 					initBox();
 					scene = 2;
-
 					soundSource[0].play();
 				}
 				else{
 					if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true)  ){
-
 						soundSource[1].play();
-
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;
 						window.open(worksLinkURL[i], '_blank');
 					}
-					// mouseCharge = 0;oneFrame = 0;
-					// mouseIsPressed = false;
-					// window.open(worksLinkURL[i], '_blank');
 				}
 		    }
 		}
@@ -321,8 +210,6 @@ function selectScene(){
 		canvas.style('z-index','5');
 	    if(mouseIsPressed && inCanvas() && firstBox.inTerritory(mouseX,mouseY)){
 	    	drawScene1('Yuki\’s portfolio');
-
-	    	// canvas.style('z-index','-1');
 	      	scene = 2;
 	    }
 	    else if(inCanvas() && mouseY < (windowHeight/5) && mouseY > (windowHeight/6) && mouseX > (windowWidth/3) && mouseX < (windowWidth/3*2)){
@@ -334,14 +221,9 @@ function selectScene(){
 	}
 	else if(scene == 2){
 		canvas.style('z-index','-1');
-		// canvas.position(0,0);
-		// canvas.style('position','static');
 	    if(mouseIsPressed && inCanvas()){
 			oneFrame++;
 		    for(var i = 0; i < objNum; i++){
-		   //    	if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0 && (boxes[i].core.mag() > 50)){
-					// window.open(linkURL[i], '_blank');
-     //    		}
 				if(oneFrame > 60){
 					boxes[i].Head4Core(true,boxes[i].head4Speed);
 	        	}
@@ -362,8 +244,8 @@ function selectScene(){
 		    if(mouseCharge > fr*2){
 		      scene = 1;
 		      drawScene1();
-		      $("html, body").animate({scrollTop: 0}, 500);//topへ移動
-		      $("html, body").animate({scrollLeft: 0}, 500);//topへ移動
+		      $("html, body").animate({scrollTop: 0}, 500);
+		      $("html, body").animate({scrollLeft: 0}, 500);
 		      initBox();
 		    }
 		    else if(mouseCharge != 0 && oneFrame > fr){
@@ -390,10 +272,6 @@ function selectScene(){
 	      		boxes[i].Head4Core(false,0.05);
 			}
 	        boxes[i].updata();
-	        // console.log("windowWidth"+windowWidth);
-	        // console.log("windowHeight"+windowHeight);
-	        // console.log("boxes[" + i + "].core.x "+boxes[i].core.x);
-	        // console.log("boxes[" + i + "].core.y "+boxes[i].core.y);
 	      }
 	      drawScene2();
 	      mouseCharge = 0;oneFrame = 0;
@@ -401,14 +279,9 @@ function selectScene(){
 	}
 	else if(scene == 3){
 		canvas.style('z-index','-1');
-		// canvas.position(0,0);
-		// canvas.style('position','static');
 	    if(mouseIsPressed && inCanvas()){
 			oneFrame++;
 		    for(var i = 0; i < worksNum; i++){
-		   //    	if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0 && (boxes[i].core.mag() > 50)){
-					// window.open(linkURL[i], '_blank');
-     //    		}
 				if(oneFrame > 60){
 					worksBox[i].Head4Core(true,worksBox[i].head4Speed);
 	        	}
@@ -430,8 +303,8 @@ function selectScene(){
 		      scene = 2;
 		      mouseCharge = 0;oneFrame = 0;
 		      drawScene2();
-		      $("html, body").animate({scrollTop: 0}, 500);//topへ移動
-		      $("html, body").animate({scrollLeft: 0}, 500);//topへ移動
+		      $("html, body").animate({scrollTop: 0}, 500);
+		      $("html, body").animate({scrollLeft: 0}, 500);
 		      initBox();
 		    }
 		    else if(mouseCharge != 0 && oneFrame > fr){
@@ -467,7 +340,7 @@ function selectScene(){
 
 function drawScene1(str){
 	background(0);
-  	var a = int(random(1,7));//5択
+  	var a = int(random(1,7));
   if(a == 1 || a == 4){
     if(firstBox.inTerritory(mouseX,mouseY)){
       stroke(255,0,0);
@@ -476,11 +349,9 @@ function drawScene1(str){
     stroke(255);
     firstBox.drawBox();
     drawText(firstBox.core.x,firstBox.core.y - windowHeight/3,str,windowHeight/20,255);
-    // firstBox.drawText(firstBox.core.x,firstBox.core.y - windowHeight/3,str,255);
   }
   else if(a == 2 || a == 5){
   	drawText(firstBox.core.x,firstBox.core.y - windowHeight/3,str,windowHeight/20,255);
-  	// firstBox.drawText(firstBox.core.x,firstBox.core.y - windowHeight/3,str,255);
   	push();
     translate(-0.5,1,-1.5);
     stroke(255,0,0);
@@ -499,7 +370,6 @@ function drawScene1(str){
   }
   else if(a == 3){
   	drawText(firstBox.core.x,firstBox.core.y - windowHeight/3,str,windowHeight/20,255);
-  	// firstBox.drawText(firstBox.core.x,firstBox.core.y - windowHeight/3,str,255);
     stroke(255);
     var r = random(1,4);
     for(var i = 0; i < r; i++){
@@ -516,13 +386,10 @@ function drawScene2(){
   background(255);
   for(var j = 0; j < objNum; j++){
     if(boxes[j].inTerritory(mouseX,mouseY)){
-      // stroke(boxes[j].baseColor);
       stroke(boxes[j].baseColor);
       boxes[j].drawTetrahedron();
 	  drawText(boxes[j].core.x,boxes[j].core.y,linkName[boxes[j].linkID],boxes[j].inch,0);
     }else{
-      // stroke(0);
-      // boxes[j].drawTextWithB(boxes[j].core.x,boxes[j].core.y,linkName[boxes[j].linkID],0);
       drawText(boxes[j].core.x,boxes[j].core.y,linkName[boxes[j].linkID],boxes[j].inch,150);
       stroke(0,50);
     }
@@ -540,26 +407,14 @@ function drawScene3() {
 			if(!uxBtn)continue;
 		}
 		if(worksBox[j].inTerritory(mouseX,mouseY)){
-	    	// push();
-	    	// translate(0,0,-worksBox[j].inch*2);
-	    	// tint(255,10);
-	    	// image(worksImg[j],0,0,width/3,height/3);
-	    	// pop();
-	    	
 		    stroke(worksBox[j].baseColor);
 		    worksBox[j].drawInnerBox();
 		    drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[j],worksBox[j].inch,0);
-			// stroke(0);
-			// line(-width/3,height/3,width/3,height/3);
-			// line(width/3,-height/3,width/3,height/3);
 			drawCaption(worksYear[j],worksBox[j].inch/2,0);
-		  	// worksBox[j].drawTextWithB(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],0);
 		}
 		else{
-	      		// stroke(0);
-	      		drawText(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],worksBox[j].inch,150);
-	      		// worksBox[j].drawTextWithB(worksIndex[j],0);
-	      		stroke(0,50);
+	      	drawText(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],worksBox[j].inch,150);
+	      	stroke(0,50);
 	    }
 	      	worksBox[j].drawBox(); 
 	}
@@ -570,80 +425,10 @@ function drawScene3() {
 		
 	}else{
 		drawText(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],worksBox[0].inch,150);
-	    // worksBox[j].drawTextWithB(worksIndex[j],0);
 	    stroke(0,50);
 	}
 	worksBox[0].drawBox(); 
 }
-
-// function drawScene3() {
-// 	background(255);
-// 	for(var j = 1; j < worksNum; j++){
-// 		if(worksBox[j].inTerritory(mouseX,mouseY)){
-// 			for(var i = 1; i < worksNum; i++){
-// 				if(i == j)continue;
-// 				worksBox[i].visible = false;
-// 			}
-// 			if(mouseCharge == 0){
-// 				push();
-// 		    	translate(0,0,-worksBox[j].inch*2);
-// 		    	tint(255, 250);
-// 		    	// worksImg[j].width/width/2;
-// 		    	image(worksImg[j],0,0,width/2,windowWidth * worksImg[j].height / worksImg[j].width /2);
-// 		    	noFill();
-// 		    	rect(0,0,width/2,windowWidth * worksImg[j].height / worksImg[j].width /2);
-// 		    	pop();
-// 				drawCaption(worksYear[j],worksBox[j].inch/2,0);
-// 			}
-// 			// push();
-// 	  //   	translate(0,0,-worksBox[j].inch*2);
-// 	  //   	tint(255, 250);
-// 	  //   	// worksImg[j].width/width/2;
-// 	  //   	image(worksImg[j],0,0,width/2,windowWidth * worksImg[j].height / worksImg[j].width /2);
-// 	  //   	noFill();
-// 	  //   	rect(0,0,width/2,windowWidth * worksImg[j].height / worksImg[j].width /2);
-// 	  //   	pop();
-// 			// drawCaption(worksYear[j],worksBox[j].inch/2,0);
-// 		}
-// 	}
-
-// 	for(var j = 1; j < worksNum; j++){
-// 		if(worksBox[j].visible && worksBox[j].inTerritory(mouseX,mouseY)){
-// 			// push();
-// 	  //   	translate(0,0,-worksBox[j].inch*20);
-// 	  //   	tint(255, 250);
-// 	  //   	image(worksImg[j],0,0,width/2,height/2);
-// 	  //   	pop();
-// 			// drawText(worksBox[j].core.x,worksBox[j].core.y,worksName[j],worksBox[j].inch,0);
-// 			stroke(worksBox[j].baseColor);
-// 			worksBox[j].drawInnerBox();
-// 			worksBox[j].drawBox();
-// 		}
-// 		else if(worksBox[j].visible){
-// 			drawText(worksBox[j].core.x,worksBox[j].core.y,worksIndex[j],worksBox[j].inch,150);
-// 			stroke(0,50);
-// 			worksBox[j].drawBox();
-// 		}
-// 		else{
-// 			stroke(0,50);
-// 			worksBox[j].drawBox();
-// 	      	worksBox[j].visible = true;
-// 	    }
-// 	      	// worksBox[j].drawBox(); 
-// 	}
-// 	if(worksBox[0].inTerritory(mouseX,mouseY)){
-// 		stroke(worksBox[0].baseColor);
-// 		worksBox[0].drawTetrahedron();
-// 		drawText(worksBox[0].core.x,worksBox[0].core.y,worksName[0],worksBox[0].inch,0);
-		
-// 	}else{
-// 		drawText(worksBox[0].core.x,worksBox[0].core.y,worksIndex[0],worksBox[0].inch,150);
-// 	    // worksBox[j].drawTextWithB(worksIndex[j],0);
-// 	    stroke(0,50);
-// 	}
-// 	worksBox[0].drawBox(); 
-// }
-
 function drawText(x,y,str,strSiz,col){
 	push();  
 	translate(x,y);
@@ -651,9 +436,7 @@ function drawText(x,y,str,strSiz,col){
 	textSize(strSiz);
 	text(str, 0,0);
 	pop();
-	// textFont(fontEn);
 }
-
 function drawCaption(str,strSize,col){
 	push();  
 	stroke(0);
@@ -662,7 +445,6 @@ function drawCaption(str,strSize,col){
 	drawText(width/4,height/3+strSize,str,strSize,col);
 	pop();
 }
-
 function inCanvas(){
 	var back;
 	if(mouseX < 0 || mouseX > windowWidth || mouseY < 0 || mouseY > windowHeight){
@@ -672,7 +454,6 @@ function inCanvas(){
 	}
 	return back;
 }
-
 function objInCanvas(x,y){
 	var back;
 	if(x <  -windowWidth/2|| x > windowWidth/2|| y < -windowHeight/2 || y > windowHeight/2){
@@ -682,17 +463,15 @@ function objInCanvas(x,y){
 	}
 	return back;
 }
-
 function toMenu(){
 	if(scene != 2){
 		initBox();
 		scene = 2;
-		$("html, body").animate({scrollTop: 0}, 500);//topへ移動
-		$("html, body").animate({scrollLeft: 0}, 500);//topへ移動
+		$("html, body").animate({scrollTop: 0}, 500);
+		$("html, body").animate({scrollLeft: 0}, 500);
 	}
 
 }
-
 function changeWorksPage(){
 	$(function () {
 	    var firworContents = $('.firstWorks');
@@ -708,11 +487,9 @@ function changeWorksPage(){
 	          // columnWidth: 120, //カラムの幅を設定
 	        });
 	    });
-	    
     });
     pressedAllBtn();
 	canvas.style('position','absolute');
-
 }
 
 function returnWorksPage(){
@@ -734,10 +511,7 @@ function returnWorksPage(){
 		initWorksBox();
 	}
 }
-
-//-----------------------------------box_class-----------------------------
 class box{
-
 	constructor(x,y,z,inc,ln){
 		this.core =	createVector(x,y,z);
 		this.inch = inc;
@@ -745,55 +519,48 @@ class box{
 		this.bVertex  = [];
 	    this.velocity = createVector(random(-5,5), random(-5,5));
 	    this.acceleration = createVector(random(-0.05,0.05), random(-0.05,0.05));
-	    // this.firstAc = createVector(random(-5,5),random(-5,5),0);
 		this.head4Speed = random(0.1,0.8);
-
 	    this.linkID = ln;
-
 	    this.angleX = random(360);this.angleY = random(360);this.angleZ = random(360);
 	    this.angleStep = 0.5;
 	    this.baseColor = color(random(255),random(255),random(255));
 	    this.shapeBox();
-
 	    this.innerBVertex  = [];
 	    this.shapeInnerBox();
-
 	    this.visible = true;
 	}
-
 	shapeBox(){
-	    var pointx1 = this.core.x - this.inch;
-	    var pointx2 = this.core.x + this.inch;
-	    var pointy1 = this.core.y - this.inch;
-	    var pointy2 = this.core.y + this.inch;
-	    var pointz1 = this.core.z - this.inch;
-	    var pointz2 = this.core.z + this.inch;
-
+	    var px1 = this.core.x - this.inch;
+	    var px2 = this.core.x + this.inch;
+	    var py1 = this.core.y - this.inch;
+	    var py2 = this.core.y + this.inch;
+	    var pz1 = this.core.z - this.inch;
+	    var pz2 = this.core.z + this.inch;
 	    for(let i = 0; i <= 7; i++){
 	      switch(i){
 	        case 0:
-	           this.bVertex[i]  = createVector(pointx1,pointy1,pointz1);
+	           this.bVertex[i]  = createVector(px1,py1,pz1);
 	           break;
 	        case 1:
-	           this.bVertex[i]  = createVector(pointx1,pointy1,pointz2);
+	           this.bVertex[i]  = createVector(px1,py1,pz2);
 	           break;   
 	        case 2:
-	           this.bVertex[i]  = createVector(pointx1,pointy2,pointz2);
+	           this.bVertex[i]  = createVector(px1,py2,pz2);
 	           break;
 	        case 3:
-	           this.bVertex[i]  = createVector(pointx1,pointy2,pointz1);
+	           this.bVertex[i]  = createVector(px1,py2,pz1);
 	           break; 
 	        case 4:
-	           this.bVertex[i]  = createVector(pointx2,pointy2,pointz1);
+	           this.bVertex[i]  = createVector(px2,py2,pz1);
 	           break;
 	        case 5:
-	           this.bVertex[i]  = createVector(pointx2,pointy2,pointz2);
+	           this.bVertex[i]  = createVector(px2,py2,pz2);
 	           break; 
 	        case 6:
-	           this.bVertex[i]  = createVector(pointx2,pointy1,pointz2);
+	           this.bVertex[i]  = createVector(px2,py1,pz2);
 	           break; 
 	        case 7:
-	           this.bVertex[i]  = createVector(pointx2,pointy1,pointz1);
+	           this.bVertex[i]  = createVector(px2,py1,pz1);
 	           break;   
 	      }
 	    }
@@ -801,47 +568,43 @@ class box{
   	}
 
   	shapeInnerBox(){
-	    var pointx1 = this.core.x - this.inch/2;
-	    var pointx2 = this.core.x + this.inch/2;
-	    var pointy1 = this.core.y - this.inch/2;
-	    var pointy2 = this.core.y + this.inch/2;
-	    var pointz1 = this.core.z - this.inch/2;
-	    var pointz2 = this.core.z + this.inch/2;
-
+	    var px1 = this.core.x - this.inch/2;
+	    var px2 = this.core.x + this.inch/2;
+	    var py1 = this.core.y - this.inch/2;
+	    var py2 = this.core.y + this.inch/2;
+	    var pz1 = this.core.z - this.inch/2;
+	    var pz2 = this.core.z + this.inch/2;
 	    for(let i = 0; i <= 7; i++){
 	      switch(i){
 	        case 0:
-	           this.innerBVertex[i]  = createVector(pointx1,pointy1,pointz1);
+	           this.bVertex[i]  = createVector(px1,py1,pz1);
 	           break;
 	        case 1:
-	           this.innerBVertex[i]  = createVector(pointx1,pointy1,pointz2);
+	           this.bVertex[i]  = createVector(px1,py1,pz2);
 	           break;   
 	        case 2:
-	           this.innerBVertex[i]  = createVector(pointx1,pointy2,pointz2);
+	           this.bVertex[i]  = createVector(px1,py2,pz2);
 	           break;
 	        case 3:
-	           this.innerBVertex[i]  = createVector(pointx1,pointy2,pointz1);
+	           this.bVertex[i]  = createVector(px1,py2,pz1);
 	           break; 
 	        case 4:
-	           this.innerBVertex[i]  = createVector(pointx2,pointy2,pointz1);
+	           this.bVertex[i]  = createVector(px2,py2,pz1);
 	           break;
 	        case 5:
-	           this.innerBVertex[i]  = createVector(pointx2,pointy2,pointz2);
+	           this.bVertex[i]  = createVector(px2,py2,pz2);
 	           break; 
 	        case 6:
-	           this.innerBVertex[i]  = createVector(pointx2,pointy1,pointz2);
+	           this.bVertex[i]  = createVector(px2,py1,pz2);
 	           break; 
 	        case 7:
-	           this.innerBVertex[i]  = createVector(pointx2,pointy1,pointz1);
+	           this.bVertex[i]  = createVector(px2,py1,pz1);
 	           break;   
 	      }
 	    }
-    
   	}
-
   	updata(){
 	    this.acceleration.add(this.firstAc);
-	    // this.firstAc.div(4);
 	    this.velocity.add(this.acceleration);
 	    this.core.add(this.velocity);
 	    this.acceleration.mult(0);
@@ -849,7 +612,6 @@ class box{
   	}
 
   	Head4Core(up01,c){
-	    // var moCh = map(this.head4Speed,0,this.head4Speed,0.1,1.0);
 	    var f = createVector(0,0,0);
 	    var force = p5.Vector.sub(f, this.core);
 	    force.normalize().mult(c);
@@ -857,18 +619,13 @@ class box{
 	    if(up01){//up01 : boolen型でupdataを行うかの有無
 	    	this.updata();
 	    }
-	    else{
-	    }
 	}
-
 	setVelocity(jpos){
 		var f = jpos;
 	    var force = p5.Vector.sub(this.core, f);
 	    force.normalize().mult(0.005);
-	    // force.normalize().mult(0.5);
 	    this.acceleration.add(force);
 	}
-
 	drawBox(){
 		push();
 		translate(this.core.x,this.core.y);
@@ -876,9 +633,6 @@ class box{
 	    rotateY(radians(this.angleY));this.angleY+= this.angleStep;if(this.angleY > 360)this.angleY=0;
 	    rotateZ(radians(this.angleZ));this.angleZ+= this.angleStep;if(this.angleZ > 360)this.angleZ=0;
 	    noFill();
-
-	    // point(0,0);
-
 	    beginShape(); 
 	    for(let i = 0; i< 7; i++){
 	      vertex(this.bVertex[i].x,this.bVertex[i].y,this.bVertex[i].z);
@@ -908,9 +662,6 @@ class box{
 	    rotateY(radians(this.angleY));
 	    rotateZ(radians(this.angleZ));
 	    noFill();
-
-	    // point(0,0);
-
 	    beginShape(); 
 	    for(let i = 0; i< 7; i++){
 	      vertex(this.innerBVertex[i].x,this.innerBVertex[i].y,this.innerBVertex[i].z);
@@ -932,7 +683,6 @@ class box{
 	    }  
 	    pop();
 	}
-
 	drawTetrahedron(){
 	    push();  
 	    translate(this.core.x,this.core.y);
@@ -940,7 +690,6 @@ class box{
 	    rotateY(radians(this.angleY));
 	    rotateZ(radians(this.angleZ));
 	    noFill();
-	    
 	    beginShape(); 
 	    for(var i = 0; i < 5; i+=2){
 	      vertex(this.bVertex[i].x,this.bVertex[i].y,this.bVertex[i].z);
@@ -957,7 +706,6 @@ class box{
 	    endShape();
 	    pop();
   	}
-
   	drawTextWithB(str,col){
 		push();  
 		translate(this.core.x,this.core.y);
@@ -969,7 +717,6 @@ class box{
 		text(str, 0,0);
 		pop();
 	}
-
 	inTerritory(mx,my){
 	    var back;
 	    var f = createVector(mx-windowWidth/2,my-windowHeight/2);
@@ -982,8 +729,6 @@ class box{
 	    }
 	    return back;
 	}
-
-
 	inNeighborSpace(jpos){
 	    var back;
 	    var f = jpos;
@@ -997,8 +742,4 @@ class box{
 	    return back;
 	}
 }
-//---------------------------------------------------
-
-$(function() {
-    $('html,body').animate({ scrollTop: 0 }, '1');
-});
+$(function() {$('html,body').animate({ scrollTop: 0 }, '1');});
