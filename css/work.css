@@ -54,6 +54,7 @@ ul {
 
   font-family: 'arial black','Impact','arial';
   font-weight:lighter;
+  word-wrap: break-word;
 }
 .work-about p{
   max-width: 100%;
