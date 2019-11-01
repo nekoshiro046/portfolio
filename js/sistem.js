@@ -12,19 +12,19 @@ var userMove = 0;
 let linkIndex = ['a','c','w'];
 let linkName = ["about","contact","works"];
 let linkURL = ['about-me','contact','works'];
-var worksIndex = ["back" ,"b","s", "w", "01", "m","n"];//1-4 : installation 5 : ux 0 : back
-var worksName = ["menu" ,"border","syundo", "world apart", "01", "mimie","nomnom  the Game"];//1-4 : installation 5 : ux 0 : back
-var worksLinkURL = ['','work/border.html', 'work/syundo.html' ,'work/world_apart.html','work/01.html','work/mimie.html','work/nomnomGame.html'];
-let worksYear = ['','18.08	Installation','18.10	Installation','19.02	Installation','19.07	Installation','19.06	UX','19.06	UX'];
+var worksIndex = ["back" ,"b","s", "w", "01", "m","u"];//1-4 : installation 5 : ux 0 : back
+var worksName = ["menu" ,"border","signage in GeikoSai", "world apart", "01", "mimie","ura GeikoSai"];//1-4 : installation 5 : ux 0 : back
+var worksLinkURL = ['','work/border.html', 'work/signage.html' ,'work/world_apart.html','work/01.html','work/mimie.html','work/ura.html'];
+let worksYear = ['','18.08	Installation','19.10	UX Design','19.02	Installation','19.07	Installation','19.06	UX Design','19.10	Web Site'];
 // var allBtn = false,instaBtn = true, uxBtn = true;
 var soundSource = [];//サウンドファイル格納
 var firstTouch = 0;
 
 function preload(){
 	fontEn = loadFont('assets/font/FreeSans.otf');
-	soundFormats('mp3', 'ogg');
-	soundSource[0] = loadSound('assets/sound/se01.mp3');
-	soundSource[1] = loadSound('assets/sound/se02.mp3');
+	// soundFormats('mp3', 'ogg');
+	// soundSource[0] = loadSound('assets/sound/se01.mp3');
+	// soundSource[1] = loadSound('assets/sound/se02.mp3');
 }
 
 
@@ -162,7 +162,7 @@ function touchStarted() {
   if(scene == 2){
 		for(var i = 0; i < objNum; i++){
 			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0  && inCanvas()){
-				soundSource[0].play();
+				// soundSource[0].play();
 				if(i == 2){
 					canvas.style('position','fixed');
 					initWorksBox(boxes[i].core);
@@ -188,11 +188,11 @@ function touchStarted() {
 					$("html, body").animate({scrollLeft: 0}, 500);
 					initBox();
 					scene = 2;
-					soundSource[0].play();
+					// soundSource[0].play();
 				}
 				else{
 					// if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true) || (allBtn == true) ){
-						soundSource[1].play();
+						// soundSource[1].play();
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;
 						window.open(worksLinkURL[i], '_blank');
@@ -207,7 +207,7 @@ function mousePressed() {
 	if(scene == 2){
 		for(var i = 0; i < objNum; i++){
 			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0  && inCanvas()){
-				soundSource[0].play();
+				// soundSource[0].play();
 				if(i == 2){
 					canvas.style('position','fixed');
 					initWorksBox(boxes[i].core);
@@ -233,11 +233,11 @@ function mousePressed() {
 					$("html, body").animate({scrollLeft: 0}, 500);
 					initBox();
 					scene = 2;
-					soundSource[0].play();
+					// soundSource[0].play();
 				}
 				else{
 					// if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true)  ){
-						soundSource[1].play();
+						// soundSource[1].play();
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;
 						window.open(worksLinkURL[i], '_blank');
@@ -517,8 +517,10 @@ function toMenu(){
 }
 function changeWorksPage(){
 	$(function () {
-	    var firworContents = $('.firstWorks');
-	    firworContents.hide();
+		var mBtn = document.getElementById('worBtn');
+		mBtn.innerHTML = '<input class = "worksBtn" type="button" value="return" target="_self" onclick="returnWorksPage()"/>';
+	    // var firworContents = $('.firstWorks');
+	    // firworContents.hide();
 	    var secworContents = $('.secondWorks');
 	    secworContents.show();
 
@@ -537,8 +539,8 @@ function changeWorksPage(){
 }
 function returnWorksPage(){
 	$(function () {
-	    var firworContents = $('.firstWorks');
-	    firworContents.show();
+	    var mBtn = document.getElementById('worBtn');
+		mBtn.innerHTML = '<input class = "worksBtn" type="button" value="more works" target="_self" onclick="changeWorksPage()"/>';
 	    var secworContents = $('.secondWorks');
 	    secworContents.hide();
     });
