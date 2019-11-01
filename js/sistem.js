@@ -16,7 +16,7 @@ var worksIndex = ["back" ,"b","s", "w", "01", "m","n"];//1-4 : installation 5 : 
 var worksName = ["menu" ,"border","syundo", "world apart", "01", "mimie","nomnom  the Game"];//1-4 : installation 5 : ux 0 : back
 var worksLinkURL = ['','work/border.html', 'work/syundo.html' ,'work/world_apart.html','work/01.html','work/mimie.html','work/nomnomGame.html'];
 let worksYear = ['','18.08	Installation','18.10	Installation','19.02	Installation','19.07	Installation','19.06	UX','19.06	UX'];
-var allBtn = false,instaBtn = true, uxBtn = true;
+// var allBtn = false,instaBtn = true, uxBtn = true;
 var soundSource = [];//サウンドファイル格納
 var firstTouch = 0;
 
@@ -49,87 +49,87 @@ function setup() {
   imageMode(CENTER);
 }
 
-function pressedAllBtn(){
-	if(allBtn == false){
-		$(function() {
-		    $(".allBtn").css({
-		        "color": "#ffffff",
-		        "background": "#000000"
-		    });
-		    $(".instaBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
-		    $(".uxBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
-		});
+// function pressedAllBtn(){
+// 	if(allBtn == false){
+// 		$(function() {
+// 		    $(".allBtn").css({
+// 		        "color": "#ffffff",
+// 		        "background": "#000000"
+// 		    });
+// 		    $(".instaBtn").css({
+// 		        "color": "#000000",
+// 		        "background": "#ffffff"
+// 		    });
+// 		    $(".uxBtn").css({
+// 		        "color": "#000000",
+// 		        "background": "#ffffff"
+// 		    });
+// 		});
 
-		instaBtn =  false;
-		uxBtn = false;
-		allBtn = true;
-	}else{
-		$(function() {
-		    $(".allBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
-		});
-		allBtn = false;
-	}
-}
-function pressedInstaBtn(){
-	if(instaBtn == false){
-		$(function() {
-		    $(".instaBtn").css({
-		        "color": "#ffffff",
-		        "background": "#000000"
-		    });
-		    $(".allBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
+// 		instaBtn =  false;
+// 		uxBtn = false;
+// 		allBtn = true;
+// 	}else{
+// 		$(function() {
+// 		    $(".allBtn").css({
+// 		        "color": "#000000",
+// 		        "background": "#ffffff"
+// 		    });
+// 		});
+// 		allBtn = false;
+// 	}
+// }
+// function pressedInstaBtn(){
+// 	if(instaBtn == false){
+// 		$(function() {
+// 		    $(".instaBtn").css({
+// 		        "color": "#ffffff",
+// 		        "background": "#000000"
+// 		    });
+// 		    $(".allBtn").css({
+// 		        "color": "#000000",
+// 		        "background": "#ffffff"
+// 		    });
 
-		});
+// 		});
 
-		instaBtn = true;
-		allBtn = false;
-	}else{
-		$(function() {
-		    $(".instaBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
-		});
-		instaBtn = false;
-	}
-}
-function pressedUxBtn(){
-	if(uxBtn == false){
-		$(function() {
-		    $(".uxBtn").css({
-		        "color": "#ffffff",
-		        "background": "#000000"
-		    });
-		    $(".allBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
-		});
+// 		instaBtn = true;
+// 		allBtn = false;
+// 	}else{
+// 		$(function() {
+// 		    $(".instaBtn").css({
+// 		        "color": "#000000",
+// 		        "background": "#ffffff"
+// 		    });
+// 		});
+// 		instaBtn = false;
+// 	}
+// }
+// function pressedUxBtn(){
+// 	if(uxBtn == false){
+// 		$(function() {
+// 		    $(".uxBtn").css({
+// 		        "color": "#ffffff",
+// 		        "background": "#000000"
+// 		    });
+// 		    $(".allBtn").css({
+// 		        "color": "#000000",
+// 		        "background": "#ffffff"
+// 		    });
+// 		});
 
-		uxBtn = true;
-		allBtn = false;
-	}else{
-		$(function() {
-		    $(".uxBtn").css({
-		        "color": "#000000",
-		        "background": "#ffffff"
-		    });
-		});
-		uxBtn = false;
-	}
-}
+// 		uxBtn = true;
+// 		allBtn = false;
+// 	}else{
+// 		$(function() {
+// 		    $(".uxBtn").css({
+// 		        "color": "#000000",
+// 		        "background": "#ffffff"
+// 		    });
+// 		});
+// 		uxBtn = false;
+// 	}
+// }
 function initBox() {
 	for(var i = 0; i < objNum; i++){
 	    var posX = 0;var posY = 0;var posZ = -20;
@@ -191,12 +191,12 @@ function touchStarted() {
 					soundSource[0].play();
 				}
 				else{
-					if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true) || (allBtn == true) ){
+					// if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true) || (allBtn == true) ){
 						soundSource[1].play();
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;
 						window.open(worksLinkURL[i], '_blank');
-					}
+					// }
 				}
 		    }
 		}
@@ -236,14 +236,12 @@ function mousePressed() {
 					soundSource[0].play();
 				}
 				else{
-					if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true)  ){
-
+					// if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true)  ){
 						soundSource[1].play();
-
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;
 						window.open(worksLinkURL[i], '_blank');
-					}
+					// }
 				}
 		    }
 		}
@@ -447,11 +445,11 @@ function drawScene2(){
 function drawScene3() {
 	background(255);
 	for(var j = 1; j < worksNum; j++){
-		if(j >= 1 && j <= 4){
-			if(!instaBtn)continue;
-		}else if(j <= 5){
-			if(!uxBtn)continue;
-		}
+		// if(j >= 1 && j <= 4){
+		// 	if(!instaBtn)continue;
+		// }else if(j <= 5){
+		// 	if(!uxBtn)continue;
+		// }
 		if(worksBox[j].inTerritory(mouseX,mouseY)){
 		    stroke(worksBox[j].baseColor);
 		    worksBox[j].drawInnerBox();
@@ -533,7 +531,8 @@ function changeWorksPage(){
 	        });
 	    });
     });
-    pressedAllBtn();
+    // pressedAllBtn();
+
 	canvas.style('position','absolute');
 }
 function returnWorksPage(){
@@ -544,10 +543,10 @@ function returnWorksPage(){
 	    secworContents.hide();
     });
 	canvas.style('position','fixed');
-	if(allBtn){
-		pressedUxBtn();
-		pressedInstaBtn();
-	}
+	// if(allBtn){
+	// 	pressedUxBtn();
+	// 	pressedInstaBtn();
+	// }
 	if(scene == 2){
 		initBox();
 	}else if(scene == 3){

@@ -43,7 +43,7 @@ nav{
     font-family: 'arial black','arial','sans-serif','Impact';
     position: fixed;
     top: 0;
-    left: -7vw;
+    left: -2vw;
     bottom: 0;
     display: flex;
     justify-content: space-between;
@@ -124,6 +124,7 @@ ul {
 .title {
   color:black;
   width: 60vw;
+  max-width: 600px;
   height: auto;
   margin: 0 auto;
   margin-top: 2vw;
