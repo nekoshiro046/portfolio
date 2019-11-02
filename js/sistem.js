@@ -17,6 +17,7 @@ var worksName = ["menu" ,"border","signage in GeikoSai", "world apart", "01", "m
 var worksLinkURL = ['','work/border.html', 'work/signage.html' ,'work/world_apart.html','work/01.html','work/mimie.html','work/ura.html'];
 let worksYear = ['','18.08	Installation','19.10	UX Design','19.02	Installation','19.07	Installation','19.06	UX Design','19.10	Web Site'];
 // var allBtn = false,instaBtn = true, uxBtn = true;
+var secondWorks = false;
 var soundSource = [];//サウンドファイル格納
 var firstTouch = 0;
 
@@ -162,11 +163,14 @@ function touchStarted() {
   if(scene == 2){
 		for(var i = 0; i < objNum; i++){
 			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0  && inCanvas()){
-				// soundSource[0].play();
+				soundSource[0].play();
 				if(i == 2){
-					canvas.style('position','fixed');
-					initWorksBox(boxes[i].core);
-					scene = 3;
+					if(secondWorks){
+					}else{
+						canvas.style('position','fixed');
+						initWorksBox(boxes[i].core);
+						scene = 3;
+					}
 				}else{
 					canvas.style('position','absolute');
 				}
@@ -188,11 +192,11 @@ function touchStarted() {
 					$("html, body").animate({scrollLeft: 0}, 500);
 					initBox();
 					scene = 2;
-					// soundSource[0].play();
+					soundSource[0].play();
 				}
 				else{
 					// if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true) || (allBtn == true) ){
-						// soundSource[1].play();
+						soundSource[1].play();
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;
 						window.open(worksLinkURL[i], '_blank');
@@ -207,11 +211,14 @@ function mousePressed() {
 	if(scene == 2){
 		for(var i = 0; i < objNum; i++){
 			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0  && inCanvas()){
-				// soundSource[0].play();
+				soundSource[0].play();
 				if(i == 2){
-					canvas.style('position','fixed');
-					initWorksBox(boxes[i].core);
-					scene = 3;
+					if(secondWorks){
+					}else{
+						canvas.style('position','fixed');
+						initWorksBox(boxes[i].core);
+						scene = 3;
+					}
 				}else{
 					canvas.style('position','absolute');
 				}
@@ -233,11 +240,11 @@ function mousePressed() {
 					$("html, body").animate({scrollLeft: 0}, 500);
 					initBox();
 					scene = 2;
-					// soundSource[0].play();
+					soundSource[0].play();
 				}
 				else{
 					// if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true)  ){
-						// soundSource[1].play();
+						soundSource[1].play();
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;
 						window.open(worksLinkURL[i], '_blank');
@@ -533,6 +540,7 @@ function changeWorksPage(){
 	        });
 	    });
     });
+    secondWorks = true;
     // pressedAllBtn();
 
 	canvas.style('position','absolute');
@@ -544,7 +552,12 @@ function returnWorksPage(){
 	    var secworContents = $('.secondWorks');
 	    secworContents.hide();
     });
-	canvas.style('position','fixed');
+    if(secondWorks){
+    	canvas.style('position','fixed');
+    }else{
+    	canvas.style('position','absolute');
+    }
+    secondWorks = false;
 	// if(allBtn){
 	// 	pressedUxBtn();
 	// 	pressedInstaBtn();
