@@ -13,7 +13,7 @@ let linkIndex = ['a','c','w'];
 let linkName = ["about","contact","works"];
 let linkURL = ['about-me','contact','works'];
 var worksIndex = ["back" ,"b","s", "w", "01", "m","u"];//1-4 : installation 5 : ux 0 : back
-var worksName = ["menu" ,"border","signage in GeikoSai", "world apart", "01", "mimie","ura GeikoSai"];//1-4 : installation 5 : ux 0 : back
+var worksName = ["menu" ,"border","signage in GeikoSai", "world apart", "01", "mimie","URA GeikoSai"];//1-4 : installation 5 : ux 0 : back
 var worksLinkURL = ['','work/border.html', 'work/signage.html' ,'work/world_apart.html','work/01.html','work/mimie.html','work/ura.html'];
 let worksYear = ['','18.08	Installation','19.10	UX Design','19.02	Installation','19.07	Installation','19.06	UX Design','19.10	Web Site'];
 // var allBtn = false,instaBtn = true, uxBtn = true;
