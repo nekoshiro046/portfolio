@@ -548,7 +548,7 @@ function changeWorksPage(){
 function returnWorksPage(){
 	$(function () {
 	    var mBtn = document.getElementById('worBtn');
-		mBtn.innerHTML = '<input class = "worksBtn" type="button" value="more works" target="_self" onclick="changeWorksPage()"/>';
+		mBtn.innerHTML = '<input class = "worksBtn" type="button" value="more work" target="_self" onclick="changeWorksPage()"/>';
 	    var secworContents = $('.secondWorks');
 	    secworContents.hide();
     });
