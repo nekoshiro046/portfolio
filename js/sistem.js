@@ -10,7 +10,7 @@ let fontSize = 40;
 let fontEn,fontJp;
 var userMove = 0;
 let linkIndex = ['a','c','w'];
-let linkName = ["about","contact","works"];
+let linkName = ["about","contact","work"];
 let linkURL = ['about-me','contact','works'];
 var worksIndex = ["back" ,"b","s", "w", "01", "m","u"];//1-4 : installation 5 : ux 0 : back
 var worksName = ["menu" ,"border","signage in GeikoSai", "world apart", "01", "mimie","URA GeikoSai"];//1-4 : installation 5 : ux 0 : back
