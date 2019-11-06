@@ -65,11 +65,17 @@
                         <a href="https://nekoshiro046.github.io/pfImg/works/signage/signage_sistem.png" data-lightbox="Images" data-title="">
                             <img class="img-container" src="https://nekoshiro046.github.io/pfImg/works/signage/signage_sistem.png" alt="signage_sistem">
                         </a>
+                        <a href="https://nekoshiro046.github.io/pfImg/works/signage/signage_sistem_program.png" data-lightbox="Images" data-title="">
+                            <img class="img-container" src="https://nekoshiro046.github.io/pfImg/works/signage/signage_sistem_program.png" alt="signage_sistem_program">
+                        </a>
+
                     </li>
                 </ul>
                 <p>
                     Processing(Java)をClient,HTML側JavaScriptをServerとしWebSocketを用いて通信を行う。<br>
-                    kinectを用いてセンシングを行いProcessing
+                    センシングにはKinectを用いて動体検知を行う。具体的にはまず、一定以上の深度「Human Area」に動体が侵入した場合、サイネージの表示を待機画面(映像)からマップ画面へと移行する。<br>
+                    次に、指先などがより画面に近い深度「Tip Area」に侵入した場合そこを始点とし、次に動体がTip Areaのエリア外に外れた場所を終点とする事で動体が左右どちらの方向に移動したのかを算出する。
+                    この際、Tip Area内の最も深度が浅い部分「Tip Point」の座標群の平均を動体検知の算出に用いる事で精度の向上を行っている。
                 </p>
             </div>
 
