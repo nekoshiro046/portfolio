@@ -321,4 +321,16 @@ $(function () {
         }, 500);
         return false;
     });
+    $('html,body').animate({ scrollTop: 0 }, '1');
+
+    jQuery(window).scroll(function (){
+        jQuery('.underline').each(function(){
+            var elemPos = jQuery(this).offset().top;
+            var scroll = jQuery(window).scrollTop();
+            var windowHeight = jQuery(window).height();
+            if (scroll > elemPos - windowHeight + 500){
+                jQuery(this).addClass('scrollin');
+            }
+        });
+    });
 });

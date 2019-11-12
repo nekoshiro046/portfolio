@@ -9,6 +9,7 @@
 body {
 	/*height: ;*/
   box-sizing: border-box;
+  background-color: #ffffff;
 }
 
 main {
@@ -120,6 +121,29 @@ ul {
   font-size: 20px;
   margin-top: 10vh;
   /*margin-left: 30%;*/
+}
+.underline {
+  padding-bottom: 5px;
+  position: relative;
+  margin-bottom: 1vh;
+}
+
+.underline::after {
+  background-color: #ff0000;
+  bottom: 0;
+  content: '';
+  display: block;
+  height: 1px;
+  left: 0;
+  position: absolute;
+  transition: .5s all;
+  width: 0;
+  margin-left: 50%;
+}
+
+.underline.scrollin::after {
+  margin-left: 10%;
+  width: 80%;
 }
 
 .link {
