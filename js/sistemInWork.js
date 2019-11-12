@@ -11,6 +11,7 @@ function setup() {
   canvas = createCanvas(windowWidth/ww, windowWidth/ww,WEBGL);
   canvas.position("30%",0);
   canvas.style('position','fixed');
+  canvas.style('margin-left','2%');
   canvas.style('z-index','0');
   canvas.parent('sketch-holder');
   // Move the canvas so it’s inside our <div id="sketch-holder">.

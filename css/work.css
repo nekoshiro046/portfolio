@@ -46,8 +46,8 @@ ul {
 
 .work-about {
   position: fixed;
-  max-width: 25%;
-  height: 100%;
+  max-width: 20%;
+  height: auto;
   /*background: #FFFFFF;*/
   /*background: red;*/
   margin-top: 18%;
@@ -56,6 +56,8 @@ ul {
   font-family: 'arial black','Impact','arial';
   font-weight:lighter;
   word-wrap: break-word;
+
+  /*border: solid;*/
 }
 .work-about p{
   max-width: 100%;
@@ -65,6 +67,18 @@ ul {
   font-family: 'New Gulim';
   font-weight:lighter;
   border-bottom: solid 2px #555;
+}
+
+.grad{
+  padding: 2.5px;
+  background: -moz-linear-gradient(top left, #f00, #00f); 
+  background: -webkit-linear-gradient(top left, #f00, #00f); 
+  background: linear-gradient(to bottom right, #f00, #00f); 
+}
+
+.grad_inner{
+  padding: 16px;
+  background-color: #fff;
 }
 
 
@@ -83,7 +97,6 @@ ul {
   width: 90%;
   max-width: 100%;
   height: auto;
-  /*margin:0;*/
   margin-top: 10%;
   
   /*margin: 50px auto;*/
@@ -123,17 +136,17 @@ ul {
   /*margin-left: 30%;*/
 }
 .underline {
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   position: relative;
-  margin-bottom: 1vh;
+  margin-bottom: 5vh;
 }
 
 .underline::after {
-  background-color: #ff0000;
+  background-color: #000000;
   bottom: 0;
   content: '';
   display: block;
-  height: 1px;
+  height: 5px;
   left: 0;
   position: absolute;
   transition: .5s all;
