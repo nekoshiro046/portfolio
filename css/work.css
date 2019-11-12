@@ -9,7 +9,6 @@
 body {
 	/*height: ;*/
   box-sizing: border-box;
-  background-color: #ffffff;
 }
 
 main {
@@ -46,8 +45,8 @@ ul {
 
 .work-about {
   position: fixed;
-  max-width: 20%;
-  height: auto;
+  max-width: 25%;
+  height: 100%;
   /*background: #FFFFFF;*/
   /*background: red;*/
   margin-top: 18%;
@@ -56,8 +55,6 @@ ul {
   font-family: 'arial black','Impact','arial';
   font-weight:lighter;
   word-wrap: break-word;
-
-  /*border: solid;*/
 }
 .work-about p{
   max-width: 100%;
@@ -67,18 +64,6 @@ ul {
   font-family: 'New Gulim';
   font-weight:lighter;
   border-bottom: solid 2px #555;
-}
-
-.grad{
-  padding: 2.5px;
-  background: -moz-linear-gradient(top left, #f00, #00f); 
-  background: -webkit-linear-gradient(top left, #f00, #00f); 
-  background: linear-gradient(to bottom right, #f00, #00f); 
-}
-
-.grad_inner{
-  padding: 16px;
-  background-color: #fff;
 }
 
 
@@ -97,6 +82,7 @@ ul {
   width: 90%;
   max-width: 100%;
   height: auto;
+  /*margin:0;*/
   margin-top: 10%;
   
   /*margin: 50px auto;*/
@@ -132,31 +118,15 @@ ul {
   font-weight:lighter;
   text-align: center;
   font-size: 20px;
-  margin-top: 10vh;
+  margin-top: 15vh;
   /*margin-left: 30%;*/
 }
-.underline {
-  padding-bottom: 10px;
-  position: relative;
-  margin-bottom: 5vh;
-}
-
-.underline::after {
-  background-color: #000000;
-  bottom: 0;
-  content: '';
-  display: block;
-  height: 5px;
-  left: 0;
-  position: absolute;
-  transition: .5s all;
-  width: 0;
-  margin-left: 50%;
-}
-
-.underline.scrollin::after {
-  margin-left: 10%;
-  width: 80%;
+@media screen and (max-width: 480px) { 
+  .text-title {
+  font-size: 20px;
+  margin-top: 10vh;
+  /*margin-left: 30%;*/
+  }
 }
 
 .link {
