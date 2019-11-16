@@ -158,6 +158,17 @@ ul {
   width: 80%;
 }
 
+.fadein {
+  opacity: 0;
+  transform : translate(0, 50px);
+  transition : all 1500ms;
+}
+.fadein.scrollin{
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+
 .link {
   font-family: 'arial black','arial','Impact';
   font-weight:lighter;
@@ -175,6 +186,7 @@ ul {
 }
 
 .tail_blank {
+  height: 10vh;
   margin: 10vh;
 }
 

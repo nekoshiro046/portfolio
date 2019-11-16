@@ -311,7 +311,7 @@ class box{
 	    return back;
 	}
 }
-var height = window.parent.screen.height;
+// var height = window.parent.screen.height;
 
 $(function () {
     var w = $(window).width();
@@ -329,7 +329,16 @@ $(function () {
             var elemPos = jQuery(this).offset().top;
             var scroll = jQuery(window).scrollTop();
             var windowHeight = jQuery(window).height();
-            if (scroll > elemPos - windowHeight + 500){
+            if (scroll > elemPos - windowHeight + 250){
+                jQuery(this).addClass('scrollin');
+            }
+        });
+
+        jQuery('.fadein').each(function(){
+            var elPos = jQuery(this).offset().top;
+            var scroll = jQuery(window).scrollTop();
+            var windowHeight = jQuery(window).height();
+            if (scroll > elPos - windowHeight + 300){
                 jQuery(this).addClass('scrollin');
             }
         });
