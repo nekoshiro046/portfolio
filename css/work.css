@@ -68,20 +68,66 @@ ul {
   font-weight:lighter;
   border-bottom: solid 2px #555;
 }
-
-.grad{
+#grad_01{/*01*/
   padding: 2.5px;
-  background: -moz-linear-gradient(top left, #f00, #00f); 
-  background: -webkit-linear-gradient(top left, #f00, #00f); 
-  background: linear-gradient(to bottom right, #f00, #00f); 
+  background: -moz-linear-gradient(top left, #D42C27, #4EB4E7); 
+  background: -webkit-linear-gradient(top left, #D42C27, #4EB4E7); 
+  background: linear-gradient(to bottom right, #D42C27, #4EB4E7); 
+}
+#grad_02{/*border*/
+  padding: 2.5px;
+  background: -moz-linear-gradient(top left, #255C30, #D0E28D); 
+  background: -webkit-linear-gradient(top left, #255C30, #D0E28D); 
+  background: linear-gradient(to bottom right, #255C30, #D0E28D); 
+}
+#grad_03{/*sinage*/
+  padding: 2.5px;
+  background: -moz-linear-gradient(top left, #bd4056, #4082a8); 
+  background: -webkit-linear-gradient(top left, #bd4056, #4082a8); 
+  background: linear-gradient(to bottom right, #bd4056, #4082a8); 
+}
+#grad_04{/*artgurg*/
+  padding: 2.5px;
+  background: -moz-linear-gradient(top left, #d47a7e, #143160); 
+  background: -webkit-linear-gradient(top left, #d47a7e, #143160); 
+  background: linear-gradient(to bottom right, #d47a7e, #143160); 
+}
+#grad_05{/*mimie*/
+  padding: 2.5px;
+  background: -moz-linear-gradient(top left, #60A7D6, #E6E6E5); 
+  background: -webkit-linear-gradient(top left, #60A7D6, #E6E6E5); 
+  background: linear-gradient(to bottom right, #60A7D6, #E6E6E5); 
+}
+#grad_06{/*ura*/
+  padding: 2.5px;
+  background: -moz-linear-gradient(top left, #f27b00, #00e7d8); 
+  background: -webkit-linear-gradient(top left, #f27b00, #00e7d8); 
+  background: linear-gradient(to bottom right, #f27b00, #00e7d8); 
+}
+#grad_07{/*nomgame*/
+  padding: 2.5px;
+  background: -moz-linear-gradient(top left, #d47a7e, #143160); 
+  background: -webkit-linear-gradient(top left, #d47a7e, #143160); 
+  background: linear-gradient(to bottom right, #d47a7e, #143160); 
+}
+#grad_08{/*wa*/
+  padding: 2.5px;
+  background: -moz-linear-gradient(top left, #C8B754, #ADAEA5); 
+  background: -webkit-linear-gradient(top left, #C8B754, #ADAEA5); 
+  background: linear-gradient(to bottom right, #C8B754, #ADAEA5); 
+}
+#grad_09{/*shundo*/
+  padding: 2.5px;
+  background: -moz-linear-gradient(top left, #FF8A4E, #143160); 
+  background: -webkit-linear-gradient(top left, #FF8A4E, #143160); 
+  background: linear-gradient(to bottom right, #FF8A4E, #040000); 
 }
 
-.grad_inner{
+
+#grad_inner{
   padding: 16px;
   background-color: #fff;
 }
-
-
 .thumbnail-box{
   position: relative;
   width: 100%;

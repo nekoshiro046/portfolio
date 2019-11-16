@@ -312,7 +312,6 @@ class box{
 	}
 }
 // var height = window.parent.screen.height;
-
 $(function () {
     var w = $(window).width();
     var topBtn = $('#page-top');
@@ -329,7 +328,7 @@ $(function () {
             var elemPos = jQuery(this).offset().top;
             var scroll = jQuery(window).scrollTop();
             var windowHeight = jQuery(window).height();
-            if (scroll > elemPos - windowHeight + 250){
+            if (scroll > elemPos - windowHeight + 225){
                 jQuery(this).addClass('scrollin');
             }
         });
@@ -338,7 +337,7 @@ $(function () {
             var elPos = jQuery(this).offset().top;
             var scroll = jQuery(window).scrollTop();
             var windowHeight = jQuery(window).height();
-            if (scroll > elPos - windowHeight + 300){
+            if (scroll > elPos - windowHeight + 250){
                 jQuery(this).addClass('scrollin');
             }
         });
