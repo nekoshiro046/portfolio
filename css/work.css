@@ -184,6 +184,8 @@ ul {
   padding-bottom: 10px;
   position: relative;
   margin-bottom: 5vh;
+  /*height: 10;*/
+   z-index: -10;
 }
 
 .underline::after {
@@ -192,16 +194,20 @@ ul {
   content: '';
   display: block;
   height: 5px;
+  padding: 0;
   left: 0;
   position: absolute;
   transition: .5s all;
   width: 0;
   margin-left: 50%;
+  z-index: -10;
 }
 
 .underline.scrollin::after {
   margin-left: 10%;
   width: 80%;
+  padding: 0;
+  z-index: -10;
 }
 
 .fadein {
