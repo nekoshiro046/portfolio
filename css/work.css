@@ -68,6 +68,14 @@ ul {
   font-weight:lighter;
   border-bottom: solid 2px #555;
 }
+@media screen and (max-width: 896px) { 
+  .work-about p{
+    font-size: 12px;
+  }
+  .work-about h1{
+    font-size: 12px;
+  }
+}
 #grad_01{/*01*/
   padding: 2.5px;
   background: -moz-linear-gradient(top left, #D42C27, #4EB4E7); 
