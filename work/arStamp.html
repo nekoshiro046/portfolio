@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+    <html>
+    <html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>Yuki's works - AR Stamp rally for nomnom</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta name="Keywords" content="Yuki's portfolio,メディアアート,大城佑樹,犬城,openframeworks,max,max msp,processing,arStamp,geikosai,芸工祭" />
+        <meta name="description" content="arStamp.大学祭の展示のために制作したインスタレーション作品" />
+        <meta http-equiv="content-language" content="ja" />
+        <link rel="stylesheet" type="text/css" href="../css/work.css">
+        <link type="image/png" rel="shortcut icon" href="../assets/image/icon.png">
+        <script src="../libraries/p5.js" type="text/javascript"></script>
+        <script src="../libraries/p5.dom.js" type="text/javascript"></script>
+        <script src="../libraries/jquery-3.4.1.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="../libraries/dist/css/lightbox.css">
+        <script src="../libraries/dist/js/lightbox.js"></script>
+    </head>
+    <body>
+        <header>
+        <div class="header">
+            <div id="sketch-holder" class="menuBack"></div>
+            <div class="work-about">
+                <div id="grad_11">
+                    <div id="grad_inner">
+                    <h1>artBurg</h1>
+                    <p>制作期間 : 1ヶ月</p>
+                    <p>制作人数 : 4名</p>
+                    <p>形式 : UXデザイン</p>
+                    <p>使用ライブラリ : AR.js</p>
+                    <p>担当役職 : プロデューサー /<br>
+                    サポートエンジニア</p>
+                    </div>
+                    </div>
+            </div>
+
+        </div>
+        </header>
+
+        <main>
+        <div class="main">
+            <div class="thumbnail-box">
+                <!-- <img class="thumbnail-img" src="../assets/works/01/nail.png" alt="01_nail"> -->
+                <img class="thumbnail-img" src="https://nekoshiro046.github.io/pfImg/works/arStamp/nail.jpg" alt="arStamp_nail">
+            </div>
+            <div class="thumbnail-text">
+                <p>大学祭のメイン会場にて退場者を様々なイベント、コンテンツへ誘導するため考案、制作したWebアプリケーション作品。ARを用いたスタンプラリー形式の作品で、コンテンツ班の制作物として発表した。
+                </p>
+            </div>
+
+            <div class="text-title underline">About</div>
+            <div class="text-container fadein">
+                <p>ARを用いたスタンプラリー(webアプリケーション)を制作し、大学祭当日にイベントの一環として行われた作品。<br>
+                    メイン会場の1階から3階にかけてARマーカーを6つ設置し、その通過ポイントとしてコンテンツ班のその他の作品や大学祭のイベントブースを設置する事でコンテンツ班の制作物をみてもらうだけでなく、大学祭自体の遊覧を促す。
+                </p>
+            </div>
+
+            <div class="text-title underline">System</div>
+            <div class="text-container fadein">
+                <p>webアプリ起動後、1~5のマーカーに対応するアイコンをタップするとカメラが起動する。この際ARマーカーを無事読み込むとスランプが押された状態がtrueとなり、マーカーに対応した3Dオブジェクト(ハンバーガーやドリンクなど)が表示さる。<br>1~5のスタンプ全てが押された状態で6つ目のマーカーを読み込む事で、ハンバーガーセットが表示される。<br>
+                    この個々のユーザーの状態管理のためherokuの--を用いた。具体的には、アプリケーション初起動時に自動的にユーザーアドレスを割り振り,その情報をキャッシュ管理する事で、一般ユーザーにはログインの手間を感じさせない仕様とした。
+                </p>
+            </div>
+
+            <div class="text-title underline">Images</div>
+            <div class="img-box">
+                <ul>
+                    <li>
+                        <a href="https://nekoshiro046.github.io/pfImg/works/arStamp/pic_01.png" data-lightbox="Images" data-title="">
+                            <img class="img-container" src="https://nekoshiro046.github.io/pfImg/works/arStamp/pic_01.png" alt="artBurg_nail">
+                        </a>
+                        <a href="https://nekoshiro046.github.io/pfImg/works/arStamp/pic_02.jpg" data-lightbox="Images" data-title="">
+                            <img class="img-container" src="https://nekoshiro046.github.io/pfImg/works/arStamp/pic_02.jpg" alt="artBurg_pic01">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="text-title underline">About the production</div>
+            <div class="text-container fadein">
+                <p>アプリケーションを用いた当日のイベント、というコンテンツは今年度が初の試みであり、手探りでの開発となった。<br>
+                    当初は大学祭の公式HPのコンテンツの一つとして展開する予定だったが、サーバーの問題や開発期間などからherokuを用いた開発にシフトした。<br>
+                    この試みは大きな反響を呼び、来場者の大方がスマートフォンを片手にイベントに参加する姿が見られ、他の大学祭実行委員の人からも高い評価を得た。
+                </p>
+            </div>
+        </div>
+        </main>
+
+        <footer>
+        <div class="footer">
+            <div class="tail_blank"> </div>
+        </div>
+        </footer>
+    <script src="../js/sistemInWork.js"></script>
+    </body>
+    </html> 

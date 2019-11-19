@@ -59,23 +59,32 @@
                 <p>ノイズキャンセルング × iot で生活の新機軸を提案</p>
             </div>
 
-            <div class="text-title underline">About</div>
+            <div class="text-title underline">Wthat's mimie</div>
             <div class="text-container fadein">
-                <p>「雨音」や、「人の話し声」と言った種類毎のノイズキャンセリングを任意で行う。<br>
-                    その際、キャンセリングしたノイズの種類,座標,音声情報をクラウド上に保存する。<br>
-                    保存された音声データは、ノイズキャンセリングに使用するノイズの逆位相算出のためのサンプルデータとして、機械学習に用いられる。<br>
-                また、キャンセリングしたノイズの種類,座標を元にノイズマップを生成し、新規,既存のマップサービスの向上を図る。</p>
-                <p>運用例として、「この道は車の騒音がよく検知されていることから、子連れの人には別の道を勧める」など、既存のマップサービスではカバーしにくかった「能動的に情報を集めなければいけない場面」での利用が考えられる。<br>
-                既存のマップサービスの多くは、ユーザーの文字情報の書き込みによって膨大な情報を処理していることから、音によるマップサービスへのアプローチはこうしたニーズへ対応できるのではないかと考える。</p>
+                <p>[mimie]は、周囲のノイズ音を録音,解析する事でノイズの種類ごとのノイズキャンセルングといった高度なノイズキャンセルを実現するイヤホン、及び連動アプリの総称。</p>
             </div>
 
+            <div class="text-title underline">About</div>
+            <div class="text-container fadein">
+                <p>「雨音」や、「人の話し声」と言った種類毎のノイズキャンセリングを任意で行い、その際、キャンセリングしたノイズの種類,座標,音声情報をクラウド上に保存する。<br>
+                    保存された音声データは、ノイズキャンセリングに使用するノイズの逆位相算出のためのサンプルデータとして、機械学習に用いられる。<br>
+                また、キャンセリングしたノイズの種類,座標を元にノイズマップを生成し、新規,既存のマップサービスの向上を図る。</p>
+            </div>
 
-
-            <div class="text-title underline">System</div>
+            <div class="text-title underline">System in application</div>
             <div class="text-container fadein">
                 <p>webアプリ内のマップ表示には「leaflet.js」を用いた。<br>
                     また、マッピング内におけるノイズマーカーの座標,ノイズの種類名の保存にはfirebaseの「Realtime Database」を用いた。<br>
                 ノイズ音のサンプルデータは同じくfirebseの「storage」に保存し、機械学習用のpythonとの連携を容易にした。</p>
+            </div>
+
+            <div class="text-title underline">Usefulness</div>
+            <div class="text-container fadein">
+                <a href="https://nekoshiro046.github.io/pfImg/works/mimie/mimie_usefulness.png" data-lightbox="Images" data-title="">
+                    <img class="img-container" style = "margin-left: 25%" src="https://nekoshiro046.github.io/pfImg/works/mimie/mimie_usefulness.png" alt="mimie_usefulness">
+                </a>
+                <p>既存のマップサービスではカバーしにくかった「能動的に情報を集めなければいけない場面」での利用が考えられる。具体例として、「この道は車の騒音がよく検知されていることから、子連れの人には別の道を勧める」など。<br>
+                既存のマップサービスの多くは、ユーザーの文字情報の書き込みによって膨大な情報を処理していることから、音によるマップサービスへのアプローチはこうしたニーズへ対応できるのではないかと考える。</p>
             </div>
 
             <div class="text-title underline">Images</div>

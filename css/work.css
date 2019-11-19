@@ -70,6 +70,14 @@ ul {
 }
 @media screen and (max-width: 896px) { 
   .work-about p{
+    font-size: 16px;
+  }
+  .work-about h1{
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 480) { 
+  .work-about p{
     font-size: 12px;
   }
   .work-about h1{
@@ -130,7 +138,18 @@ ul {
   background: -webkit-linear-gradient(top left, #FF8A4E, #143160); 
   background: linear-gradient(to bottom right, #FF8A4E, #040000); 
 }
-
+#grad_10{/*geikosai*/
+  padding: 2.5px;
+  background: -moz-linear-gradient(top left, #143160, #bd4056); 
+  background: -webkit-linear-gradient(top left, #143160, #bd4056); 
+  background: linear-gradient(to bottom right, #143160, #bd4056); 
+}
+#grad_11{/*arStamp*/
+  padding: 2.5px;
+  background: -moz-linear-gradient(top left, #419897, #e3cd5e); 
+  background: -webkit-linear-gradient(top left, #419897, #e3cd5e); 
+  background: linear-gradient(to bottom right, #419897, #e3cd5e); 
+}
 
 #grad_inner{
   padding: 16px;
