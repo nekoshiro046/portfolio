@@ -50,13 +50,8 @@ ul {
   height: auto;
   /*background: #FFFFFF;*/
   /*background: red;*/
-  margin-top: 18%;
+  margin-top: 18%; 
   margin-left: 2%;
-
-  font-family: 'arial black','Impact','arial';
-  font-weight:lighter;
-  word-wrap: break-word;
-
   /*border: solid;*/
 }
 .work-about p{

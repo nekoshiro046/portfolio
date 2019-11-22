@@ -525,7 +525,7 @@ function toMenu(){
 function changeWorksPage(){
 	$(function () {
 		var mBtn = document.getElementById('worBtn');
-		mBtn.innerHTML = '<input class = "worksBtn" type="button" value="return" target="_self" onclick="returnWorksPage()"/>';
+		mBtn.innerHTML = '<input class = "worksBtn" type="button" value="Return" target="_self" onclick="returnWorksPage()"/>';
 	    // var firworContents = $('.firstWorks');
 	    // firworContents.hide();
 	    var secworContents = $('.secondWorks');
@@ -548,7 +548,7 @@ function changeWorksPage(){
 function returnWorksPage(){
 	$(function () {
 	    var mBtn = document.getElementById('worBtn');
-		mBtn.innerHTML = '<input class = "worksBtn" type="button" value="more work" target="_self" onclick="changeWorksPage()"/>';
+		mBtn.innerHTML = '<input class = "worksBtn" type="button" value="All Work" target="_self" onclick="changeWorksPage()"/>';
 	    var secworContents = $('.secondWorks');
 	    secworContents.hide();
     });
