@@ -16,19 +16,15 @@ var worksIndex = ["back" ,"b","s", "w", "01", "m","u"];//1-4 : installation 5 : 
 var worksName = ["menu" ,"border","signage in GeikoSai", "world apart", "01", "mimie","URA GeikoSai"];//1-4 : installation 5 : ux 0 : back
 var worksLinkURL = ['','work/border.html', 'work/signage.html' ,'work/world_apart.html','work/01.html','work/mimie.html','work/ura.html'];
 let worksYear = ['','18.08	Installation','19.10	UX Design','19.02	Installation','19.07	Installation','19.06	UX Design','19.10	Web Site'];
-// var allBtn = false,instaBtn = true, uxBtn = true;
 var secondWorks = false;
 var soundSource = [];//サウンドファイル格納
 var firstTouch = 0;
-
 function preload(){
 	fontEn = loadFont('assets/font/FreeSans.otf');
 	soundFormats('mp3', 'ogg');
 	soundSource[0] = loadSound('assets/sound/se01.mp3');
 	soundSource[1] = loadSound('assets/sound/se02.mp3');
 }
-
-
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight,WEBGL);
   canvas.position(0,0);
@@ -49,88 +45,6 @@ function setup() {
   rectMode(CENTER);
   imageMode(CENTER);
 }
-
-// function pressedAllBtn(){
-// 	if(allBtn == false){
-// 		$(function() {
-// 		    $(".allBtn").css({
-// 		        "color": "#ffffff",
-// 		        "background": "#000000"
-// 		    });
-// 		    $(".instaBtn").css({
-// 		        "color": "#000000",
-// 		        "background": "#ffffff"
-// 		    });
-// 		    $(".uxBtn").css({
-// 		        "color": "#000000",
-// 		        "background": "#ffffff"
-// 		    });
-// 		});
-
-// 		instaBtn =  false;
-// 		uxBtn = false;
-// 		allBtn = true;
-// 	}else{
-// 		$(function() {
-// 		    $(".allBtn").css({
-// 		        "color": "#000000",
-// 		        "background": "#ffffff"
-// 		    });
-// 		});
-// 		allBtn = false;
-// 	}
-// }
-// function pressedInstaBtn(){
-// 	if(instaBtn == false){
-// 		$(function() {
-// 		    $(".instaBtn").css({
-// 		        "color": "#ffffff",
-// 		        "background": "#000000"
-// 		    });
-// 		    $(".allBtn").css({
-// 		        "color": "#000000",
-// 		        "background": "#ffffff"
-// 		    });
-
-// 		});
-
-// 		instaBtn = true;
-// 		allBtn = false;
-// 	}else{
-// 		$(function() {
-// 		    $(".instaBtn").css({
-// 		        "color": "#000000",
-// 		        "background": "#ffffff"
-// 		    });
-// 		});
-// 		instaBtn = false;
-// 	}
-// }
-// function pressedUxBtn(){
-// 	if(uxBtn == false){
-// 		$(function() {
-// 		    $(".uxBtn").css({
-// 		        "color": "#ffffff",
-// 		        "background": "#000000"
-// 		    });
-// 		    $(".allBtn").css({
-// 		        "color": "#000000",
-// 		        "background": "#ffffff"
-// 		    });
-// 		});
-
-// 		uxBtn = true;
-// 		allBtn = false;
-// 	}else{
-// 		$(function() {
-// 		    $(".uxBtn").css({
-// 		        "color": "#000000",
-// 		        "background": "#ffffff"
-// 		    });
-// 		});
-// 		uxBtn = false;
-// 	}
-// }
 function initBox() {
 	for(var i = 0; i < objNum; i++){
 	    var posX = 0;var posY = 0;var posZ = -20;
@@ -140,7 +54,6 @@ function initBox() {
 }
 function initWorksBox(workPos) {
 	for(var i = 0; i < worksNum; i++){
-	    // var posX = workPos.x;var posY = workPos.y;var posZ = workPos.z;
 	    var posX = 0;var posY = 0;var posZ = 0;
 	    var inch = (windowWidth + windowHeight)/40;
 	    if( i == 0){
@@ -254,8 +167,6 @@ function mousePressed() {
 		}
 	}
 }
-
-
 function selectScene(){
 	if(scene == 1){
 		canvas.style('z-index','5');
@@ -388,7 +299,6 @@ function selectScene(){
 	    }
 	}
 }
-
 function drawScene1(str){
 	background(0);
   	var a = int(random(1,7));
@@ -447,16 +357,9 @@ function drawScene2(){
     boxes[j].drawBox(); 
   }
 }
-
-
 function drawScene3() {
 	background(255);
 	for(var j = 1; j < worksNum; j++){
-		// if(j >= 1 && j <= 4){
-		// 	if(!instaBtn)continue;
-		// }else if(j <= 5){
-		// 	if(!uxBtn)continue;
-		// }
 		if(worksBox[j].inTerritory(mouseX,mouseY)){
 		    stroke(worksBox[j].baseColor);
 		    worksBox[j].drawInnerBox();
@@ -526,8 +429,6 @@ function changeWorksPage(){
 	$(function () {
 		var mBtn = document.getElementById('worBtn');
 		mBtn.innerHTML = '<input class = "worksBtn" type="button" value="Return" target="_self" onclick="returnWorksPage()"/>';
-	    // var firworContents = $('.firstWorks');
-	    // firworContents.hide();
 	    var secworContents = $('.secondWorks');
 	    secworContents.show();
 
@@ -541,8 +442,6 @@ function changeWorksPage(){
 	    });
     });
     secondWorks = true;
-    // pressedAllBtn();
-
 	canvas.style('position','absolute');
 }
 function returnWorksPage(){
@@ -558,10 +457,6 @@ function returnWorksPage(){
     	canvas.style('position','absolute');
     }
     secondWorks = false;
-	// if(allBtn){
-	// 	pressedUxBtn();
-	// 	pressedInstaBtn();
-	// }
 	if(scene == 2){
 		initBox();
 	}else if(scene == 3){
@@ -576,7 +471,6 @@ class box{
 		this.bVertex  = [];
 	    this.velocity = createVector(random(-5,5), random(-5,5));
 	    this.acceleration = createVector(random(-0.05,0.05), random(-0.05,0.05));
-	    // this.firstAc = createVector(random(-5,5),random(-5,5),0);
 		this.head4Speed = random(0.1,0.8);
 	    this.linkID = ln;
 	    this.angleX = random(360);this.angleY = random(360);this.angleZ = random(360);
@@ -587,7 +481,6 @@ class box{
 	    this.shapeInnerBox();
 	    this.visible = true;
 	}
-
 	shapeBox(){
 	    var pointx1 = this.core.x - this.inch;
 	    var pointx2 = this.core.x + this.inch;
@@ -595,7 +488,6 @@ class box{
 	    var pointy2 = this.core.y + this.inch;
 	    var pointz1 = this.core.z - this.inch;
 	    var pointz2 = this.core.z + this.inch;
-
 	    for(let i = 0; i <= 7; i++){
 	      switch(i){
 	        case 0:
@@ -624,9 +516,7 @@ class box{
 	           break;   
 	      }
 	    }
-    
   	}
-
   	shapeInnerBox(){
 	    var pointx1 = this.core.x - this.inch/2;
 	    var pointx2 = this.core.x + this.inch/2;
@@ -634,7 +524,6 @@ class box{
 	    var pointy2 = this.core.y + this.inch/2;
 	    var pointz1 = this.core.z - this.inch/2;
 	    var pointz2 = this.core.z + this.inch/2;
-
 	    for(let i = 0; i <= 7; i++){
 	      switch(i){
 	        case 0:
@@ -663,20 +552,15 @@ class box{
 	           break;   
 	      }
 	    }
-    
   	}
-
   	updata(){
 	    this.acceleration.add(this.firstAc);
-	    // this.firstAc.div(4);
 	    this.velocity.add(this.acceleration);
 	    this.core.add(this.velocity);
 	    this.acceleration.mult(0);
 	    this.velocity.mult(0.98);
   	}
-
   	Head4Core(up01,c){
-	    // var moCh = map(this.head4Speed,0,this.head4Speed,0.1,1.0);
 	    var f = createVector(0,0,0);
 	    var force = p5.Vector.sub(f, this.core);
 	    force.normalize().mult(c);
@@ -684,18 +568,13 @@ class box{
 	    if(up01){//up01 : boolen型でupdataを行うかの有無
 	    	this.updata();
 	    }
-	    else{
-	    }
 	}
-
 	setVelocity(jpos){
 		var f = jpos;
 	    var force = p5.Vector.sub(this.core, f);
 	    force.normalize().mult(0.005);
-	    // force.normalize().mult(0.5);
 	    this.acceleration.add(force);
 	}
-
 	drawBox(){
 		push();
 		translate(this.core.x,this.core.y);
@@ -703,9 +582,6 @@ class box{
 	    rotateY(radians(this.angleY));this.angleY+= this.angleStep;if(this.angleY > 360)this.angleY=0;
 	    rotateZ(radians(this.angleZ));this.angleZ+= this.angleStep;if(this.angleZ > 360)this.angleZ=0;
 	    noFill();
-
-	    // point(0,0);
-
 	    beginShape(); 
 	    for(let i = 0; i< 7; i++){
 	      vertex(this.bVertex[i].x,this.bVertex[i].y,this.bVertex[i].z);
@@ -735,9 +611,6 @@ class box{
 	    rotateY(radians(this.angleY));
 	    rotateZ(radians(this.angleZ));
 	    noFill();
-
-	    // point(0,0);
-
 	    beginShape(); 
 	    for(let i = 0; i< 7; i++){
 	      vertex(this.innerBVertex[i].x,this.innerBVertex[i].y,this.innerBVertex[i].z);
@@ -759,7 +632,6 @@ class box{
 	    }  
 	    pop();
 	}
-
 	drawTetrahedron(){
 	    push();  
 	    translate(this.core.x,this.core.y);
@@ -767,7 +639,6 @@ class box{
 	    rotateY(radians(this.angleY));
 	    rotateZ(radians(this.angleZ));
 	    noFill();
-	    
 	    beginShape(); 
 	    for(var i = 0; i < 5; i+=2){
 	      vertex(this.bVertex[i].x,this.bVertex[i].y,this.bVertex[i].z);
@@ -820,6 +691,4 @@ class box{
 	    return back;
 	}
 }
-$(function() {
-    $('html,body').animate({ scrollTop: 0 }, '1');
-});
+$(function() {$('html,body').animate({ scrollTop: 0 }, '1');});
