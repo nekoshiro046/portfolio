@@ -4,6 +4,7 @@ body {
   margin: 0;
 	width: 200vw;
 	height: 100vh;
+  overflow: hidden;
 }
 header{
 	font-family: 'arial black','arial','sans-serif','Impact';
