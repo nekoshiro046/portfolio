@@ -47,14 +47,14 @@ function setup() {
 }
 function initBox() {
 	for(var i = 0; i < objNum; i++){
-	    var posX = 0,var posY = 0,var posZ = -20;
+	    var posX = 0;var posY = 0;var posZ = -20;
 	    var inch = (windowWidth + windowHeight)/20;
 	    boxes[i] = new box(posX,posY,posZ,inch,i);
   	}
 }
 function initWorksBox(workPos) {
 	for(var i = 0; i < worksNum; i++){
-	    var posX = 0,var posY = 0,var posZ = 0;
+	    var posX = 0;var posY = 0;var posZ = 0;
 	    var inch = (windowWidth + windowHeight)/40;
 	    if( i == 0){
 			inch = (windowWidth + windowHeight)/20;
