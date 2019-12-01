@@ -21,9 +21,9 @@ var soundSource = [];//サウンドファイル格納
 var firstTouch = 0;
 function preload(){
 	fontEn = loadFont('assets/font/FreeSans.otf');
-	// soundFormats('mp3', 'ogg');
-	// soundSource[0] = loadSound('assets/sound/se01.mp3');
-	// soundSource[1] = loadSound('assets/sound/se02.mp3');
+	soundFormats('mp3', 'ogg');
+	soundSource[0] = loadSound('assets/sound/se01.mp3');
+	soundSource[1] = loadSound('assets/sound/se02.mp3');
 }
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight,WEBGL);
@@ -76,7 +76,7 @@ function touchStarted() {
   if(scene == 2){
 		for(var i = 0; i < objNum; i++){
 			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0  && inCanvas()){
-				// soundSource[0].play();
+				soundSource[0].play();
 				if(i == 2){
 					if(secondWorks){
 					}else{
@@ -105,11 +105,11 @@ function touchStarted() {
 					$("html, body").animate({scrollLeft: 0}, 500);
 					initBox();
 					scene = 2;
-					// soundSource[0].play();
+					soundSource[0].play();
 				}
 				else{
 					// if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true) || (allBtn == true) ){
-						// soundSource[1].play();
+						soundSource[1].play();
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;
 						window.open(worksLinkURL[i], '_blank');
@@ -124,7 +124,7 @@ function mousePressed() {
 	if(scene == 2){
 		for(var i = 0; i < objNum; i++){
 			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0  && inCanvas()){
-				// soundSource[0].play();
+				soundSource[0].play();
 				if(i == 2){
 					if(secondWorks){
 					}else{
@@ -153,11 +153,11 @@ function mousePressed() {
 					$("html, body").animate({scrollLeft: 0}, 500);
 					initBox();
 					scene = 2;
-					// soundSource[0].play();
+					soundSource[0].play();
 				}
 				else{
 					// if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true)  ){
-						// soundSource[1].play();
+						soundSource[1].play();
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;
 						window.open(worksLinkURL[i], '_blank');
