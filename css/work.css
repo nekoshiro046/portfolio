@@ -312,3 +312,33 @@ ul {
 
   /*display:table-cell;*/
 }
+
+#containerWrapper{
+  position: relative;
+  max-width: 66vw;
+  margin: 0 auto;   /*全体の中央寄せ*/
+}
+#container{
+  margin: 0 auto;   /*全体の中央寄せ*/
+  width: 50%;
+  /*margin-left: 25vh;*/
+  position: relative;
+  z-index: 0;
+}
+
+.item img{ 
+  width: 100%; 
+  height: auto;
+}
+
+.item {
+  width: 30vw; 
+  /*margin: 2px;*/
+  /*padding: 6px;*/
+  border: 1px solid #eee;
+  background-color: #111;
+}
+
+.item p{
+  color: #ffffff;
+}
