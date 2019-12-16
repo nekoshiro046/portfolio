@@ -63,13 +63,10 @@ nav{
 main {
 	font-family: 'arial','sans-serif';
 	font-weight: normal;
-
 }
 footer{
     width: 200vw;
-    
 }
-
 .pace-running .wrapper {
     display: none;
 }
@@ -93,7 +90,6 @@ a {
 ul {
   list-style: none;
 }
-
 .page1 {
 	float:left;
 	width: 100vw;
@@ -103,13 +99,11 @@ ul {
   background-color: rgba(50,50,50,0.8);
   color: #ffffff;
 }
-
 .page2 {
 	float:left;
 	width: 100vw;
 	height: 100%;
 }
-
 .title {
   color:black;
   width: 60vw;
@@ -120,7 +114,6 @@ ul {
   padding: 0vh 10vw 0vh 10vw;
   border-bottom: groove #000000;
 }
-
 @media screen and (max-width: 480px) { 
   .title {
   color:black;
@@ -129,15 +122,37 @@ ul {
   border-bottom: groove #000000;
   }
 }
-
 .subtitle {
 }
-
 .blank {
 	margin-top: 110vh;
   background-color: #ffffff;
 }
-
+.sliderBox{
+  width: 50vw;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  left: 0;
+}
+.swiper-container{
+  margin: 0;
+  padding: 0;
+  top: 20vh;
+  left: 100%;
+}
+.swiper-slide{
+  width: 50%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+}
+.swiper-pagination{
+  margin: 0;
+  padding: 0;
+  bottom: 0;
+  color: #000;
+}
 .p-box{
   padding-top: 25px;
   margin-bottom: 100px;

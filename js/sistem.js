@@ -5,7 +5,6 @@ let boxes =  [];let firstBox;let worksBox = [];
 var canvas;
 var scene = 1;// 1:top 2:menu 3:work 
 var mouseCharge = 0;var oneFrame = 0;
-var sampleSound = [];//サウンドファイル格納
 let fontSize = 40;
 let fontEn,fontJp;
 var userMove = 0;
@@ -17,13 +16,13 @@ var worksName = ["menu" ,"border","signage in GeikoSai", "world apart", "01", "m
 var worksLinkURL = ['','work/border.html', 'work/signage.html' ,'work/world_apart.html','work/01.html','work/mimie.html','work/ura.html'];
 let worksYear = ['','18.08	Installation','19.10	UX Design','19.02	Installation','19.07	Installation','19.06	UX Design','19.10	Web Site'];
 var secondWorks = false;
-var soundSource = [];//サウンドファイル格納
+var soundSource = [];
 var firstTouch = 0;
 function preload(){
 	fontEn = loadFont('assets/font/FreeSans.otf');
-	soundFormats('mp3', 'ogg');
-	soundSource[0] = loadSound('assets/sound/se01.mp3');
-	soundSource[1] = loadSound('assets/sound/se02.mp3');
+	// soundFormats('mp3', 'ogg');
+	// soundSource[0] = loadSound('assets/sound/se01.mp3');
+	// soundSource[1] = loadSound('assets/sound/se02.mp3');
 }
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight,WEBGL);
@@ -73,13 +72,18 @@ function touchStarted() {
     soundSource[0].play();
     firstTouch = 1;
   }
-  if(scene == 2){
+  if(scene == 1){
+		if(inCanvas() && firstBox.inTerritory(mouseX,mouseY)){
+	    	drawScene1('Yuki\’s portfolio');
+	      	scene = 2;
+	      	soundSource[0].play();
+	    }
+	}else if(scene == 2){
 		for(var i = 0; i < objNum; i++){
 			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0  && inCanvas()){
 				soundSource[0].play();
 				if(i == 2){
-					if(secondWorks){
-					}else{
+					if(!secondWorks){
 						canvas.style('position','fixed');
 						initWorksBox(boxes[i].core);
 						scene = 3;
@@ -88,8 +92,7 @@ function touchStarted() {
 					canvas.style('position','absolute');
 				}
 				var target = linkURL[i];
-				var position;
-				position = $(target).offset().left;
+				var position = $(target).offset().left;
 				$("html, body").animate({scrollLeft:position}, 400, "swing");
 				position = $(target).offset().top;
 				$("html, body").animate({scrollTop:position}, 400, "swing");
@@ -121,13 +124,18 @@ function touchStarted() {
 }
 
 function mousePressed() {
-	if(scene == 2){
+	if(scene == 1){
+		if(inCanvas() && firstBox.inTerritory(mouseX,mouseY)){
+	    	drawScene1('Yuki\’s portfolio');
+	      	scene = 2;
+	      	// soundSource[0].play();
+	    }
+	}else if(scene == 2){
 		for(var i = 0; i < objNum; i++){
 			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0  && inCanvas()){
-				soundSource[0].play();
+				// soundSource[0].play();
 				if(i == 2){
-					if(secondWorks){
-					}else{
+					if(!secondWorks){
 						canvas.style('position','fixed');
 						initWorksBox(boxes[i].core);
 						scene = 3;
@@ -136,8 +144,7 @@ function mousePressed() {
 					canvas.style('position','absolute');
 				}
 				var target = linkURL[i];
-				var position;
-				position = $(target).offset().left;
+				var position = $(target).offset().left;
 				$("html, body").animate({scrollLeft:position}, 400, "swing");
 				position = $(target).offset().top;
 				$("html, body").animate({scrollTop:position}, 400, "swing");
@@ -153,11 +160,11 @@ function mousePressed() {
 					$("html, body").animate({scrollLeft: 0}, 500);
 					initBox();
 					scene = 2;
-					soundSource[0].play();
+					// soundSource[0].play();
 				}
 				else{
 					// if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true)  ){
-						soundSource[1].play();
+						// soundSource[1].play();
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;
 						window.open(worksLinkURL[i], '_blank');
@@ -170,12 +177,15 @@ function mousePressed() {
 function selectScene(){
 	if(scene == 1){
 		canvas.style('z-index','5');
+		// canvas.style('width','100vw');
+	 //  	canvas.style('height','auto');
 		$("body").css({'overflow':"hidden"});
-	    if(mouseIsPressed && inCanvas() && firstBox.inTerritory(mouseX,mouseY)){
-	    	drawScene1('Yuki\’s portfolio');
-	      	scene = 2;
-	    }
-	    else if(inCanvas() && mouseY < (windowHeight/5) && mouseY > (windowHeight/6) && mouseX > (windowWidth/3) && mouseX < (windowWidth/3*2)){
+
+	    // if(mouseIsPressed && inCanvas() && firstBox.inTerritory(mouseX,mouseY)){
+	    // 	drawScene1('Yuki\’s portfolio');
+	    //   	scene = 2;
+	    // }
+	    if(inCanvas() && mouseY < (windowHeight/5) && mouseY > (windowHeight/6) && mouseX > (windowWidth/3) && mouseX < (windowWidth/3*2)){
 	    	drawScene1('click box or keep clciking');
 	    }
 	    else{
@@ -184,6 +194,11 @@ function selectScene(){
 	}
 	else if(scene == 2){
 		canvas.style('z-index','-1');
+		// canvas.style('width','50vw');
+	 //  	canvas.style('height','100vh');
+		// canvas.style('left','-25%');
+		// canvas.style('width','50%');
+		// canvas.style('top','25%');		
 		$("body").css({'overflow':"visible"});
 	    if(mouseIsPressed && inCanvas()){
 			oneFrame++;
@@ -208,6 +223,7 @@ function selectScene(){
 		    if(mouseCharge > fr*2){
 		      scene = 1;
 		      drawScene1();
+		      mouseCharge = 0;oneFrame = 0;
 		      $("html, body").animate({scrollTop: 0}, 500);
 		      $("html, body").animate({scrollLeft: 0}, 500);
 		      initBox();
@@ -243,6 +259,9 @@ function selectScene(){
 	}
 	else if(scene == 3){
 		canvas.style('z-index','-1');
+		// canvas.style('width','100vw');
+	 //  	canvas.style('height','auto');
+		// canvas.style('left','0');
 	    if(mouseIsPressed && inCanvas()){
 			oneFrame++;
 		    for(var i = 0; i < worksNum; i++){
@@ -302,8 +321,7 @@ function selectScene(){
 	}
 }
 function drawScene1(str){
-	background(0);
-  	var a = int(random(1,7));
+	background(0);var a = int(random(1,7));
   if(a == 1 || a == 4){
     if(firstBox.inTerritory(mouseX,mouseY)){
       stroke(255,0,0);
@@ -402,22 +420,18 @@ function drawCaption(str,strSize,col){
 	pop();
 }
 function inCanvas(){
-	var back;
 	if(mouseX < 0 || mouseX > windowWidth || mouseY < 0 || mouseY > windowHeight){
-		back = false;
+		return  false;
 	}else{
-		back = true;
+		return true;
 	}
-	return back;
 }
 function objInCanvas(x,y){
-	var back;
-	if(x <  -windowWidth/2|| x > windowWidth/2|| y < -windowHeight/2 || y > windowHeight/2){
-		back = false;
+	if(x <  -windowWidth/2|| x > windowWidth/2|| y < -windowHeight/3 || y > windowHeight/2){
+		return false;
 	}else{
-		back = true;
+		return true;
 	}
-	return back;
 }
 function toMenu(){
 	if(scene != 2){
@@ -433,7 +447,6 @@ function changeWorksPage(){
 		mBtn.innerHTML = '<input class = "worksBtn" type="button" value="Return" target="_self" onclick="returnWorksPage()"/>';
 	    var secworContents = $('.secondWorks');
 	    secworContents.show();
-
 	    var container = document.querySelector('#container');
 	    imagesLoaded(container, function () {
 	        var msnry = new Masonry(container, {
@@ -605,7 +618,6 @@ class box{
 	    }  
 	    pop();
 	}
-
 	drawInnerBox(){
 		push();
 		translate(this.core.x,this.core.y);
@@ -657,17 +669,17 @@ class box{
 	    endShape();
 	    pop();
   	}
-  	drawTextWithB(str,col){
-		push();  
-		translate(this.core.x,this.core.y);
-		rotateX(radians(this.angleX));
-		rotateY(radians(this.angleY));
-		rotateZ(radians(this.angleZ));
-		fill(col);
-		textSize(this.inch);
-		text(str, 0,0);
-		pop();
-	}
+ //  	drawTextWithB(str,col){
+	// 	push();  
+	// 	translate(this.core.x,this.core.y);
+	// 	rotateX(radians(this.angleX));
+	// 	rotateY(radians(this.angleY));
+	// 	rotateZ(radians(this.angleZ));
+	// 	fill(col);
+	// 	textSize(this.inch);
+	// 	text(str, 0,0);
+	// 	pop();
+	// }
 	inTerritory(mx,my){
 	    var back;
 	    var f = createVector(mx-windowWidth/2,my-windowHeight/2);
@@ -694,3 +706,27 @@ class box{
 	}
 }
 $(function() {$('html,body').animate({ scrollTop: 0 }, '1');});
+// var mySwiper = new Swiper ('.swiper-container', {
+//   loop: true,
+//   // slidesPerView: 2,
+//   // spaceBetween: 0,
+//   // centeredSlides : true,
+//   // pagination: '.swiper-pagination',
+//   // nextButton: '.swiper-button-next',
+//   // prevButton: '.swiper-button-prev',
+//   navigation: {
+//     nextButton: '.swiper-button-next',
+//     prevButton: '.swiper-button-prev',
+//   },
+//   pagination: {
+//       el: '.swiper-pagination',
+//       type: 'bullets',
+//       clickable: true,
+//     },
+//   breakpoints: {
+//     767: {
+//       slidesPerView: 1,
+//       spaceBetween: 0
+//     }
+//   }
+// })
