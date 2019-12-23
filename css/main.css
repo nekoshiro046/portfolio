@@ -16,13 +16,13 @@ header{
   width: 100vw;
 	z-index: 1;
   background-color: rgba(255,255,255,0.8);
-	text-align: center;
+	/*text-align: center;*/
 }
 nav{
   font-family: 'arial black','arial','sans-serif','Impact';
   position: fixed;
   top: 0;
-  left: 4vw;
+  left: 0;
   bottom: 0;
   display: flex;
   justify-content: space-between;
@@ -35,20 +35,7 @@ nav{
 }
 @media screen and (max-width: 896px) { 
   nav{
-    font-family: 'arial black','arial','sans-serif','Impact';
-    position: fixed;
-    top: 0;
     left: -2vw;
-    bottom: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /*width: 550px;*/
-    height: 50px;
-    margin: auto 0;
-    z-index: 1;
-    transform: rotate(-90deg);
-    border-bottom: 1px solid #000;
   }
 }
 .head-list{
@@ -106,20 +93,18 @@ ul {
 }
 .title {
   color:black;
-  width: 60vw;
-  max-width: 600px;
+  width: 40vw;
+  max-width: 200px;
   height: auto;
   margin: 0 auto;
-  margin-top: 2vw;
-  padding: 0vh 10vw 0vh 10vw;
+  margin-top: 1vw;
+  margin-right: 5vw;
+  float: right;
+  padding: 0 0 0 25px;
   border-bottom: groove #000000;
 }
 @media screen and (max-width: 480px) { 
   .title {
-  color:black;
-  font-size: 20px;
-  padding: 0vh 10vw 0vh 10vw;
-  border-bottom: groove #000000;
   }
 }
 .subtitle {

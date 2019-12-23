@@ -68,13 +68,10 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 function touchStarted() {
-  if(firstTouch == 0 && inCanvas()){
-    soundSource[0].play();
-    firstTouch = 1;
-  }
-  if(scene == 1){
+  	if(scene == 1){
 		if(inCanvas() && firstBox.inTerritory(mouseX,mouseY)){
-	    	drawScene1('Yuki\’s portfolio');
+	    	// drawScene1('Yuki\’s portfolio');
+	    	canvas.style('position','absolute');
 	      	scene = 2;
 	      	soundSource[0].play();
 	    }
@@ -104,14 +101,17 @@ function touchStarted() {
 		for(var i = 0; i < worksNum; i++){
 			if(worksBox[i].inTerritory(mouseX,mouseY) && mouseCharge == 0 && inCanvas()){
 				if(i == 0){
-					$("html, body").animate({scrollTop: 0}, 500);
-					$("html, body").animate({scrollLeft: 0}, 500);
+					$("html, body").stop().animate({scrollTop: 0},500,function(){
+						$("html, body").stop().animate({scrollLeft: 0},500,function(){
+							canvas.style('position','absolute');
+					    });
+				    });
 					initBox();
 					scene = 2;
 					soundSource[0].play();
 				}
 				else{
-					// if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true) || (allBtn == true) ){
+					// if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true)  ){
 						soundSource[1].play();
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;
@@ -126,14 +126,15 @@ function touchStarted() {
 function mousePressed() {
 	if(scene == 1){
 		if(inCanvas() && firstBox.inTerritory(mouseX,mouseY)){
-	    	drawScene1('Yuki\’s portfolio');
+	    	// drawScene1('Yuki\’s portfolio');
+	    	canvas.style('position','absolute');
 	      	scene = 2;
-	      	// soundSource[0].play();
+	      	soundSource[0].play();
 	    }
 	}else if(scene == 2){
 		for(var i = 0; i < objNum; i++){
 			if(boxes[i].inTerritory(mouseX,mouseY) && mouseCharge == 0  && inCanvas()){
-				// soundSource[0].play();
+				soundSource[0].play();
 				if(i == 2){
 					if(!secondWorks){
 						canvas.style('position','fixed');
@@ -156,15 +157,18 @@ function mousePressed() {
 		for(var i = 0; i < worksNum; i++){
 			if(worksBox[i].inTerritory(mouseX,mouseY) && mouseCharge == 0 && inCanvas()){
 				if(i == 0){
-					$("html, body").animate({scrollTop: 0}, 500);
-					$("html, body").animate({scrollLeft: 0}, 500);
+					$("html, body").stop().animate({scrollTop: 0},500,function(){
+						$("html, body").stop().animate({scrollLeft: 0},500,function(){
+							canvas.style('position','absolute');
+					    });
+				    });
 					initBox();
 					scene = 2;
-					// soundSource[0].play();
+					soundSource[0].play();
 				}
 				else{
 					// if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true)  ){
-						// soundSource[1].play();
+						soundSource[1].play();
 						mouseCharge = 0;oneFrame = 0;
 						mouseIsPressed = false;
 						window.open(worksLinkURL[i], '_blank');
@@ -186,14 +190,15 @@ function selectScene(){
 	    //   	scene = 2;
 	    // }
 	    if(inCanvas() && mouseY < (windowHeight/5) && mouseY > (windowHeight/6) && mouseX > (windowWidth/3) && mouseX < (windowWidth/3*2)){
-	    	drawScene1('click box or keep clciking');
+	    	drawScene1('Click Box or Hold down');
 	    }
 	    else{
-	      drawScene1('Yuki\’s portfolio');
+	      drawScene1('Click Box or Hold down');
 	    }
 	}
 	else if(scene == 2){
 		canvas.style('z-index','-1');
+		// canvas.style('position','absolute');
 		// canvas.style('width','50vw');
 	 //  	canvas.style('height','100vh');
 		// canvas.style('left','-25%');
@@ -285,10 +290,13 @@ function selectScene(){
 		    if(mouseCharge > fr*2){
 		      scene = 2;
 		      mouseCharge = 0;oneFrame = 0;
-		      drawScene2();
-		      $("html, body").animate({scrollTop: 0}, 500);
-		      $("html, body").animate({scrollLeft: 0}, 500);
+		      $("html, body").stop().animate({scrollTop: 0},500,function(){
+				$("html, body").stop().animate({scrollLeft: 0},500,function(){
+					canvas.style('position','absolute');
+			    });
+			  });
 		      initBox();
+		      drawScene2();
 		    }
 		    else if(mouseCharge != 0 && oneFrame > fr){
 		      drawScene3();
@@ -329,9 +337,11 @@ function drawScene1(str){
     }
     stroke(255);
     firstBox.drawBox();
+    // drawText(firstBox.core.x+windowHeight/3,firstBox.core.y - windowHeight/3,str,windowHeight/20,255);
     drawText(firstBox.core.x,firstBox.core.y - windowHeight/3,str,windowHeight/20,255);
   }
   else if(a == 2 || a == 5){
+  	// drawText(firstBox.core.x+windowHeight/3,firstBox.core.y - windowHeight/3,str,windowHeight/20,255);
   	drawText(firstBox.core.x,firstBox.core.y - windowHeight/3,str,windowHeight/20,255);
   	push();
     translate(-0.5,1,-1.5);
@@ -350,7 +360,8 @@ function drawScene1(str){
     pop();
   }
   else if(a == 3){
-  	drawText(firstBox.core.x,firstBox.core.y - windowHeight/3,str,windowHeight/20,255);
+  	// drawText(firstBox.core.x+windowHeight/3,firstBox.core.y - windowHeight/3,str,windowHeight/20,255);
+    drawText(firstBox.core.x,firstBox.core.y - windowHeight/3,str,windowHeight/20,255);
     stroke(255);
     var r = random(1,4);
     for(var i = 0; i < r; i++){
@@ -437,8 +448,11 @@ function toMenu(){
 	if(scene != 2){
 		initBox();
 		scene = 2;
-		$("html, body").animate({scrollTop: 0}, 500);
-		$("html, body").animate({scrollLeft: 0}, 500);
+		$("html, body").stop().animate({scrollTop: 0},500,function(){
+			$("html, body").stop().animate({scrollLeft: 0},500,function(){
+				canvas.style('position','absolute');
+			});
+		});
 	}
 }
 function changeWorksPage(){
@@ -458,6 +472,8 @@ function changeWorksPage(){
     });
     secondWorks = true;
 	canvas.style('position','absolute');
+	initBox();
+	scene = 2;
 }
 function returnWorksPage(){
 	$(function () {
@@ -466,17 +482,10 @@ function returnWorksPage(){
 	    var secworContents = $('.secondWorks');
 	    secworContents.hide();
     });
-    if(secondWorks){
-    	canvas.style('position','fixed');
-    }else{
-    	canvas.style('position','absolute');
-    }
-    secondWorks = false;
-	if(scene == 2){
-		initBox();
-	}else if(scene == 3){
-		initWorksBox();
-	}
+	secondWorks = false;
+	canvas.style('position','fixed');
+	initWorksBox();
+	scene = 3;
 }
 class box{
 	constructor(x,y,z,inc,ln){
