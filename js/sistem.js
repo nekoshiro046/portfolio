@@ -20,9 +20,9 @@ var soundSource = [];
 var firstTouch = 0;
 function preload(){
 	fontEn = loadFont('assets/font/FreeSans.otf');
-	// soundFormats('mp3', 'ogg');
-	// soundSource[0] = loadSound('assets/sound/se01.mp3');
-	// soundSource[1] = loadSound('assets/sound/se02.mp3');
+	soundFormats('mp3', 'ogg');
+	soundSource[0] = loadSound('assets/sound/se01.mp3');
+	soundSource[1] = loadSound('assets/sound/se02.mp3');
 }
 function setup() {
   canvas = createCanvas(windowWidth, windowHeight,WEBGL);
