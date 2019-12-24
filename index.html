@@ -39,8 +39,9 @@
 
         <header>
             <a href="index.html">
-            <img class = "title" src="assets/image/logo.png"">
+            	<img class = "title" src="assets/image/logo.png"">
             </a>
+            <!-- <canvas class = "waveBox" id="soundWave" style="z-index: 50;"></canvas> -->
         </header>
 
         <div id="sketch-holder" onclick=""> </div>
@@ -49,9 +50,14 @@
             <ul class="head-list">
                 <li id="page-top" onclick="toMenu()"><a href="#">menu</a></li>
             </ul>
+            <!--canvas class = "waveBox" id="soundWave" style="z-index: 50;"></canvas> -->
         </nav>
 
         <main>
+        	<div class="soundBox">
+                <img class = "soundImg" src="assets/image/wave.png" onclick="drawSound()">
+        		<canvas class = "waveBox" id="soundWave" style="z-index: 50;"></canvas>
+        	</div>
             <!-- <div class="sliderBox">
                 <div class="swiper-container">
                     <div class="swiper-wrapper">
@@ -194,6 +200,7 @@
             <!-- <p id="page-top"><a href="#">PAGE TOP</a></p> -->
         </footer>
         </div>
+    <script src="js/audio.js"></script>
     <script src="js/sistem.js"></script>
     </body>
     </html> 

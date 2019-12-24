@@ -107,6 +107,39 @@ ul {
   .title {
   }
 }
+.soundImg{
+  width: 10%;
+  height: auto;
+  z-index: 51;
+  float: right;
+  margin-top: 0;
+  margin-right: 0;
+  /*padding-right: 0;*/
+  top: 1vh;
+  right: 0;
+  border-bottom:none;
+}
+.soundBox{
+  position: fixed;
+  width: 100vw;
+  float: right;
+  margin-top: 8vh;
+  right: 5vw;
+}
+.waveBox{
+  float: right;
+  margin-top: 0;
+  margin-right: 0;
+  /*padding-right: 0;*/
+  top: 1vh;
+  right: 0;
+  border-bottom:none;
+}
+#soundWave{
+  margin: 0;
+  padding: 0;
+  display: none;
+}
 .subtitle {
 }
 .blank {
