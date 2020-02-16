@@ -145,6 +145,12 @@ ul {
   background: -webkit-linear-gradient(top left, #419897, #e3cd5e); 
   background: linear-gradient(to bottom right, #419897, #e3cd5e); 
 }
+#grad_12{/*SXR4c*/
+  padding: 2.5px;
+  background: -moz-linear-gradient(top left, #f1f1f1, #e13030); 
+  background: -webkit-linear-gradient(top left, #f1f1f1, #e13030); 
+  background: linear-gradient(to bottom right, #f1f1f1, #e13030); 
+}
 
 #grad_inner{
   padding: 16px;
