@@ -142,5 +142,5 @@ function stopSound(buffer) {
     var visualizer = new Visualizer(buffer);
   };
 }
-var loader = new Loader('assets/sound/sample.mp3');
+var loader = new Loader('assets/sound/bgm.wav');
 loader.loadBuffer();
