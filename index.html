@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <title>Yuki's portfolio</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,  minimal-ui">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta name="Keywords" content="Yuki's portfolio,メディアアート,大城佑樹,犬城,openframeworks,max,max msp,processing" />
         <meta name="description" content="犬城のポートフォリオサイトです。メディアアートとかやってます。" />
         <meta http-equiv="content-language" content="ja" />
@@ -41,7 +41,6 @@
             <a href="index.html">
             	<img class = "title" src="assets/image/logo.png"">
             </a>
-            <!-- <canvas class = "waveBox" id="soundWave" style="z-index: 50;"></canvas> -->
         </header>
 
         <div id="sketch-holder" onclick=""> </div>
@@ -50,7 +49,6 @@
             <ul class="head-list">
                 <li id="page-top" onclick="toMenu()"><a href="#">menu</a></li>
             </ul>
-            <!--canvas class = "waveBox" id="soundWave" style="z-index: 50;"></canvas> -->
         </nav>
 
         <main>
@@ -58,18 +56,6 @@
                 <img class = "soundImg" src="assets/image/wave.png" onclick="drawSound()">
         		<canvas class = "waveBox" id="soundWave" style="z-index: 50;"></canvas>
         	</div>
-            <!-- <div class="sliderBox">
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        <img class="swiper-slide" src="https://nekoshiro046.github.io/pfImg/works/01/pic01.png">
-                        <img class="swiper-slide" src="https://nekoshiro046.github.io/pfImg/works/border/border_icon.jpg">
-                        <img class="swiper-slide" src="https://nekoshiro046.github.io/pfImg/works/signage/thumbnail.png">
-                    </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
-            </div> -->
             <div class="page1">
                 <div class="blank"> </div>
                 <!-- <div class="page1Back"> -->
@@ -120,18 +106,12 @@
                         <h3 style="margin-bottom: 1vh;">-Work-</h3>
                         <div class="worksCategory">
                             <div class="firstWorks">
-                            <!-- <ul>
-                                <li><input class = "moreBtn" type="button" value="More" target="_self" onclick="changeWorksPage()"/></li>
-                            </ul> -->
+
                             <div id = "worBtn">
                             <input class = "worksBtn" type="button" value="All Work" target="_self" onclick="changeWorksPage()"/>
                             </div>
                             </div>
                             <div class="secondWorks">
-                                <!-- <ul>
-                                    <li><input class = "returnBtn" type="button" value="return" target="_self" onclick="returnWorksPage()"/></li>
-                                </ul> -->
-                                <!-- <input class = "returnBtn" type="button" value="return" target="_self" onclick="returnWorksPage()"/> -->
 
                                 <div id="containerWrapper">
                                   <div id="container" >
@@ -201,8 +181,7 @@
         </main>
 
         <footer>
-            <!-- <div class="footer-blank"> </div> -->
-            <!-- <p id="page-top"><a href="#">PAGE TOP</a></p> -->
+
         </footer>
         </div>
     <script src="js/audio.js"></script>

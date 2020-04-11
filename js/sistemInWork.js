@@ -12,8 +12,12 @@ function setup() {
   canvas.position("30%",0);
   canvas.style('position','fixed');
   canvas.style('margin-left','2%');
-  canvas.style('z-index','0');
+  canvas.style('z-index','150');
   canvas.parent('sketch-holder');
+  if(windowWidth<= 480){
+  	canvas.style('margin-left','10%');
+  }
+
   // Move the canvas so it’s inside our <div id="sketch-holder">.
   frameRate(fr);
   firstBox = new box(0,0,0,(windowWidth)/ww/5);

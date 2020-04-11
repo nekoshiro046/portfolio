@@ -204,7 +204,8 @@ function selectScene(){
 		// canvas.style('left','-25%');
 		// canvas.style('width','50%');
 		// canvas.style('top','25%');		
-		$("body").css({'overflow':"visible"});
+		$("body").css({'overflow-x':"visible"});
+
 	    if(mouseIsPressed && inCanvas()){
 			oneFrame++;
 		    for(var i = 0; i < objNum; i++){
@@ -445,15 +446,15 @@ function objInCanvas(x,y){
 	}
 }
 function toMenu(){
-	if(scene != 2){
+	// if(scene != 2){
 		initBox();
 		scene = 2;
-		$("html, body").stop().animate({scrollTop: 0},500,function(){
-			$("html, body").stop().animate({scrollLeft: 0},500,function(){
+		$("html, body").stop(false, false).animate({scrollTop: 0},500,function(){
+			$("html, body").stop(false, false).animate({scrollLeft: 0},500,function(){
 				canvas.style('position','absolute');
 			});
 		});
-	}
+	// }
 }
 function changeWorksPage(){
 	$(function () {
