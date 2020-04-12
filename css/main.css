@@ -285,6 +285,13 @@ ul {
   max-width: 80vw;
   margin: 0 auto;
 }
+@media screen and (max-width:480px){
+  #containerWrapper{
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+}
 #container{
   margin: 0 auto;
   width: 100%;
@@ -299,6 +306,12 @@ ul {
   width: 30vw; 
   border: 1px solid #eee;
   background-color: #111;
+}
+@media screen and (max-width:480px){
+  .item {
+    width: 100vw;
+    border: none;
+  }
 }
 .item p{
   color: #ffffff;
