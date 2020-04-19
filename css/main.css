@@ -128,7 +128,7 @@ ul {
 .soundImg{
   width: 10%;
   height: auto;
-  z-index: 51;
+  z-index: 1;
   float: right;
   margin-top: 0;
   margin-right: 0;
@@ -142,6 +142,7 @@ ul {
   float: right;
   margin-top: 8vh;
   right: 5vw;
+  cursor: pointer;
 }
 .waveBox{
   float: right;
