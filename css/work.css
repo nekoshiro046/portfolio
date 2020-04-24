@@ -236,8 +236,14 @@ ul {
   background: -webkit-linear-gradient(top left, #f1f1f1, #e13030); 
   background: linear-gradient(to bottom right, #f1f1f1, #e13030); 
 }
+#grad_13{/*takuten_presite*/
+  padding: 2.5px;
+  background: -moz-linear-gradient(top left, #f1f1f1, #010101); 
+  background: -webkit-linear-gradient(top left, #f1f1f1, #010101); 
+  background: linear-gradient(to bottom right, #f1f1f1, #010101); 
+}
 @media screen and (max-width: 480px) { 
-  #grad_01, #grad_02, #grad_03, #grad_04, #grad_05, #grad_06, #grad_07, #grad_08, #grad_09, #grad_10, #grad_11, #grad_12 {/*01*/
+  #grad_01, #grad_02, #grad_03, #grad_04, #grad_05, #grad_06, #grad_07, #grad_08, #grad_09, #grad_10, #grad_11, #grad_12, #grad_13 {/*01*/
     width: 99vw;
     margin-top: 22vw;
     z-index: 0;
