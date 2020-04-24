@@ -204,7 +204,7 @@ function selectScene(){
 		// canvas.style('left','-25%');
 		// canvas.style('width','50%');
 		// canvas.style('top','25%');		
-		$("body").css({'overflow-x':"visible"});
+		$("body").css({'overflow':"visible"});
 
 	    if(mouseIsPressed && inCanvas()){
 			oneFrame++;
