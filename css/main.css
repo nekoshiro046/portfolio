@@ -1,5 +1,9 @@
 @charset "UTF-8";
-
+::selection
+{
+background: #000000;
+color: #ffffff;
+}
 body {
   margin: 0;
 	width: 200vw;
@@ -59,6 +63,46 @@ nav{
   justify-content: center;
   align-items: center;
   font-size: 18px;
+}
+.head-list li:before,.head-list li:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: -webkit-transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  background-color: rgba(0, 0, 0, 1);
+  content: '';
+  height: 100%;
+  width: 100%;
+}
+
+.head-list li:before {
+  z-index: -1;
+  opacity: 0;
+  -webkit-transform: translateX(104%);
+      -ms-transform: translateX(104%);
+          transform: translateX(104%);
+}
+.head-list li:after {
+  z-index: -1;
+  opacity: 0;
+  -webkit-transform: translateX(-104%);
+      -ms-transform: translateX(-104%);
+          transform: translateX(-104%);
+}
+
+.head-list li:hover a {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 1);
+}
+
+.head-list li:hover:before, .head-list li:hover:after {
+  opacity: 1;
+  -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+          transform: translateX(0%);
 }
 #page-top a {
   font-size: 18px;

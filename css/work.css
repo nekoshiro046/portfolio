@@ -4,6 +4,11 @@
   margin: 0px;
   padding: 0px;
 }
+::selection
+{
+background: #000000;
+color: #ffffff;
+}
 body {
   box-sizing: border-box;
   background-color: #ffffff;
