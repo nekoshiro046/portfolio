@@ -32,8 +32,8 @@
                 <div id="grad_13">
                     <div id="grad_inner">
                     <h1><a href="https://www.w0w.co.jp/art/bakeru" target="_blank">UnityでOpenCV No.01</a></h1>
-                    <p>制作 : -</p>
-                    <p>形式 : -</p>
+                    <p>環境 : unity2019.3.12f1 / opencv plus unity / macOS Catalina ver10.15.4</p>
+                    <!-- <p>形式 : - </p> -->
                     </div>
                 </div>
             </div>
@@ -51,12 +51,71 @@
 
             <div class="text-title underline">About</div>
             <div class="text-container fadein">
-                <p><a href="../note/bakeru.html" style="text-decoration: underline;" target="_blank">単純なフェイストラッキングではなく、物体(お面)を検知した上でモーショントラッキングしている制作</a>の具体的実装について我流で考えてみる、の回。
+                <p><a href="../note/bakeru.html" style="text-decoration: underline;" target="_blank">単純なフェイストラッキングではなく、物体(お面)を検知した上でモーショントラッキングしている制作</a>の具体的実装について考えてみる。
                 </p>
+                <P>なお実装においてC++(oF)などの候補もあるが、3dモデルの扱いや拡張性からUnityで行う。</P>
 
             </div>
 
-        
+            <div class="text-title underline">Flow</div>
+            <div class="text-container fadein">
+                <p>とっかかりからUnityでのOpenCv候補ありすぎ...<br>
+                    とりま選定基準を
+                    <ul>
+                        <li>・お試しの制作だし、お金かけたくない。</li>
+                        <li>・とっかかりやすい。(大事)</li>
+                    </ul>
+                    として検討していく。<br>
+                <a href="https://qiita.com/foka22ok/items/378e1fb337d4b29a75ac" style="text-decoration: underline;" target="_blank">https://qiita.com/foka22ok/items/378e1fb337d4b29a75ac</a>参考にした結果OpenCv Plus Unityを採用。
+                </p>
+
+                <p style="font-size: 20px; margin: 10px 0;">↓</p>
+
+                <p>
+                    opencv plus unity をimportして実際に触ってみると、LobbyScene に色々デモが準備されているので今回の目的に合いそうな物を探していく。<br>
+                    <a href="https://nekoshiro046.github.io/pfImg/note/lobbyscene.png" data-lightbox="lobbyscene_img" data-title="" class="centerItem">
+                        <img class="img-container" src="https://nekoshiro046.github.io/pfImg/note/lobbyscene.png" alt="warszawa_menu">
+                    </a>
+                    参考 :<br>
+                    <a href="https://www.techceed-inc.com/engineer_blog/4268/" style="text-decoration: underline;" target="_blank">https://www.techceed-inc.com/engineer_blog/4268/</a>
+                </p>
+
+                <p style="font-size: 20px; margin: 10px 0;">↓</p>
+
+                <p>
+                    Live Face Detector , Face Recognizerあたりが良さげ。<br>
+                
+                    デモでは用意された学習済みデータを元に画像中の顔判定やwebカメラ中の顔判定を行なっていたので、その箇所を任意の物体認識に置き換えたい。<br>
+                    だから実際に使う際には訓練データをつかって学習させる必要があり。らしい。
+                </p>
+
+                <p style="font-size: 20px; margin: 10px 0;">↓</p>
+
+                <p>
+                    ...いや分からんて。訓練データ？機械学習?やったことないよ。実際の開発現場ではその道のプロたちが訓練データを作ってくれるだろう。<br>
+                    でもせっかく今回はお試しと言うことなので、ガバいながらも自前で訓練データ用意し、運用していく。<br>
+
+                    参考 :<br>
+                    <a href="https://cgworld.jp/regular/codelight-unity-02.html" style="text-decoration: underline;" target="_blank">https://cgworld.jp/regular/codelight-unity-02.html</a><br>
+                
+                    参考の記事ではOpenCv PlusではなくOpenCV for Unityを用いてますが、原理は大抵一緒のはず。<br>
+
+                    で、Assets/OpenCV+Unity/Demo/Face_Detectorフォルダ下をみてみると
+                    <ul>
+                        <li>・FaceDetectorScene.cs</li>
+                        <li>・haarcascade_frontalface_default.xml</li>
+                        <li>・haarcascade_eye.xml</li>
+                        <li>・shape_predictor_68_face_landmarks.bytes</li>
+                    </ul>
+                    等があり、FaceDetectorSceneでこれらをアタッチして色々処理してるところ見ると正解そう。
+                    <a href="https://nekoshiro046.github.io/pfImg/note/faceDetector.png" data-lightbox="faceDetector_img" data-title="" class="centerItem">
+                        <img class="img-container" src="https://nekoshiro046.github.io/pfImg/note/faceDetector.png" alt="warszawa_menu">
+                    </a>
+                </p>
+
+                <p>だから、次回は検知したい物体(お面)の訓練データを用意してdemoに上記の箇所に流し込んで赤枠で認識できたらok？</p>
+            </div>
+
         </div>
         </main>
 
