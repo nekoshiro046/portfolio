@@ -1,6 +1,6 @@
 Pace.on('done', function(){$('.wrapper').fadeIn();});
 var fr = 60;
-let objNum = 3;let worksNum = 7;
+let objNum = 4;let worksNum = 7;
 let boxes =  [];let firstBox;let worksBox = [];
 var canvas;
 var scene = 1;// 1:top 2:menu 3:work 
@@ -9,8 +9,8 @@ let fontSize = 40;
 let fontEn,fontJp;
 var userMove = 0;
 let linkIndex = ['a','c','w'];
-let linkName = ["about","contact","work"];
-let linkURL = ['about-me','contact','works'];
+let linkName = ["about","contact","work","note"];
+let linkURL = ['about-me','contact','works','./note.html'];
 var worksIndex = ["back" ,"b","s", "M", "01", "m","u"];//1-4 : installation 5 : ux 0 : back
 var worksName = ["menu" ,"border","signage in GeikoSai", "Musical Chairs", "01", "mimie","URA GeikoSai"];//1-4 : installation 5 : ux 0 : back
 var worksLinkURL = ['','work/border.html', 'work/signage.html' ,'work/musicalChairs.html','work/01.html','work/mimie.html','work/ura.html'];
@@ -89,11 +89,16 @@ function touchStarted() {
 					canvas.style('position','absolute');
 				}
 				var target = linkURL[i];
-				var position = $(target).offset().left;
-				$("html, body").animate({scrollLeft:position}, 400, "swing");
-				position = $(target).offset().top;
-				$("html, body").animate({scrollTop:position}, 400, "swing");
-				return false;
+				
+				if(i == 3){
+					window.open(linkURL[i], '_blank');
+				}else{
+					var position = $(target).offset().left;
+					$("html, body").animate({scrollLeft:position}, 400, "swing");
+					position = $(target).offset().top;
+					$("html, body").animate({scrollTop:position}, 400, "swing");
+					return false;
+				}
 		    }
 		}
 	}
@@ -145,11 +150,16 @@ function mousePressed() {
 					canvas.style('position','absolute');
 				}
 				var target = linkURL[i];
-				var position = $(target).offset().left;
-				$("html, body").animate({scrollLeft:position}, 400, "swing");
-				position = $(target).offset().top;
-				$("html, body").animate({scrollTop:position}, 400, "swing");
-				return false;
+
+				if(i == 3){
+					window.open(linkURL[i], '_blank');
+				}else{
+					var position = $(target).offset().left;
+					$("html, body").animate({scrollLeft:position}, 400, "swing");
+					position = $(target).offset().top;
+					$("html, body").animate({scrollTop:position}, 400, "swing");
+					return false;
+				}
 		    }
 		}
 	}

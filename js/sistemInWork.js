@@ -5,7 +5,7 @@ let fontSize = 40;
 let font;
 var ww = 5,wh = 5;
 function preload(){
-	font = loadFont('assets/font/FreeSans.otf');
+	font = loadFont('../assets/font/FreeSans.otf');
 }
 function setup() {
   canvas = createCanvas(windowWidth/ww, windowWidth/ww,WEBGL);
@@ -341,7 +341,7 @@ $(function () {
             var elPos = jQuery(this).offset().top;
             var scroll = jQuery(window).scrollTop();
             var windowHeight = jQuery(window).height();
-            if (scroll > elPos - windowHeight + 250){
+            if (scroll > elPos - windowHeight + 230){
                 jQuery(this).addClass('scrollin');
             }
         });
