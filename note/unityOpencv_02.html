@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+    <html>
+    <html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>Yuki's note - UnityでOpenCV No.02 / -</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta name="Keywords" content="Yuki's portfolio,メディアアート,大城佑樹,犬城" />
+        <meta name="description" content="" />
+        <meta http-equiv="content-language" content="ja" />
+        <link rel="stylesheet" type="text/css" href="../css/work.css">
+        <link type="image/png" rel="shortcut icon" href="../assets/image/icon.png">
+        <script src="../libraries/p5.js" type="text/javascript"></script>
+        <script src="../libraries/p5.dom.js" type="text/javascript"></script>
+        <script src="../libraries/jquery-3.4.1.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="../libraries/dist/css/lightbox.css">
+        <script src="../libraries/dist/js/lightbox.js"></script>
+    </head>
+    <body>
+    	<header>
+            <a href="../index.html">
+                <img class = "title" src="../assets/image/logo.png"">
+            </a>
+        </header>
+        <nav>
+            <div id="sketch-holder"></div>
+        </nav>
+
+    	<main>
+            
+        <div class="about">
+            <div class="work-about">
+                <div id="grad_13">
+                    <div id="grad_inner">
+                    <h1>UnityでOpenCV No.01.5</h1>
+                    <p>環境 : unity2019.3.12f1 / opencv plus unity / macOS Catalina ver10.15.4</p>
+                    <!-- <p>形式 : - </p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main">
+        	<div>
+                <div class="mov-box">
+                    <img class="thumbnail-img" src="https://nekoshiro046.github.io/pfImg/note/ucv_1_5/ucv_1_5_nail.png" alt="nail">
+                </div>
+            </div>
+
+            <div class="thumbnail-text">
+                <p>UnityでOpenCVをやってみる。第1.5回</p>
+                <p><a href="../note/unityOpencv_01.html" style="text-decoration: underline;" target="_blank">前回はこちらから。</a>
+                </p>
+            </div>
+
+            <div class="text-title underline">About</div>
+            <div class="text-container fadein">
+                <p>前回の続きで訓練データを作成して色々やっていく。のは次回で、既にある顔認識の処理を用いて顔に画像をかぶる簡単な処理を追加して満足感に浸る。
+                </P>
+
+            </div>
+
+            <div class="text-title underline">Flow</div>
+            <div class="text-container fadein">
+                <p>
+                    <ul>
+                        <li><a href="https://sirohood.exp.jp/20191006-2930/" style="text-decoration: underline;" target="_blank">https://sirohood.exp.jp/20191006-2930/</a></li>
+                        <li><a href="https://cgworld.jp/regular/codelight-unity-02-2.html" style="text-decoration: underline;" target="_blank">https://cgworld.jp/regular/codelight-unity-02-2.html</a></li>
+                    </ul>
+                    ここら辺を参考にしながら進める。
+                </p>
+
+                <p style="font-size: 20px; margin: 10px 0;">↓</p>
+
+                <p>
+                    いじっていくのはAssets/OpenCV + Unity/Demo/Scripts/ProcessTexture.csと<br>
+                    Assets/OpenCV + Unity/Demo/Face_Detector/FaceDetectorScene.csだが、失敗してimportし直しとかでもめんどい。
+                    <br>
+                    主な処理を書いていくのはFaceDetectorScene.csで、ProcessTexture.csには殆ど追加しないのでFaceDetectorScene.csの代わりだけ新しくこしらえる。
+                    <br>
+                    先にProcessTexture.csに顔の位置,大きさを返す関数を追加する。
+                    <textarea>
+                        public void MarkDetected_xy(ref int x,ref int y,ref int width,ref int height)
+                        {
+                            foreach (DetectedFace face in Faces)
+                            {   
+                                
+                                x = face.Region.Center.X;//中心点のX
+                                y = face.Region.Center.Y;//中心点のY
+                                width = face.Region.Width;
+                                height = face.Region.Height;
+
+                            }
+                        }
+                    </textarea>
+                    <br>
+                    次にfds.csを作成し、Hierarchy/canvas/RawImageにアタッチする。もともとあったFaceDetectorScene.csはRemoveComponentしてok
+                    <textarea>
+                        namespace OpenCvSharp.Demo
+                        {
+                            using System;
+                            using UnityEngine;
+                            using System.Collections.Generic;
+                            using UnityEngine.UI;
+                            using OpenCvSharp;
+
+                            public class fds : WebCamera
+                            {
+                                public TextAsset faces;
+                                public TextAsset eyes;
+                                public TextAsset shapes;
+
+                                private FaceProcessorLive<WebCamTexture> processor;
+
+                                [SerializeField] private RectTransform targetRect;//WEBカメラのテクスチャを貼っているターゲットを指定
+                                private Canvas _canvas;
+                                public Canvas Canvas { get { return this._canvas ? this._canvas : this._canvas = targetRect.GetComponent<Graphic> ().canvas; } }
+                                
+                                [SerializeField] private UnityEngine.UI.Image mask; //画像用を格納
+                                
+                                private int faceX, faceY, faceW, faceH; //OpenCVから返った情報を格納
+                                private float preFaceX, preFaceY;
+
+                                /// <summary>
+                                /// Default initializer for MonoBehavior sub-classes
+                                /// </summary>
+                                protected override void Awake()
+                                {
+                                    base.Awake();
+                                    base.forceFrontalCamera = true; // we work with frontal cams here, let's force it for macOS s MacBook doesn't state frontal cam correctly
+
+                                    byte[] shapeDat = shapes.bytes;
+                                    if (shapeDat.Length == 0)
+                                    {
+                                        string errorMessage =
+                                            "In order to have Face Landmarks working you must download special pre-trained shape predictor " +
+                                            "available for free via DLib library website and replace a placeholder file located at " +
+                                            "\"OpenCV+Unity/Assets/Resources/shape_predictor_68_face_landmarks.bytes\"\n\n" +
+                                            "Without shape predictor demo will only detect face rects.";
+
+                        #if UNITY_EDITOR
+                                        // query user to download the proper shape predictor
+                                        if (UnityEditor.EditorUtility.DisplayDialog("Shape predictor data missing", errorMessage, "Download", "OK, process with face rects only"))
+                                            Application.OpenURL("http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2");
+                        #else
+                                     UnityEngine.Debug.Log(errorMessage);
+                        #endif
+                                    }
+
+                                    processor = new FaceProcessorLive<WebCamTexture>();
+                                    processor.Initialize(faces.text, eyes.text, shapes.bytes);
+
+                                    // data stabilizer - affects face rects, face landmarks etc.
+                                    processor.DataStabilizer.Enabled = true;        // enable stabilizer
+                                    processor.DataStabilizer.Threshold = 2.0;       // threshold value in pixels
+                                    processor.DataStabilizer.SamplesCount = 2;      // how many samples do we need to compute stable data
+
+                                    // performance data - some tricks to make it work faster
+                                    processor.Performance.Downscale = 256;          // processed image is pre-scaled down to N px by long side
+                                    processor.Performance.SkipRate = 0;             // we actually process only each Nth frame (and every frame for skipRate = 0)
+                                }
+
+                                /// <summary>
+                                /// Per-frame video capture processor
+                                /// </summary>
+                                protected override bool ProcessTexture(WebCamTexture input, ref Texture2D output)
+                                {
+                                    // detect everything we're interested in
+                                    processor.ProcessTexture(input, TextureParameters);
+
+                                    // processor.MarkDetected(); //赤枠を表示するならここ
+
+                                    processor.MarkDetected_xy(ref faceX, ref faceY, ref faceW ,ref faceH);
+                                    
+                                    Vector2 mackCV;
+                                    if(faceX != null){
+                                        mackCV.x = faceX - targetRect.sizeDelta.x / 2f;
+                                        mackCV.y = -faceY + targetRect.sizeDelta.y / 2f;
+                                        preFaceX = mackCV.x;
+                                        preFaceY = mackCV.y;
+                                    }else{
+                                        mackCV.x = preFaceX;
+                                        mackCV.y = preFaceY;
+                                    }
+
+                                    mask.transform.localPosition = mackCV;
+                                    // Debug.Log("x:"+mackCV.x+" "+"y:" + mackCV.y);
+
+                                    // processor.Image now holds data we'd like to visualize
+                                    output = Unity.MatToTexture(processor.Image, output);   // if output is valid texture it's buffer will be re-used, otherwise it will be re-created
+
+                                    return true;
+                                }
+                            }
+                        } 
+                    </textarea>
+                    でもって、RawImageを親としてuGuiを追加(maskって名前のやつ)し、RawImageのfdsスクリプトに引数として渡す。(※他の引数Face,Eyes,Shapesに関してはFaceDetectorSceneと一緒なのでAssets/OpenCV + Unity/Demo/Face_Detector下のファイル達をドラック&ドロップ。)<br>
+                    <a href="./ucv_1_5_hierarchy.png" data-lightbox="faceDetector_img" data-title="" class="centerItem">
+                        <img class="img-container" src="./ucv_1_5_hierarchy.png" alt="">
+                    </a>
+                    <br>
+                    スクリプトはコメントアウト見れば大体わかることしか書いていないが、uGUIにおけるスクリーン座標には注意。
+                    <br>次は重ねる画像周りの設定。
+                </p>
+
+                <p style="font-size: 20px; margin: 10px 0;">↓</p>
+
+                <p><a href="../note/bakeru.html" style="text-decoration: underline;" target="_blank">もともとこのお試しを作るきっかけとなった作品</a>
+                    がお面を使っていたので、適当にお絵かきしてそれをお面とする。
+                    <a href="./rabbitface.png" data-lightbox="faceDetector_img" data-title="" class="centerItem">
+                        <img class="img-container" src="https://nekoshiro046.github.io/pfImg/note/ucv_1_5/rabbitface.png" alt="">
+                    </a>
+                    <br>これをunityにimportし、インスペクタのTexture TypeをSprite(2D and UI)にした後Hierarchy/canvas/RawImage/maskにアタッチする。今回はウサギが耳のせいでそのままでは顔の座標がずれるので、pivotの位置を調整する。
+                    <a href="./ucv_1_5_mask.png" data-lightbox="faceDetector_img" data-title="" class="centerItem">
+                        <img class="img-container" src="https://nekoshiro046.github.io/pfImg/note/ucv_1_5/ucv_1_5_mask.png" alt="">
+                    </a>
+                    <br>これで重ねる画像周りは準備ok。
+                </p>
+
+                <p style="font-size: 20px; margin: 10px 0;">↓</p>
+
+                <p>
+                    実行すればそれとなく動いてるはず(fpsが低いのは何も対処してないから知らない)。
+                    <video controls="controls" class="mov-container centerItem" >
+                      <source src="https://nekoshiro046.github.io/pfImg/note/ucv_1_5/ucv_1_5_testMov.mov">
+                    </video>
+
+                </p>
+
+            </div>
+
+        </div>
+        </main>
+
+        <footer>
+        <div class="footer">
+            <div class="tail_blank"> </div>
+        </div>
+        </footer>
+    <script src="../js/sistemInWork.js"></script>
+    </body>
+    </html> 
