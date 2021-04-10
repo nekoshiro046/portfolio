@@ -1,6 +1,6 @@
 Pace.on('done', function(){$('.wrapper').fadeIn();});
 var fr = 60;
-let objNum = 4;let worksNum = 7;
+let objNum = 3;let worksNum = 7;
 let boxes =  [];let firstBox;let worksBox = [];
 var canvas;
 var scene = 1;// 1:top 2:menu 3:work 
@@ -11,10 +11,10 @@ var userMove = 0;
 let linkIndex = ['a','c','w'];
 let linkName = ["about","contact","work","note"];
 let linkURL = ['about-me','contact','works','./note.html'];
-var worksIndex = ["back" ,"b","s", "M", "01", "A","u"];//1-4 : installation 5 : ux 0 : back
-var worksName = ["menu" ,"border","signage in GeikoSai", "Musical Chairs", "01", "Around the Mysterious Structure","URA GeikoSai"];//1-4 : installation 5 : ux 0 : back
-var worksLinkURL = ['','work/border.html', 'work/signage.html' ,'work/musicalChairs.html','work/01.html','work/atms.html','work/ura.html'];
-let worksYear = ['','18.08	Installation','19.10	UX Design','20.01	Installation','19.07	Installation','20.07	Installation','19.10	Web Site'];
+var worksIndex = ["back" ,"b","s", "S", "01", "A","u"];//1-4 : installation 5 : ux 0 : back
+var worksName = ["menu" ,"border","signage in GeikoSai", "Sound Architecture", "01", "Around the Mysterious Structure","URA GeikoSai"];//1-4 : installation 5 : ux 0 : back
+var worksLinkURL = ['','work/border.html', 'work/signage.html' ,'work/SoundArchitecture.html','work/01.html','work/atms.html','work/ura.html'];
+let worksYear = ['','18.08	Installation','19.10	UX Design','21.01	XR','19.07	Installation','20.07	Installation','19.10	Web Site'];
 var secondWorks = false;
 var soundSource = [];
 var firstTouch = 0;
@@ -174,7 +174,7 @@ function mousePressed() {
 				    });
 					initBox();
 					scene = 2;
-					soundSource[0].play();
+					// soundSource[0].play();
 				}
 				else{
 					// if((i > 0 && i <= 4 && instaBtn == true) || (i > 4 && uxBtn == true)  ){
